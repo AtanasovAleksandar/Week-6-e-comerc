@@ -1,0 +1,15 @@
+$primary-color: #2D3E4E;
+
+.menu {
+    background-color: $primary-color;
+    height:100vh;
+    position: fixed;
+
+    &-nav {
+        color: white;
+    }
+
+    &-link {
+        color: white;
+    }
+}
