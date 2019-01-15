@@ -4,15 +4,20 @@
         <img class="menu-img" src="../assets/img/logo.png" alt="Logo">
     </div>
     <nav class="nav flex-column menu-nav">
-      <a class="nav-link float-left menu-link" [routerLink]="['Category']" routerLinkActive="active-selected">
-        <i class="fas fa-folder-open"></i> Category
-        <i class="float-right fas fa-angle-right"></i></a>
-      <a class="nav-link float-left menu-link" [routerLink]="['Products']" routerLinkActive="active-selected">
+      <a class="nav-link float-left menu-link" 
+      [routerLink]="['Category']" 
+      routerLinkActive="active-selected">
+        <i class="fas fa-folder-open"></i> Category <span class="badge badge-success">{{countCategory}}</span>
+        <i class="float-right fas fa-angle-right"></i>
+      </a>
+      
+        <a class="nav-link float-left menu-link" 
+        [routerLink]="['Products']" 
+        routerLinkActive="active-selected">
         <i class="fas fa-align-justify"></i> Products
-        <i class="float-right fas fa-angle-right"></i></a>
+        <i class="float-right fas fa-angle-right"></i>
+      </a>
     </nav>
   </div>
 </nav>
-<div class="content col-md-8">
-</div>
 <router-outlet></router-outlet>

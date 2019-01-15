@@ -3,27 +3,28 @@
       <button class="btn btn-outline-primary float-right"  [routerLink]="[ '/Add-Category']"> <i class="fas fa-folder-plus"></i> Add Category</button>
       <h2 class="navbar-title">Categories</h2>
       <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button>
+        <input class="form-control mr-sm-2" [(ngModel)]="searchName" name="search" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" (click)="searchCategory()" type="submit"><i class="fas fa-search"></i> Search</button>
       </form>
   </nav>
 </div>
 <div class="table col-md-9 float-right container">
+  <button class="btn btn-outline-danger container-search" [hidden]="!activeSearch" (click)="getCategories()">Cancel Search</button>
     <table class="table table-striped">
         <thead>
           <tr>
-              <th scope="col"><i class="fas fa-address-card"></i> Name</th>
+              <th scope="col"><i class="fas fa-address-card"></i> Category Name</th>
               <th scope="col"><i class="fas fa-id-badge"></i> Parent Category</th>
               <th scope="col"><i class="fas fa-tractor"></i> Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Mark</td>
-            <td>Otto</td>
+          <tr *ngFor="let category of Category;let i = index">
+            <td>{{category.name}}</td>
+            <td>{{i + 1}}</td>
             <td>
               <button class="btn btn-outline-info table-button"><i class="fas fa-edit"></i> Edit</button>
-              <button class="btn btn-outline-danger table-button"><i class="far fa-trash-alt"></i> Delete</button>
+              <button class="btn btn-outline-danger table-button" (click)="deleteCategory(category.id)"><i class="far fa-trash-alt"></i> Delete</button>
             </td>
           </tr>
         </tbody>

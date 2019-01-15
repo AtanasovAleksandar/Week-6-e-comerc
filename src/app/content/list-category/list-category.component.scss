@@ -7,6 +7,10 @@ $font-bangers: 'Candal', cursive;
 .container {
     height: 80vh;
     background-color: $secondary-color; 
+
+    &-search {
+        margin-bottom: 10px;
+    }
 }
 
 
