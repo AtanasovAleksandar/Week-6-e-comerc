@@ -1,5 +1,31 @@
 <div class="products col-md-9 float-right">
-  <p>
-    products-category works!
-  </p>
+    <nav class="navbar navbar-light navbar-list">
+        <button class="btn btn-outline-primary float-right"  [routerLink]="[ '/Add-Category']"> <i class="fas fa-folder-plus"></i> Add Category</button>
+        <h2 class="navbar-title">Products</h2>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button>
+        </form>
+    </nav>
+  <div class="table col-md-12 float-right container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col"><i class="fas fa-address-card"></i> Name</th>
+          <th scope="col"><i class="fas fa-id-badge"></i> Parent Category</th>
+          <th scope="col"><i class="fas fa-tractor"></i> Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Aleksandar</td>
+          <td>Otto</td>
+          <td>
+              <button class="btn btn-outline-info table-button"><i class="fas fa-edit"></i> Edit</button>
+              <button class="btn btn-outline-danger table-button"><i class="far fa-trash-alt"></i> Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

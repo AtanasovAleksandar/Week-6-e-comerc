@@ -1,0 +1,29 @@
+$background-color: #2d3e4e;
+$secondary-color: #EFF5F9;
+$text-color: #37505C;
+$font-bangers: 'Candal', cursive;
+$font-labels: 'Bangers, cursive';
+
+.navbar {
+    &-list {
+        // background-color: $background-color;
+        background-image: url("../../../assets/img/cover.png");
+        height: 16vh;
+    }
+
+    &-title {
+        color: white;
+        font-family: $font-bangers;
+        text-align: center;
+    }
+}
+
+.form {
+    margin-top: 20px;
+
+    &-labels {
+        color: $text-color;
+        font-family: $font-labels;
+    }
+}
+

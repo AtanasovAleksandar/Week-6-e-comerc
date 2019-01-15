@@ -1,2 +1,41 @@
+$background-color: #2d3e4e;
+$secondary-color: #EFF5F9;
+$button-color: #0d1824;
+$font-bangers: 'Candal', cursive;
 
+
+.container {
+    height: 80vh;
+    background-color: $secondary-color; 
+}
+
+
+.navbar {
+    &-list {
+        // background-color: $background-color;
+        background-image: url("../../../assets/img/cover.png");
+        height: 16vh;
+    }
+
+    &-title {
+        color: white;
+        font-family: $font-bangers;
+    }
+}
+
+
+
+.table {
+    padding: 15px;
+    text-align: center;
+
+    &-button {
+        margin-left: 15px;
+    }
+}
+
+.btn-outline-primary {
+    color: white;
+    border-color: white;
+}
 
