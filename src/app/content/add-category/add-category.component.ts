@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { CategoriesService } from 'src/app/categories.service';
 import { ICategories } from 'src/app/icategories';
 import { Router } from "@angular/router";
@@ -10,24 +10,28 @@ import { Router } from "@angular/router";
 })
 export class AddCategoryComponent {
 
-  name:ICategories;
+  name: ICategories;
 
-  categories:any = {'name': ''}
+  categories: any = { 'name': '' }
 
 
   constructor(public categoriesService: CategoriesService, public router: Router) { }
 
   addCategory() {
-  this.categories.name = this.name
-    this.categoriesService.addNewCategory(this.categories).subscribe(
-      data => {
-        console.log(data);
+    if (!this.name) {
+        console.log('empty')
+    } else {
+      this.categories.name = this.name
+      this.categoriesService.addNewCategory(this.categories).subscribe(
+        data => {
+          console.log(data);
 
-        this.router.navigate(['Category']);
-      }
-    )
+          this.router.navigate(['Category']);
+        }
+      )
+    }
   }
 
-  
+
 
 }
