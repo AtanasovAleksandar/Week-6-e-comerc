@@ -9,6 +9,7 @@ import { Observable } from "rxjs";
 export class CategoriesService {
 
   api = 'http://127.0.0.1:3000/categories';
+  apiCount = 'http://127.0.0.1:3000/categories/count';
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +21,11 @@ export class CategoriesService {
   getAllCategories(): Observable<any> {
     return this.http.get(this.api);
   }
+
+  getCountVal(): Observable<any> {
+    return this.http.get(this.apiCount)
+  }
+
 
   deleteCategory(category) {
     return this.http.delete(this.api+'/'+ category)

@@ -1,0 +1,39 @@
+$primary-color: #2E3E50;
+$hover-color: #007bff59;
+
+.menu {
+    // background-color: $primary-color;
+    background-image: url("../../assets/img/backg.png");
+    height:100vh;
+    position: fixed;
+
+    &-container {
+
+    }
+
+    &-nav {
+        color: white;
+        margin-top: 6px;
+    }
+
+    &-link {
+        color: white;
+        
+    }
+
+    &-img {
+        width: 180px;
+
+        &-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 7px;
+        }
+    }
+}
+
+
+.active-selected {
+    background-color: $hover-color;
+}

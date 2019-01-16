@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { AddCategoryComponent } from './content/add-category/add-category.component';
 import { ListCategoryComponent } from './content/list-category/list-category.component';
 import { ProductsCategoryComponent } from './content/products-category/products-category.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddCategoryComponent,
     ListCategoryComponent,
-    ProductsCategoryComponent
+    ProductsCategoryComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

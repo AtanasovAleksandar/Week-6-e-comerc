@@ -33,7 +33,8 @@
               <button class="btn btn-outline-danger table-button" 
               (click)="deleteCategory(category.id)">
               <i class="far fa-trash-alt"></i> Delete</button>
-              <div class="table-confirm" [hidden]="!activeDelete">
+              <div class="table-confirm" 
+              [ngClass]="{'animated slideInDown' : activeDelete}" [hidden]="!activeDelete">
                   <i class="fas fa-exclamation-triangle danger"></i>
                 <p>Are you sure you want to delete this category?</p>
                 <div class="table-confirm-buttons">

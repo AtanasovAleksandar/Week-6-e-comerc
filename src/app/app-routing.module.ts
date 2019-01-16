@@ -8,8 +8,8 @@ const routes: Routes = [
   {path: 'Category' , component: ListCategoryComponent },
   {path: 'Add-Category' , component: AddCategoryComponent },
   {path: 'Products' , component: ProductsCategoryComponent },
-  {path: '' , redirectTo: "Customers/1/none" , pathMatch: 'full'},
-  {path: '**' , redirectTo: "Customers/1/none" , pathMatch:'full'}
+  {path: '' , redirectTo: "Category" , pathMatch: 'full'},
+  {path: '**' , redirectTo: "Category" , pathMatch:'full'}
 
 ];
 

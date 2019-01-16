@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ICategories } from 'src/app/icategories';
 import { CategoriesService } from 'src/app/categories.service';
-
+import { CountService } from 'src/app/count.service';
 
 @Component({
   selector: 'app-list-category',
@@ -10,18 +10,19 @@ import { CategoriesService } from 'src/app/categories.service';
 })
 export class ListCategoryComponent implements OnInit {
 
-  Category = [];
+  Category: Object = [];
   activeSearch: Boolean = false;
-  searchName:string;
-  activeDelete:boolean = false;
+  searchName: string;
+  activeDelete: boolean = false;
 
-  constructor(public categoriesService: CategoriesService) { 
+  constructor(public categoriesService: CategoriesService,
+    public countService: CountService) {
     this.getCategories()
   }
 
   ngOnInit() {
+    this.countService.getCount()
   }
-
 
   getCategories() {
     this.categoriesService.getAllCategories().subscribe(
@@ -33,16 +34,13 @@ export class ListCategoryComponent implements OnInit {
     )
   }
 
-  deleteConfirm(confirm) {
-   
-  }
-
-  deleteCategory(id , confirm) {
+  deleteCategory(id, confirm) {
     this.activeDelete = true;
     if (confirm == 'YES') {
       this.categoriesService.deleteCategory(id).subscribe(
         data => {
           this.getCategories();
+          this.countService.getCount()
         }
       )
       this.activeDelete = false;
@@ -52,12 +50,15 @@ export class ListCategoryComponent implements OnInit {
   }
 
   searchCategory() {
-    this.categoriesService.searchByName(this.searchName).subscribe(
-      data => {
-        this.Category = data;
-        this.activeSearch = true;
-      }
-    )
+    if (this.searchName) {
+      this.categoriesService.searchByName(this.searchName).subscribe(
+        data => {
+          this.Category = data;
+          this.activeSearch = true;
+        })
+        
+    } else if (this.searchName == '') {
+      this.getCategories();
+    }
   }
-
 }
