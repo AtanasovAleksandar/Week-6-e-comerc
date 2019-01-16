@@ -1,18 +1,18 @@
 $background-color: #2d3e4e;
 $secondary-color: #EFF5F9;
 $button-color: #0d1824;
-$font-bangers: 'Candal', cursive;
-
+$dialog-background: #2d3e4ee8;
+$font-bangers: 'Candal',
+cursive;
 
 .container {
     height: 80vh;
-    background-color: $secondary-color; 
+    background-color: $secondary-color;
 
     &-search {
         margin-bottom: 10px;
     }
 }
-
 
 .navbar {
     &-list {
@@ -27,14 +27,33 @@ $font-bangers: 'Candal', cursive;
     }
 }
 
-
-
 .table {
     padding: 15px;
     text-align: center;
+    position: relative;
 
     &-button {
         margin-left: 15px;
+    }
+
+    &-confirm {
+        width: 270px;
+        height: 160px;
+        background-color: $dialog-background;
+        position: absolute;
+        left: 39%;
+        margin-left: -50px;
+        top: 29%;
+        margin-top: -50px;
+        padding: 5px;
+
+        & p {
+            color: white;
+        }
+
+        &-buttons button {
+            margin-left: 10px;
+        }
     }
 }
 
@@ -43,3 +62,7 @@ $font-bangers: 'Candal', cursive;
     border-color: white;
 }
 
+.danger {
+    font-size: 44px;
+    color: red;
+} 

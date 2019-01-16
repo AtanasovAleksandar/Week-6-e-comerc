@@ -13,6 +13,7 @@ export class ListCategoryComponent implements OnInit {
   Category = [];
   activeSearch: Boolean = false;
   searchName:string;
+  activeDelete:boolean = false;
 
   constructor(public categoriesService: CategoriesService) { 
     this.getCategories()
@@ -32,12 +33,22 @@ export class ListCategoryComponent implements OnInit {
     )
   }
 
-  deleteCategory(id) {
-    this.categoriesService.deleteCategory(id).subscribe(
-      data => {
-        this.getCategories();
-      }
-    )
+  deleteConfirm(confirm) {
+   
+  }
+
+  deleteCategory(id , confirm) {
+    this.activeDelete = true;
+    if (confirm == 'YES') {
+      this.categoriesService.deleteCategory(id).subscribe(
+        data => {
+          this.getCategories();
+        }
+      )
+      this.activeDelete = false;
+    } else if (confirm == 'NO') {
+      this.activeDelete = false;
+    }
   }
 
   searchCategory() {
