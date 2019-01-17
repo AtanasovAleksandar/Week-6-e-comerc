@@ -49,7 +49,7 @@ export class ListCategoryComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
+    this.toastr.success('Category deleted');
   }
 
   showDeleteModule(id) {
