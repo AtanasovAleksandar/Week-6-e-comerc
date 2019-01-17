@@ -8,7 +8,6 @@ cursive;
 .container {
     height: 80vh;
     background-color: $secondary-color;
-
     &-search {
         margin-bottom: 10px;
     }
@@ -20,7 +19,6 @@ cursive;
         background-image: url("../../../assets/img/cover.png");
         height: 16vh;
     }
-
     &-title {
         color: white;
         font-family: $font-bangers;
@@ -31,11 +29,9 @@ cursive;
     padding: 15px;
     text-align: center;
     position: relative;
-
     &-button {
         margin-left: 15px;
     }
-
     &-confirm {
         width: 270px;
         height: 160px;
@@ -46,11 +42,9 @@ cursive;
         top: 29%;
         margin-top: -50px;
         padding: 5px;
-
         & p {
             color: white;
         }
-
         &-buttons button {
             margin-left: 10px;
         }
@@ -65,4 +59,10 @@ cursive;
 .danger {
     font-size: 44px;
     color: red;
-} 
+}
+
+.toast {
+    &-succes {
+        background-color: green;
+    }
+}

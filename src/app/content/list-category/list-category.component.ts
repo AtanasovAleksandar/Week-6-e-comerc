@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ICategories } from 'src/app/icategories';
 import { CategoriesService } from 'src/app/categories.service';
 import { CountService } from 'src/app/count.service';
+import { ActivatedRoute, Router } from "@angular/router";
+import { Category } from '../models/category.model';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-list-category',
@@ -10,13 +13,24 @@ import { CountService } from 'src/app/count.service';
 })
 export class ListCategoryComponent implements OnInit {
 
-  Category: Object = [];
+  Category: Category[] = [];
   activeSearch: Boolean = false;
   searchName: string;
   activeDelete: boolean = false;
+  activePage: any;
+  currentId: any;
 
   constructor(public categoriesService: CategoriesService,
-    public countService: CountService) {
+    public countService: CountService,
+    public activeRouter: ActivatedRoute,
+    public router: Router,
+    private toastr: ToastrService
+  ) {
+    this.activeRouter.params.subscribe(params => {
+      console.log(params);
+      this.activePage = params.activePage;
+      });
+
     this.getCategories()
   }
 
@@ -34,10 +48,21 @@ export class ListCategoryComponent implements OnInit {
     )
   }
 
-  deleteCategory(id, confirm) {
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
+
+  showDeleteModule(id) {
+    this.activeDelete = true;
+    this.showSuccess()
+    this.currentId = id
+  }
+
+  deleteCategory(confirm) {
+    
     this.activeDelete = true;
     if (confirm == 'YES') {
-      this.categoriesService.deleteCategory(id).subscribe(
+      this.categoriesService.deleteCategory(this.currentId).subscribe(
         data => {
           this.getCategories();
           this.countService.getCount()
@@ -56,7 +81,7 @@ export class ListCategoryComponent implements OnInit {
           this.Category = data;
           this.activeSearch = true;
         })
-        
+
     } else if (this.searchName == '') {
       this.getCategories();
     }

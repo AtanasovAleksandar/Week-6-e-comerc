@@ -17,5 +17,5 @@ export interface ICategories {
         ],
         parentCategoryId: 0
         
-      }
+}
 

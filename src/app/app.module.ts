@@ -9,6 +9,10 @@ import { AddCategoryComponent } from './content/add-category/add-category.compon
 import { ListCategoryComponent } from './content/list-category/list-category.component';
 import { ProductsCategoryComponent } from './content/products-category/products-category.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { EditCategoryComponent } from './content/edit-category/edit-category.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -16,13 +20,22 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     AddCategoryComponent,
     ListCategoryComponent,
     ProductsCategoryComponent,
-    NavBarComponent
+    NavBarComponent,
+    EditCategoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot({
+
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      
+    }) 
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CategoriesService } from 'src/app/categories.service';
-import { ICategories } from 'src/app/icategories';
 import { Router } from "@angular/router";
 import { CountService } from 'src/app/count.service';
+import { Category } from '../models/category.model';
 
 @Component({
   selector: 'app-add-category',
@@ -11,16 +11,27 @@ import { CountService } from 'src/app/count.service';
 })
 export class AddCategoryComponent {
 
-  name: ICategories;
+  name: Category[];
 
-  categories: any = { 'name': '' }
+  allCategories: Category[] = [];
+  selectedOption: Number;
+
+  categories: Category[] = {}
   count: Number;
   emptyInput: boolean = false;
 
 
   constructor(public categoriesService: CategoriesService,
     public router: Router, private countService: CountService) {
-     
+    this.getCategory()
+  }
+
+  getCategory() {
+    this.categoriesService.getAllCategories().subscribe(
+      data => {
+        this.allCategories = data;
+      }
+    )
   }
 
   addCategory() {
@@ -29,7 +40,8 @@ export class AddCategoryComponent {
       console.log('empty')
     } else {
       this.emptyInput = false;
-      this.categories.name = this.name
+      this.categories.name = this.name;
+      this.categories.parentCategoryId = parseInt(this.selectedOption) ;
       this.categoriesService.addNewCategory(this.categories).subscribe(
         data => {
           console.log(data);
@@ -40,7 +52,7 @@ export class AddCategoryComponent {
     }
   }
 
-  
+
 
   sentCount() {
     this.countService.getCount()

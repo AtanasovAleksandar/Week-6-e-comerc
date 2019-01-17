@@ -1,52 +1,47 @@
 <div class="col-md-9 float-right menu">
   <nav class="navbar navbar-light navbar-list">
-      <button class="btn btn-outline-primary float-right"  
-      [routerLink]="[ '/Add-Category']"> <i class="fas fa-folder-plus"></i> Add Category</button>
-      <h2 class="navbar-title">Categories</h2>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" 
-        [(ngModel)]="searchName" name="search" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0" 
-        (click)="searchCategory()" type="submit"><i class="fas fa-search"></i> Search</button>
-      </form>
+    <button class="btn btn-outline-primary float-right" [routerLink]="[ '/Add-Category']"> <i class="fas fa-folder-plus"></i>
+      Add Category</button>
+    <h2 class="navbar-title">Categories</h2>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" [(ngModel)]="searchName" name="search" type="search" placeholder="Search"
+        aria-label="Search">
+      <button class="btn btn-outline-primary my-2 my-sm-0" (click)="searchCategory()" type="submit"><i class="fas fa-search"></i>
+        Search</button>
+    </form>
   </nav>
 </div>
 <div class="table col-md-9 float-right container">
-  <button class="btn btn-outline-dark container-search" 
-  [hidden]="!activeSearch" 
-  (click)="getCategories()">Cancel Search</button>
-    <table class="table table-striped">
-        <thead>
-          <tr>
-              <th scope="col"><i class="fas fa-address-card"></i> Category Name</th>
-              <th scope="col"><i class="fas fa-id-badge"></i> Parent Category</th>
-              <th scope="col"><i class="fas fa-tractor"></i> Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let category of Category;let i = index">
-            <td>{{category.name}}</td>
-            <td>{{i + 1}}</td>
-            <td>
-              <button class="btn btn-outline-info table-button">
-                <i class="fas fa-edit"></i> Edit</button>
-              <button class="btn btn-outline-danger table-button" 
-              (click)="deleteCategory(category.id)">
-              <i class="far fa-trash-alt"></i> Delete</button>
-              <div class="table-confirm" 
-              [ngClass]="{'animated slideInDown' : activeDelete}" [hidden]="!activeDelete">
-                  <i class="fas fa-exclamation-triangle danger"></i>
-                <p>Are you sure you want to delete this category?</p>
-                <div class="table-confirm-buttons">
-                    <button class="btn btn-outline-primary my-2 my-sm-0" 
-                    (click)="deleteCategory(category.id,'YES')">YES</button>
-                    <button class="btn btn-outline-primary my-2 my-sm-0" 
-                    (click)="deleteCategory(category.id ,'NO')">NO</button>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-     
+  <button class="btn btn-outline-dark container-search" [hidden]="!activeSearch" (click)="getCategories()">Cancel
+    Search</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"><i class="fas fa-address-card"></i> Category Name</th>
+        <th scope="col"><i class="fas fa-id-badge"></i> Parent Category</th>
+        <th scope="col"><i class="fas fa-tractor"></i> Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of Category; let i = index">
+        <td>{{category.name}}</td>
+        <td>{{category.parentCategoryId}}</td>
+        <td>
+          <button class="btn btn-outline-info table-button" [routerLink]="[ '/Category/Edit/', i ]">
+            <i class="fas fa-edit"></i> Edit</button>
+          <button class="btn btn-outline-danger table-button" (click)="showDeleteModule(category.id)">
+            <i class="far fa-trash-alt"></i> Delete</button>
+          <div class="table-confirm" [ngClass]="{'animated slideInDown' : activeDelete}" [hidden]="!activeDelete">
+            <i class="fas fa-exclamation-triangle danger"></i>
+            <p>Are you sure you want to delete this category?</p>
+            <div class="table-confirm-buttons">
+              <button class="btn btn-outline-primary my-2 my-sm-0" (click)="deleteCategory('YES')">YES</button>
+              <button class="btn btn-outline-primary my-2 my-sm-0" (click)="deleteCategory('NO')">NO</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
