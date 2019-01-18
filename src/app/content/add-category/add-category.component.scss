@@ -4,6 +4,10 @@ $text-color: #37505C;
 $font-bangers: 'Candal', cursive;
 $font-labels: 'Bangers, cursive';
 
+@import '../../responsive/tablet.scss';
+
+@import '../../responsive/mobile.scss';
+
 .navbar {
     &-list {
         // background-color: $background-color;

@@ -4,6 +4,11 @@ $button-color: #0d1824;
 $font-bangers: 'Candal', cursive;
 
 
+
+@import '../../responsive/tablet.scss';
+
+@import '../../responsive/mobile.scss';
+
 .container {
     height: 80vh;
     background-color: $secondary-color; 

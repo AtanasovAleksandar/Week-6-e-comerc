@@ -7,8 +7,8 @@ $hover-color: #007bff59;
     height:100vh;
     position: fixed;
 
-    &-container {
-
+    &-hamburger {
+        display: none;
     }
 
     &-nav {
@@ -37,3 +37,11 @@ $hover-color: #007bff59;
 .active-selected {
     background-color: $hover-color;
 }
+
+
+//max 770px min 400px
+@import '../responsive/tablet.scss';
+
+//max 400px 
+
+@import '../responsive/mobile.scss';

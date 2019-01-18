@@ -1,17 +1,19 @@
 <div class="col-md-9 float-right menu">
-  <nav class="navbar navbar-light navbar-list">
+  <nav class="navbar navbar-light navbar-list mobile">
     <button class="btn btn-outline-primary float-right" [routerLink]="[ '/Add-Category']"> <i class="fas fa-folder-plus"></i>
       Add Category</button>
     <h2 class="navbar-title">Categories</h2>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" [(ngModel)]="searchName" name="search" type="search" placeholder="Search"
-        aria-label="Search">
-      <button class="btn btn-outline-primary my-2 my-sm-0" (click)="searchCategory()" type="submit"><i class="fas fa-search"></i>
-        Search</button>
-    </form>
+    <div class="form-search">
+      <form class="form-inline category-form">
+        <input class="form-control" [(ngModel)]="searchName" name="search" type="search" placeholder="Search"
+          aria-label="Search">
+        <button class="btn btn-outline-primary" (click)="searchCategory()" type="submit"><i class="fas fa-search"></i>
+          Search</button>
+      </form>
+    </div>
   </nav>
 </div>
-<div class="table col-md-9 float-right container">
+<div class="table col-md-9 col-sm-12 float-right container">
   <button class="btn btn-outline-dark container-search" [hidden]="!activeSearch" (click)="getCategories()">Cancel
     Search</button>
   <table class="table table-striped">
@@ -43,5 +45,4 @@
       </tr>
     </tbody>
   </table>
-
 </div>

@@ -24,8 +24,10 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "modern-normalize": "^0.5.0",
+    "ng2-toastr": "^4.1.2",
     "ngx-toastr": "^9.1.1",
     "rxjs": "~6.3.3",
+    "rxjs-compat": "^6.3.3",
     "toastr": "^2.1.4",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

@@ -1,0 +1,25 @@
+@media only screen and (max-width: 400px) and (min-width: 320px) { 
+
+.menu {
+    position: relative;
+    height: 31vh;
+ &-mobile {
+    height: 30vh; 
+ }
+}
+
+.navbar-list {
+    height: 30vh!important;
+}
+
+.form-search {
+    & button {
+        margin-top: 20px;
+    }
+}
+
+.form-edit {
+    padding:12px;
+}
+
+}

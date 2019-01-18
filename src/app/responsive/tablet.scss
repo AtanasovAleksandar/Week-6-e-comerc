@@ -1,0 +1,29 @@
+@media only screen and (max-width: 768px) and (min-width: 400px) {
+    .menu {
+        position: relative;
+        height: 15vh;
+        &-img-container {
+            align-items: end;
+        }
+        &-nav {
+            width: 50%;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+    .table {
+        &-button {
+            width: 91px;
+             margin-top: 5px;
+        }
+    }
+
+    .navbar {
+        display: block;
+    }
+
+    .form-search input {
+        width: 70%;
+    }
+}

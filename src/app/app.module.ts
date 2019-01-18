@@ -10,9 +10,6 @@ import { ListCategoryComponent } from './content/list-category/list-category.com
 import { ProductsCategoryComponent } from './content/products-category/products-category.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { EditCategoryComponent } from './content/edit-category/edit-category.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
-import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -27,15 +24,8 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule, 
-    ToastrModule.forRoot({
-
-      timeOut: 10000,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-      
-    }) 
+    HttpClientModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

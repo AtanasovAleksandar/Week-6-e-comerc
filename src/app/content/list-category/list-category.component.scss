@@ -5,6 +5,12 @@ $dialog-background: #2d3e4ee8;
 $font-bangers: 'Candal',
 cursive;
 
+//responsive 
+
+@import '../../responsive/tablet.scss';
+
+@import '../../responsive/mobile.scss';
+
 .container {
     height: 80vh;
     background-color: $secondary-color;
@@ -66,3 +72,5 @@ cursive;
         background-color: green;
     }
 }
+
+

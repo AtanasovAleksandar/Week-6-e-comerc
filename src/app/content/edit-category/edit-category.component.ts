@@ -10,9 +10,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit-category.component.scss']
 })
 export class EditCategoryComponent implements OnInit {
-  customerId: Number;
+  customerId: any;
   name: Category[];
   selectedOption:any;
+  Category: any;
 
   constructor(public categoryService: CategoriesService,
     public countService: CountService,
@@ -49,9 +50,9 @@ export class EditCategoryComponent implements OnInit {
 
   }
 
-  editCategoty() {
-    this.categoryService.editCategory(as).subscribe()
-  }
+  // editCategoty() {
+  //   this.categoryService.editCategory().subscribe()
+  // }
 
 
 

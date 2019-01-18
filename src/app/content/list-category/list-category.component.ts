@@ -3,7 +3,8 @@ import { CategoriesService } from 'src/app/categories.service';
 import { CountService } from 'src/app/count.service';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Category } from '../models/category.model';
-import { ToastrService } from 'ngx-toastr';
+
+
 
 
 @Component({
@@ -24,8 +25,7 @@ export class ListCategoryComponent implements OnInit {
     public countService: CountService,
     public activeRouter: ActivatedRoute,
     public router: Router,
-    private toastr: ToastrService
-  ) {
+    ) {
     this.activeRouter.params.subscribe(params => {
       console.log(params);
       this.activePage = params.activePage;
@@ -48,13 +48,13 @@ export class ListCategoryComponent implements OnInit {
     )
   }
 
-  showSuccess() {
-    this.toastr.success('Category deleted');
-  }
+  // showSuccess() {
+  //   this.toastr.success('You are awesome!', 'Success!');
+  // }
 
   showDeleteModule(id) {
     this.activeDelete = true;
-    this.showSuccess()
+    // this.showSuccess()
     this.currentId = id
   }
 
