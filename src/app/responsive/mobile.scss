@@ -2,14 +2,14 @@
 
 .menu {
     position: relative;
-    height: 31vh;
+    height: 34vh;
  &-mobile {
-    height: 30vh; 
+    height: 34vh; 
  }
 }
 
 .navbar-list {
-    height: 30vh!important;
+    height: 34vh!important;
 }
 
 .form-search {
@@ -20,6 +20,11 @@
 
 .form-edit {
     padding:12px;
+}
+
+.table-button {
+    width: 91px;
+    margin-bottom: 3px;
 }
 
 }
