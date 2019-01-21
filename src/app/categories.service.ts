@@ -26,8 +26,9 @@ export class CategoriesService {
     return this.http.get(this.apiCount)
   }
 
-  editCategory(newData) {
-    return this.http.put(this.api , newData)
+  editCategory(id,newData) {
+    debugger
+    return this.http.put(this.api + '/' + id , newData)
   }
 
 

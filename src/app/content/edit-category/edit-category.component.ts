@@ -14,6 +14,10 @@ export class EditCategoryComponent implements OnInit {
   name: Category[];
   selectedOption:any;
   Category: any;
+  newName: Category[];
+  newParent: any;
+  newCategories: any = {}
+  categoryObj: any;
 
   constructor(public categoryService: CategoriesService,
     public countService: CountService,
@@ -35,6 +39,7 @@ export class EditCategoryComponent implements OnInit {
     this.categoryService.getAllCategories().subscribe(
       data => {
         this.Category = data;
+        this.categoryObj = data[this.customerId]
         this.getEditCategory()
       }
     )
@@ -48,10 +53,21 @@ export class EditCategoryComponent implements OnInit {
     this.selectedOption = oldVal.parentCategoryId;
   }
 
-  // editCategoty() {
-  //   this.categoryService.editCategory().subscribe()
-  // }
+  editedValues() {
+    this.newName = this.name;
+    this.newParent = this.selectedOption;
 
+    this.newCategories.name = this.newName;
+    this.newCategories.parentCategoryId =parseInt(this.newParent);
+    console.log(this.newCategories);
+    this.editCategory();
+  }
 
-
+  editCategory() {
+    this.categoryService.editCategory(this.categoryObj.id,this.newCategories).subscribe(
+      data => {
+        this.router.navigate(['Category']);
+      }
+    )
+  }
 }
