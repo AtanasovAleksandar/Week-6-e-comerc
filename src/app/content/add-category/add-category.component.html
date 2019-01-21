@@ -10,12 +10,17 @@
     </div>
 
     <div class="select">
-        <label for="CategoryParentNameInput" class="form-labels">Parent Category Name <i class="fas fa-address-card"></i></label>
+      <label for="CategoryParentNameInput" class="form-labels">Parent Category Name <i class="fas fa-address-card"></i></label>
       <select class="custom-select" [(ngModel)]="selectedOption" name="selectedOption">
         <option selected value="9999">No Parent</option>
         <option *ngFor="let item of allCategories" value="{{item.id}}">
           {{item.name}}</option>
       </select>
+    </div>
+    <div class="form-text-area">
+      <textarea id="story" name="story" rows="5" cols="33">
+It was a dark and stormy night...
+      </textarea>
     </div>
     <div class="form-buttons">
       <button type="button" (click)="addCategory()" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Add</button>
