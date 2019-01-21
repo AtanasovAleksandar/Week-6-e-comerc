@@ -31,6 +31,10 @@ $font-labels: 'Bangers, cursive';
     }
     &-text-area {
         padding-top: 15px;
+
+        &-label {
+            margin-left: 15px;
+        }
     }
 }
 

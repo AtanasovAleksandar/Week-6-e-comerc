@@ -46,8 +46,6 @@ export class EditCategoryComponent implements OnInit {
 
     this.name = oldVal.name;
     this.selectedOption = oldVal.parentCategoryId;
-
-
   }
 
   // editCategoty() {
