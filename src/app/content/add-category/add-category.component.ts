@@ -14,9 +14,9 @@ export class AddCategoryComponent {
   name: Category[];
 
   allCategories: Category[] = [];
-  selectedOption: Number;
+  selectedOption: string;
 
-  categories: Category[] = {}
+  categories: any = {}
   count: Number;
   emptyInput: boolean = false;
 
