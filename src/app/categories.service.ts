@@ -27,10 +27,8 @@ export class CategoriesService {
   }
 
   editCategory(id,newData) {
-    debugger
     return this.http.put(this.api + '/' + id , newData)
   }
-
 
   deleteCategory(category) {
     return this.http.delete(this.api+'/'+ category)

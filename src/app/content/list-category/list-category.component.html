@@ -27,7 +27,7 @@
     <tbody>
       <tr *ngFor="let category of Category; let i = index">
         <td>{{category.name}}</td>
-        <td>{{category.parentCategoryId}}</td>
+        <td>{{category.parentCategoryName}}</td>
         <td>
           <button class="btn btn-outline-info table-button" [routerLink]="[ '/Category/Edit/', i ]">
             <i class="fas fa-edit"></i> Edit</button>

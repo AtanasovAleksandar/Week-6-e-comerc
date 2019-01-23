@@ -4,9 +4,6 @@ import { CountService } from 'src/app/count.service';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Category } from '../models/category.model';
 
-
-
-
 @Component({
   selector: 'app-list-category',
   templateUrl: './list-category.component.html',
@@ -20,16 +17,19 @@ export class ListCategoryComponent implements OnInit {
   activeDelete: boolean = false;
   activePage: any;
   currentId: any;
+  Parents: any = [];
+  parentObj = { 'parentName': '' }
+
 
   constructor(public categoriesService: CategoriesService,
     public countService: CountService,
     public activeRouter: ActivatedRoute,
     public router: Router,
-    ) {
+  ) {
     this.activeRouter.params.subscribe(params => {
       console.log(params);
       this.activePage = params.activePage;
-      });
+    });
 
     this.getCategories()
   }
@@ -44,22 +44,31 @@ export class ListCategoryComponent implements OnInit {
         console.log(data)
         this.Category = data;
         this.activeSearch = false;
+        // this.getParent();
       }
     )
   }
 
-  // showSuccess() {
-  //   this.toastr.success('You are awesome!', 'Success!');
+  // getParent() {
+  //   for (var i = 0; i < this.Category.length; i++) {
+  //     var parentID = this.Category[i].parentCategoryId
+  //     for (var j = 0; j < this.Category.length; i++) {
+  //       if (parentID == this.Category[j].id) {
+  //         var parentName = this.Category[j].name;
+  //         this.parentObj.parentName = parentName;
+  //         this.Parents.push(this.parentObj);
+  //       }
+  //     }
+  //   }
+  //   console.log(this.Parents)
   // }
 
   showDeleteModule(id) {
     this.activeDelete = true;
-    // this.showSuccess()
     this.currentId = id
   }
 
   deleteCategory(confirm) {
-    
     this.activeDelete = true;
     if (confirm == 'YES') {
       this.categoriesService.deleteCategory(this.currentId).subscribe(

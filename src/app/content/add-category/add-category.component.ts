@@ -15,11 +15,12 @@ export class AddCategoryComponent {
 
   allCategories: Category[] = [];
   selectedOption: string;
+  textDescription: Category[];
 
   categories: any = {}
   count: Number;
   emptyInput: boolean = false;
-
+  Parents: any = [];
 
   constructor(public categoriesService: CategoriesService,
     public router: Router, private countService: CountService) {
@@ -37,11 +38,12 @@ export class AddCategoryComponent {
   addCategory() {
     if (!this.name) {
       this.emptyInput = true;
-      console.log('empty')
     } else {
       this.emptyInput = false;
       this.categories.name = this.name;
-      this.categories.parentCategoryId = parseInt(this.selectedOption) ;
+      console.log(this.textDescription)
+      this.categories.description = this.textDescription
+      this.categories.parentCategoryName = this.selectedOption;
       this.categoriesService.addNewCategory(this.categories).subscribe(
         data => {
           console.log(data);
@@ -52,11 +54,11 @@ export class AddCategoryComponent {
     }
   }
 
-
-
   sentCount() {
     this.countService.getCount()
   }
+
+  
 
 }
 

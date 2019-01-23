@@ -18,6 +18,8 @@ export class EditCategoryComponent implements OnInit {
   newParent: any;
   newCategories: any = {}
   categoryObj: any;
+  textDescription: any;
+  newTextDescription: Category[];
 
   constructor(public categoryService: CategoriesService,
     public countService: CountService,
@@ -48,17 +50,18 @@ export class EditCategoryComponent implements OnInit {
   getEditCategory() {
     let oldVal:Category[];
     oldVal = this.Category[this.customerId];
-
+    this.textDescription = oldVal.description;
     this.name = oldVal.name;
-    this.selectedOption = oldVal.parentCategoryId;
+    this.selectedOption = oldVal.parentCategoryName;
   }
 
   editedValues() {
     this.newName = this.name;
     this.newParent = this.selectedOption;
-
+    this.newTextDescription = this.textDescription
     this.newCategories.name = this.newName;
     this.newCategories.parentCategoryId =parseInt(this.newParent);
+    this.newCategories.description = this.newTextDescription;
     console.log(this.newCategories);
     this.editCategory();
   }
@@ -70,4 +73,6 @@ export class EditCategoryComponent implements OnInit {
       }
     )
   }
+
+  
 }
