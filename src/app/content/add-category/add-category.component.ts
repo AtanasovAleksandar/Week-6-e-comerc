@@ -14,7 +14,7 @@ export class AddCategoryComponent {
   name: Category[];
 
   allCategories: Category[] = [];
-  selectedOption: string;
+  selectedOption: Category[];
   textDescription: Category[];
 
   categories: any = {}
@@ -43,7 +43,8 @@ export class AddCategoryComponent {
       this.categories.name = this.name;
       console.log(this.textDescription)
       this.categories.description = this.textDescription
-      this.categories.parentCategoryName = this.selectedOption;
+      this.categories.parentCategoryName = this.selectedOption.name;
+      this.categories.parentCategoryId = this.selectedOption.id;
       this.categoriesService.addNewCategory(this.categories).subscribe(
         data => {
           console.log(data);

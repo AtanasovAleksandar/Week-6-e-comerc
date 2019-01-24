@@ -60,7 +60,8 @@ export class EditCategoryComponent implements OnInit {
     this.newParent = this.selectedOption;
     this.newTextDescription = this.textDescription
     this.newCategories.name = this.newName;
-    this.newCategories.parentCategoryId =parseInt(this.newParent);
+    this.newCategories.parentCategoryName =this.newParent.name;
+    this.newCategories.parentCategoryId =this.newParent.id;
     this.newCategories.description = this.newTextDescription;
     console.log(this.newCategories);
     this.editCategory();
