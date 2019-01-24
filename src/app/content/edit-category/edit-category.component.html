@@ -12,9 +12,9 @@
     <div class="select">
       <label for="CategoryNameInput" class="form-labels">Select Parent Name <i class="fas fa-address-card"></i></label>
       <select class="custom-select" [(ngModel)]="selectedOption" name="selectedOption">
-        <option selected value="9999">No Parent</option>
+        <option value="9999">No Parent</option>
         <option *ngFor="let item of Category" [ngValue]="item">
-          {{item.name}}</option>
+          {{item.parentCategoryName}}</option>
       </select>
     </div>
     <div class="form-text-area">

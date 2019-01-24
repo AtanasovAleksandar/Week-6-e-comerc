@@ -52,7 +52,7 @@ export class EditCategoryComponent implements OnInit {
     oldVal = this.Category[this.customerId];
     this.textDescription = oldVal.description;
     this.name = oldVal.name;
-    this.selectedOption = oldVal.parentCategoryName;
+    this.selectedOption = oldVal;
   }
 
   editedValues() {

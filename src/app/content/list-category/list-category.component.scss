@@ -14,6 +14,7 @@ cursive;
 .container {
     height: 80vh;
     background-color: $secondary-color;
+    cursor: url("../../../assets/img/potion.png"), auto;
     &-search {
         margin-bottom: 10px;
     }
@@ -67,10 +68,6 @@ cursive;
     color: red;
 }
 
-.toast {
-    &-succes {
-        background-color: green;
-    }
-}
+
 
 
