@@ -3,6 +3,7 @@ import { CategoriesService } from 'src/app/categories.service';
 import { CountService } from 'src/app/count.service';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Category } from '../models/category.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-category',
@@ -25,6 +26,7 @@ export class ListCategoryComponent implements OnInit {
     public countService: CountService,
     public activeRouter: ActivatedRoute,
     public router: Router,
+    private toastr: ToastrService
   ) {
     this.activeRouter.params.subscribe(params => {
       console.log(params);
@@ -44,28 +46,17 @@ export class ListCategoryComponent implements OnInit {
         console.log(data)
         this.Category = data;
         this.activeSearch = false;
-        // this.getParent();
       }
     )
   }
 
-  // getParent() {
-  //   for (var i = 0; i < this.Category.length; i++) {
-  //     var parentID = this.Category[i].parentCategoryId
-  //     for (var j = 0; j < this.Category.length; i++) {
-  //       if (parentID == this.Category[j].id) {
-  //         var parentName = this.Category[j].name;
-  //         this.parentObj.parentName = parentName;
-  //         this.Parents.push(this.parentObj);
-  //       }
-  //     }
-  //   }
-  //   console.log(this.Parents)
-  // }
-
   showDeleteModule(id) {
     this.activeDelete = true;
     this.currentId = id
+  }
+
+  showSuccess() {
+    this.toastr.success('Category Deleted');
   }
 
   deleteCategory(confirm) {
@@ -75,6 +66,7 @@ export class ListCategoryComponent implements OnInit {
         data => {
           this.getCategories();
           this.countService.getCount()
+          this.showSuccess();
         }
       )
       this.activeDelete = false;

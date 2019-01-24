@@ -3,6 +3,7 @@ import { CategoriesService } from 'src/app/categories.service';
 import { CountService } from 'src/app/count.service';
 import { Category } from '../models/category.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-category',
@@ -24,8 +25,8 @@ export class EditCategoryComponent implements OnInit {
   constructor(public categoryService: CategoriesService,
     public countService: CountService,
     public activatedRout: ActivatedRoute,
-    public router: Router) {
-
+    public router: Router,
+    private toastr: ToastrService ) {
     this.activatedRout.params.subscribe(params => {
       console.log(params);
       this.customerId = parseInt(params.id);
@@ -35,6 +36,10 @@ export class EditCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.countService.getCount();
+  }
+
+  showSuccess() {
+    this.toastr.success('Category Changed');
   }
 
   getCategory() {
@@ -71,6 +76,8 @@ export class EditCategoryComponent implements OnInit {
     this.categoryService.editCategory(this.categoryObj.id,this.newCategories).subscribe(
       data => {
         this.router.navigate(['Category']);
+        this.showSuccess();
+
       }
     )
   }

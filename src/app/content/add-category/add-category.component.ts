@@ -3,6 +3,7 @@ import { CategoriesService } from 'src/app/categories.service';
 import { Router } from "@angular/router";
 import { CountService } from 'src/app/count.service';
 import { Category } from '../models/category.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-category',
@@ -23,8 +24,19 @@ export class AddCategoryComponent {
   Parents: any = [];
 
   constructor(public categoriesService: CategoriesService,
-    public router: Router, private countService: CountService) {
+    public router: Router, 
+    private countService: CountService, 
+    private toastr: ToastrService) {
     this.getCategory()
+    this.countService.getCount();
+  }
+
+  showSuccess() {
+    this.toastr.success('Category Added');
+  }
+
+  showError() {
+    this.toastr.error('required field');
   }
 
   getCategory() {
@@ -38,6 +50,7 @@ export class AddCategoryComponent {
   addCategory() {
     if (!this.name) {
       this.emptyInput = true;
+      this.showError();
     } else {
       this.emptyInput = false;
       this.categories.name = this.name;
@@ -50,6 +63,7 @@ export class AddCategoryComponent {
           console.log(data);
           this.sentCount()
           this.router.navigate(['Category']);
+          this.showSuccess()
         }
       )
     }
