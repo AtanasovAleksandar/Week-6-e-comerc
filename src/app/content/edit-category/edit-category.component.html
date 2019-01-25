@@ -14,7 +14,7 @@
       <select class="custom-select" [(ngModel)]="selectedOption" name="selectedOption">
         <option value="9999">No Parent</option>
         <option *ngFor="let item of Category" [ngValue]="item">
-          {{item.parentCategoryName}}</option>
+          {{item.name}}</option>
       </select>
     </div>
     <div class="form-text-area">

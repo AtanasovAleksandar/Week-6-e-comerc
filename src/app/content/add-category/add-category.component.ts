@@ -15,7 +15,7 @@ export class AddCategoryComponent {
   name: string;
 
   allCategories: Category[] = [];
-  selectedOption: any;
+  selectedOption: any = 'No Parent';
   textDescription: string;
 
   categories: any = {};
