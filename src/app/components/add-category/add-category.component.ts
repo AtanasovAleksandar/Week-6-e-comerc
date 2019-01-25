@@ -12,7 +12,7 @@ import { CountService } from 'src/app/services/count.service';
 })
 export class AddCategoryComponent {
   allCategories: Category[] = [];
-  selectedOption: any;
+  selectedOption: Category = {} as Category;
   category: Category = {} as Category;
   count: Number;
   emptyInput: boolean = false;
