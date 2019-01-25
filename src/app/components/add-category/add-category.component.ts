@@ -11,23 +11,17 @@ import { CountService } from 'src/app/services/count.service';
   styleUrls: ['./add-category.component.scss']
 })
 export class AddCategoryComponent {
-
-  name: string;
-
   allCategories: Category[] = [];
-  selectedOption: any = 'No Parent';
-  textDescription: string;
-
-  categories: any = {};
+  selectedOption: any;
+  category: Category = {} as Category;
   count: Number;
   emptyInput: boolean = false;
-
 
   constructor(public categoriesService: CategoriesService,
     public router: Router,
     private countService: CountService,
     private toastr: ToastrService) {
-    this.getCategory()
+    this.getCategories()
     this.countService.getCount();
   }
 
@@ -39,7 +33,7 @@ export class AddCategoryComponent {
     this.toastr.error('required field');
   }
 
-  getCategory() {
+  getCategories() {
     this.categoriesService.getAllCategories().subscribe(
       (data: Category[]) => {
         this.allCategories = data;
@@ -48,17 +42,14 @@ export class AddCategoryComponent {
   }
 
   addCategory() {
-    if (!this.name) {
+    if (!this.category.name) {
       this.emptyInput = true;
       this.showError();
     } else {
       this.emptyInput = false;
-      this.categories.name = this.name;
-      console.log(this.textDescription)
-      this.categories.description = this.textDescription
-      this.categories.parentCategoryName = this.selectedOption.name;
-      this.categories.parentCategoryId = this.selectedOption.id;
-      this.categoriesService.addNewCategory(this.categories).subscribe(
+      this.category.parentCategoryName = this.selectedOption.name;
+      this.category.parentCategoryId = this.selectedOption.id;
+      this.categoriesService.addNewCategory(this.category).subscribe(
         (data: Category[]) => {
           console.log(data);
           this.sentCount()
@@ -68,7 +59,6 @@ export class AddCategoryComponent {
       )
     }
   }
-
   sentCount() {
     this.countService.getCount()
   }
