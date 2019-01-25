@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from 'src/app/categories.service';
-import { CountService } from 'src/app/count.service';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { CountService } from 'src/app/services/count.service';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Category } from '../models/category.model';
+import { Category } from '../../models/category.model';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -26,16 +26,15 @@ export class ListCategoryComponent implements OnInit {
     public activeRouter: ActivatedRoute,
     public router: Router,
     private toastr: ToastrService
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.activeRouter.params.subscribe((params) => {
       console.log(params);
       this.activePage = params.activePage;
     });
 
     this.getCategories()
-  }
-
-  ngOnInit() {
     this.countService.getCount()
   }
 

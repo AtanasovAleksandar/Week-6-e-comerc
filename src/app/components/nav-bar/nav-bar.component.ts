@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from 'src/app/categories.service';
-import { CountService } from 'src/app/count.service';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { CountService } from 'src/app/services/count.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,9 +13,7 @@ export class NavBarComponent implements OnInit {
   active: boolean = false;
 
   constructor(public categoriesService: CategoriesService,
-    public countService: CountService) {
-     
-  }
+    public countService: CountService) {}
 
   ngOnInit() {
     this.countService.cast.subscribe(

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { CategoriesService } from 'src/app/categories.service';
 import { Router } from "@angular/router";
-import { CountService } from 'src/app/count.service';
-import { Category } from '../models/category.model';
+import { Category } from '../../models/category.model';
 import { ToastrService } from 'ngx-toastr';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { CountService } from 'src/app/services/count.service';
 
 @Component({
   selector: 'app-add-category',

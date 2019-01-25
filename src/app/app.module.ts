@@ -2,16 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddCategoryComponent } from './content/add-category/add-category.component';
-import { ListCategoryComponent } from './content/list-category/list-category.component';
-import { ProductsCategoryComponent } from './content/products-category/products-category.component';
-import { NavBarComponent } from './content/nav-bar/nav-bar.component';
-import { EditCategoryComponent } from './content/edit-category/edit-category.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
+import { AddCategoryComponent } from './components/add-category/add-category.component';
+import { ListCategoryComponent } from './components/list-category/list-category.component';
+import { ProductsCategoryComponent } from './components/products-category/products-category.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+
+
 
 
 @NgModule({

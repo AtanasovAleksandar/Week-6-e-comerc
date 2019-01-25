@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from './categories.service';
-import { CountService } from './count.service';
 
 @Component({
   selector: 'app-root',

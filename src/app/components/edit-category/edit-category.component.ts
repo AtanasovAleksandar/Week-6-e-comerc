@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from 'src/app/categories.service';
-import { CountService } from 'src/app/count.service';
-import { Category } from '../models/category.model';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { CountService } from 'src/app/services/count.service';
+import { Category } from '../../models/category.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -26,16 +26,15 @@ export class EditCategoryComponent implements OnInit {
     public countService: CountService,
     public activatedRout: ActivatedRoute,
     public router: Router,
-    private toastr: ToastrService ) {
+    private toastr: ToastrService ) {}
+
+  ngOnInit() {
     this.activatedRout.params.subscribe(params => {
       console.log(params);
       this.customerId = parseInt(params.id);
+      this.getCategory();
+      this.countService.getCount();
     });
-    this.getCategory();
-  }
-
-  ngOnInit() {
-    this.countService.getCount();
   }
 
   showSuccess() {

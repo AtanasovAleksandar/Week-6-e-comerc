@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListCategoryComponent } from './content/list-category/list-category.component';
-import { ProductsCategoryComponent } from './content/products-category/products-category.component';
-import { AddCategoryComponent } from './content/add-category/add-category.component';
-import { EditCategoryComponent } from './content/edit-category/edit-category.component';
+import { ListCategoryComponent } from './components/list-category/list-category.component';
+import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+import { AddCategoryComponent } from './components/add-category/add-category.component';
+import { ProductsCategoryComponent } from './components/products-category/products-category.component';
+
 
 const routes: Routes = [
   {path: 'Category' , component: ListCategoryComponent },
