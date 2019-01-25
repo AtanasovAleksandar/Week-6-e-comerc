@@ -16,10 +16,9 @@ export class ListCategoryComponent implements OnInit {
   activeSearch: Boolean = false;
   searchName: string;
   activeDelete: boolean = false;
-  activePage: any;
-  currentId: any;
-  Parents: any = [];
-  parentObj = { 'parentName': '' }
+  activePage: number;
+  currentId: number;
+  parentObj:Object = { 'parentName': '' }
 
 
   constructor(public categoriesService: CategoriesService,
@@ -28,7 +27,7 @@ export class ListCategoryComponent implements OnInit {
     public router: Router,
     private toastr: ToastrService
   ) {
-    this.activeRouter.params.subscribe(params => {
+    this.activeRouter.params.subscribe((params) => {
       console.log(params);
       this.activePage = params.activePage;
     });

@@ -11,16 +11,16 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./edit-category.component.scss']
 })
 export class EditCategoryComponent implements OnInit {
-  customerId: any;
-  name: Category[];
+  customerId: number;
+  name: string;
   selectedOption:any;
-  Category: any;
-  newName: Category[];
+  Category: Category[];
+  newName:string;
   newParent: any;
   newCategories: any = {}
   categoryObj: any;
-  textDescription: any;
-  newTextDescription: Category[];
+  textDescription: string;
+  newTextDescription: string;
 
   constructor(public categoryService: CategoriesService,
     public countService: CountService,
@@ -53,7 +53,7 @@ export class EditCategoryComponent implements OnInit {
   }
 
   getEditCategory() {
-    let oldVal:Category[];
+    let oldVal:Category;
     oldVal = this.Category[this.customerId];
     this.textDescription = oldVal.description;
     this.name = oldVal.name;

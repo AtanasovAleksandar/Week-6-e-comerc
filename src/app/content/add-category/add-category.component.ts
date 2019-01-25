@@ -12,20 +12,20 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddCategoryComponent {
 
-  name: Category[];
+  name: string;
 
   allCategories: Category[] = [];
-  selectedOption: Category[] = 'No Parent';
-  textDescription: Category[];
+  selectedOption: any;
+  textDescription: string;
 
-  categories: any = {}
+  categories: any = {};
   count: Number;
   emptyInput: boolean = false;
-  Parents: any = [];
+
 
   constructor(public categoriesService: CategoriesService,
-    public router: Router, 
-    private countService: CountService, 
+    public router: Router,
+    private countService: CountService,
     private toastr: ToastrService) {
     this.getCategory()
     this.countService.getCount();
@@ -41,7 +41,7 @@ export class AddCategoryComponent {
 
   getCategory() {
     this.categoriesService.getAllCategories().subscribe(
-      data => {
+      (data: Category[]) => {
         this.allCategories = data;
       }
     )
@@ -59,7 +59,7 @@ export class AddCategoryComponent {
       this.categories.parentCategoryName = this.selectedOption.name;
       this.categories.parentCategoryId = this.selectedOption.id;
       this.categoriesService.addNewCategory(this.categories).subscribe(
-        data => {
+        (data: Category[]) => {
           console.log(data);
           this.sentCount()
           this.router.navigate(['Category']);
@@ -73,7 +73,7 @@ export class AddCategoryComponent {
     this.countService.getCount()
   }
 
-  
+
 
 }
 

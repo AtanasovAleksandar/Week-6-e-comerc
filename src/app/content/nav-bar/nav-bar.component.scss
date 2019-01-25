@@ -3,7 +3,7 @@ $hover-color: #007bff59;
 
 .menu {
     // background-color: $primary-color;
-    background-image: url("../../assets/img/backg.png");
+    background-image: url("../../../assets/img/backg.png");
     height:100vh;
     position: fixed;
 
@@ -40,8 +40,8 @@ $hover-color: #007bff59;
 
 
 //max 770px min 400px
-@import '../responsive/tablet.scss';
+@import '../../responsive/tablet.scss';
 
 //max 400px 
 
-@import '../responsive/mobile.scss';
+@import '../../responsive/mobile.scss';

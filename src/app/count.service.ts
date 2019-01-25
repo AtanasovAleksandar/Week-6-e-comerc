@@ -17,8 +17,8 @@ export class CountService {
   
   getCount() {
     this.categoriesService.getCountVal().subscribe(
-      count => {
-        this.count.next(count.count)
+      data => {
+        this.count.next(data.count)
       }
      )
     

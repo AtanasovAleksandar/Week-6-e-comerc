@@ -8,11 +8,11 @@ import { AppComponent } from './app.component';
 import { AddCategoryComponent } from './content/add-category/add-category.component';
 import { ListCategoryComponent } from './content/list-category/list-category.component';
 import { ProductsCategoryComponent } from './content/products-category/products-category.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './content/nav-bar/nav-bar.component';
 import { EditCategoryComponent } from './content/edit-category/edit-category.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -23,11 +23,13 @@ import { ToastrModule } from 'ngx-toastr';
     NavBarComponent,
     EditCategoryComponent
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 6000,
       positionClass: "toast-top-left",
