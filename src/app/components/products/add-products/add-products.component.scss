@@ -4,20 +4,19 @@ $text-color: #37505C;
 $font-bangers: 'Candal', cursive;
 $font-labels: 'Bangers, cursive';
 
-@import '../../responsive/tablet.scss';
 
-@import '../../responsive/mobile.scss';
+@import '../../../responsive/mobile.scss';
+@import '../../../responsive/tablet.scss';
 
 .navbar {
     &-list {
-        background-image: url("../../../assets/img/cover.png");
+        background-image: url("../../../../assets/img/cover.png");
         height: 16vh;
     }
 
     &-title {
         color: white;
         font-family: $font-bangers;
-        text-align: center;
     }
 }
 
@@ -44,4 +43,3 @@ $font-labels: 'Bangers, cursive';
 .empty {
     border-color: red;
 }
-

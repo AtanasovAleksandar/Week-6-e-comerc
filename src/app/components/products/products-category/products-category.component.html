@@ -1,7 +1,7 @@
 <div class="col-md-9 float-right menu">
     <nav class="navbar navbar-light navbar-list mobile">
-      <button class="btn btn-outline-primary float-right" [routerLink]="[ '/Add-Category']"> <i class="fas fa-folder-plus"></i>
-        Add Category</button>
+      <button class="btn btn-outline-primary float-right" [routerLink]="[ '/Add-Products']"> <i class="fas fa-folder-plus"></i>
+        Add Products</button>
       <h2 class="navbar-title">Categories</h2>
       <div class="form-search">
         <form class="form-inline category-form">
@@ -25,13 +25,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let category of Category; let i = index">
+        <tr>
           <td>Aasd</td>
           <td>asd</td>
           <td>
             <button class="btn btn-outline-info table-button" [routerLink]="[ '/Category/Edit/', i ]">
               <i class="fas fa-edit"></i> Edit</button>
-            <button class="btn btn-outline-danger table-button" (click)="showDeleteModule(category.id)">
+            <button class="btn btn-outline-danger table-button">
               <i class="far fa-trash-alt"></i> Delete</button>
             <div class="table-confirm" [ngClass]="{'animated slideInDown' : activeDelete}" [hidden]="!activeDelete">
               <i class="fas fa-exclamation-triangle danger"></i>

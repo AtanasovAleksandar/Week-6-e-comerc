@@ -9,11 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
 import { ListCategoryComponent } from './components/list-category/list-category.component';
-import { ProductsCategoryComponent } from './components/products-category/products-category.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { EditCategoryComponent } from './components/edit-category/edit-category.component';
-
-
+import { ProductsCategoryComponent } from './components/products/products-category/products-category.component';
+import { AddProductsComponent } from './components/products/add-products/add-products.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { EditCategoryComponent } from './components/edit-category/edit-category.
     ListCategoryComponent,
     ProductsCategoryComponent,
     NavBarComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    AddProductsComponent
   ],
   
   imports: [
@@ -32,6 +35,15 @@ import { EditCategoryComponent } from './components/edit-category/edit-category.
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp({
+    apiKey: "AIzaSyBUPX_ojArU2BbY0OwNQ0NNSkqPk_hQ60M",
+    authDomain: "usermenagment.firebaseapp.com",
+    databaseURL: "https://usermenagment.firebaseio.com",
+    projectId: "usermenagment",
+    storageBucket: "usermenagment.appspot.com",
+    messagingSenderId: "652864676256"
+    }),
+    AngularFireStorageModule,
     ToastrModule.forRoot({
       timeOut: 6000,
       positionClass: "toast-top-left",
@@ -39,9 +51,7 @@ import { EditCategoryComponent } from './components/edit-category/edit-category.
       tapToDismiss: true,
       progressBar: true,
       progressAnimation: 'increasing'
-      
-    })
-
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

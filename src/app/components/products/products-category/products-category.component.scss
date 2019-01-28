@@ -5,9 +5,9 @@ $font-bangers: 'Candal', cursive;
 
 
 
-@import '../../responsive/tablet.scss';
+@import '../../../responsive/tablet.scss';
 
-@import '../../responsive/mobile.scss';
+@import '../../../responsive/mobile.scss';
 
 .container {
     height: 80vh;
@@ -17,7 +17,7 @@ $font-bangers: 'Candal', cursive;
 .navbar {
     &-list {
         // background-color: $background-color;
-        background-image: url("../../../assets/img/cover.png");
+        background-image: url("../../../../assets/img/cover.png");
         height: 16vh;
     }
 
