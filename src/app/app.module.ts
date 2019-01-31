@@ -16,6 +16,7 @@ import { AddProductsComponent } from './components/products/add-products/add-pro
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { EditComponent } from './components/products/edit/edit.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     ProductsCategoryComponent,
     NavBarComponent,
     EditCategoryComponent,
-    AddProductsComponent
+    AddProductsComponent,
+    EditComponent
   ],
   
   imports: [

@@ -13,10 +13,11 @@
             [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <br>
-        <div *ngIf="downloadURL | async; let downloadSrc" class="col-md-12" role="alert">
+        <div class="col-md-12" role="alert" *ngIf="downloadSrc">
           <img src="{{downloadSrc}}" alt="img">
         </div>
         <br>
+        <button class="btn btn-danger" (click)="delete()">Delete</button>
         <div class="btn-group" role="group" *ngIf="uploadState | async; let state">
           <button type="button" class="btn btn-primary" (click)="task.pause()" [disabled]="state === 'paused'">Pause</button>
           <button type="button" class="btn btn-primary" (click)="task.cancel()" [disabled]="!(state === 'paused' || state === 'running')">Cancel</button>
@@ -27,29 +28,31 @@
 
     <div class="form-group">
       <label for="CategoryNameInput" class="form-labels">Products Name <i class="fas fa-address-card"></i></label>
-      <input [ngClass]="{'empty': emptyInput}" type="text" name="name" class="form-control" id="CategoryNameInput"
+      <input [ngClass]="{'empty': emptyInput}" [(ngModel)]="products.name" type="text" name="name" class="form-control" id="CategoryNameInput"
         placeholder="Category Name" />
     </div>
 
     <div class="select">
       <label for="CategoryParentNameInput" class="form-labels">Parent Category Name <i class="fas fa-address-card"></i></label>
-      <select class="custom-select" name="selectedOption">
+      <select class="custom-select" [(ngModel)]="selectedOption" name="selectedOption">
         <option value="">No Parent</option>
-        <option <!-- *ngFor="let item of allCategories" [ngValue]="item"> -->
-        </option>
+        <option *ngFor="let item of categories" [ngValue]="item">
+            {{item.name}}
+          </option>
       </select>
     </div>
 
     <div class="product-manufacture">
-      <label for="CategoryNameInput" class="form-labels">Manufacture<i class="fas fa-address-card"></i></label>
-      <input [ngClass]="{'empty': emptyInput}" type="text" name="name" class="form-control" id="CategoryNameInput"
-        placeholder="Category Name" />
+      <label for="productManufacture" class="form-labels">Manufacture <i class="fas fa-address-card"></i></label>
+      <input [ngClass]="{'empty': emptyInput}" type="text" [(ngModel)]="products.manufacturer" name="name" class="form-control"
+        placeholder="Product Manufacture" />
     </div>
 
     <div class="products-check">
+        <label for="CategoryNameInput" class="form-labels">Available <i class="fas fa-address-card"></i></label>
       <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck1">
-        <label class="custom-control-label" for="customCheck1">Available</label>
+        <input type="checkbox" [checked]="products.isAvailable" name="manufacture" class="custom-control-input" id="customCheck1">
+        <label class="custom-control-label">Available</label>
       </div>
     </div>
 
@@ -57,7 +60,7 @@
       <div class="row">
         <label for="CategoryDescription" class="form-text-area-label">Short Description <i class="fas fa-ballot"></i></label>
       </div>
-      <textarea id="story" name="story" rows="3" cols="33">
+      <textarea id="story" [(ngModel)]="products.shortDescription" name="shortDescription" rows="3" cols="33">
 
           </textarea>
     </div>
@@ -66,13 +69,13 @@
       <div class="row">
         <label for="CategoryDescription" class="form-text-area-label">Full Description <i class="fas fa-ballot"></i></label>
       </div>
-      <textarea id="story" name="story" rows="5" cols="33">
+      <textarea id="story" [(ngModel)]="products.fullDescription" name="fullDescription" rows="5" cols="33">
 
       </textarea>
     </div>
     <div class="form-buttons">
-      <button type="button" (click)="addCategory()" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Add</button>
-      <button type="button" [routerLink]="['/Category']" class="btn btn-outline-danger float-right"><i class="fas fa-angle-left"></i>
+      <button type="button" (click)="postProducts()" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Add</button>
+      <button type="button" [routerLink]="['/Products']" class="btn btn-outline-danger float-right"><i class="fas fa-angle-left"></i>
         Back
       </button>
     </div>

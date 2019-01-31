@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Product } from '../models/products.model';
 
 
 @Injectable({
@@ -8,22 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
 
-  storage = 'gs://usermenagment.appspot.com/'
-
-  $key: string;
-  file: File;
-  name: string;
-  url: string;
-  progress: number;
-  createdAt: Date = new Date();
+  productsApi = 'http://127.0.0.1:3000/products'
 
   constructor(public http: HttpClient) {
   }
 
-
-  
-
-  fileUpload(file): Observable<any> {
-    return this.http.post(this.storage, file)
+  addProducts(products):Observable<Object> {
+    return this.http.post(this.productsApi, products )
   }
 }

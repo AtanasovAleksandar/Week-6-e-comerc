@@ -7,6 +7,10 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { HttpClient } from '@angular/common/http';
+import { Product } from 'src/app/models/products.model';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { Category } from 'src/app/models/category.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-products',
@@ -20,9 +24,20 @@ export class AddProductsComponent implements OnInit {
   uploadProgress: Observable<number>;
   downloadURL: Observable<string>;
   downloadLink: Object;
-  complite: any;
+  downloadSrc: string;
+  selectedOption: Category = {} as Category;
+  products: Product = {} as Product;
+  categories: Category[] = [];
+  imageId: string;
 
-  constructor(public http: HttpClient, public productService: ProductsService, private afStorage: AngularFireStorage) { }
+  constructor(public http: HttpClient,
+    public productService: ProductsService,
+    private afStorage: AngularFireStorage,
+    private productsService: ProductsService,
+    public categoryService: CategoriesService,
+    public router: Router) {
+    this.getIdOfParentCategory()
+  }
 
   ngOnInit() {
   }
@@ -30,40 +45,57 @@ export class AddProductsComponent implements OnInit {
   upload(event) {
     const id = Math.random().toString(36).substring(2);
     this.ref = this.afStorage.ref(id);
+    this.imageId = id;
     this.task = this.ref.put(event.target.files[0]);
-    this.uploadState = this.task.snapshotChanges().pipe(map(s => this.getUrl(s.metadata) ));
+    this.uploadState = this.task.snapshotChanges().pipe(map(s => this.getUrl(s.metadata)));
     this.uploadProgress = this.task.percentageChanges();
-     
-      // this.downloadURL = this.ref.getDownloadURL();
-    //   console.log(this.downloadURL)
-    //  const link = this.ref.child(id).getDownloadUrl().then(function(url) {
-    //    console.log(url)
-    //  });
+  }
 
-    // this.ref.snapshot.ref.getDownloadURL().then(downloadURL => {
-    //   console.log('File available at', downloadURL);
-    //   fileUpload.url = downloadURL;
-    //   fileUpload.name = fileUpload.file.name;
-    //   this.saveFileData(fileUpload);
-    // });
+  delete() {
+    var storage = this.afStorage.storage;
+    var storageRef = storage.ref().child(this.imageId);
+    console.log(storageRef)
+    storageRef.delete().then(
+      resolve => {
+        console.log('success')
+        this.downloadSrc = '';
+      },
+      reject => {
+        console.log('error')
+      });
   }
 
   getUrl(s) {
     if (s != null) {
-      this.downloadURL = this.ref.getDownloadURL();
+      // this.downloadURL = this.ref.getDownloadURL();
+      this.ref.getDownloadURL().subscribe(
+        data => {
+          this.downloadSrc = data;
+          console.log(this.downloadSrc)
+        },
+        error => {
+          console.log('File is to big')
+        });
     }
   }
 
-    // Create a reference to the file we want to download
-    // if (this.uploadProgress) {
-    //   var starsRef = this.ref.child(id);
+  getIdOfParentCategory() {
+    this.categoryService.getAllCategories().subscribe(
+      data => {
+        this.categories = data;
+      }
+    )
+  }
 
-    //   // Get the download URL
-    //   starsRef.getDownloadURL().then(function (url) {
-        // Insert url into an <img> tag to "download"
-  //     });
-  //   }
-  // }
+  postProducts() {
+    this.products.imageUrl = this.downloadSrc;
+    this.products.categoryId = this.selectedOption.id;
+    this.productsService.addProducts(this.products).subscribe(
+      data => {
+        this.router.navigate(['Products']);
+      }
+    )
+  }
 }
 
 
