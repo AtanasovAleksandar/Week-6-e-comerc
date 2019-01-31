@@ -17,4 +17,8 @@ export class ProductsService {
   addProducts(products):Observable<Object> {
     return this.http.post(this.productsApi, products )
   }
+
+  getProducts():Observable<any> {
+    return this.http.get(this.productsApi);
+  }
 }
