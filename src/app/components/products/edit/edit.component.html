@@ -28,25 +28,24 @@
   
       <div class="form-group">
         <label for="CategoryNameInput" class="form-labels">Products Name <i class="fas fa-address-card"></i></label>
-        <input [ngClass]="{'empty': emptyInput}" [(ngModel)]="product.name" type="text" name="name" class="form-control" id="CategoryNameInput"
+        <input [ngClass]="{'empty': emptyInput}" [(ngModel)]="product.name" type="text" name="name" class="form-control"
           placeholder="Category Name" />
       </div>
   
       <div class="select">
         <label for="CategoryParentNameInput" class="form-labels">Parent Category Name <i class="fas fa-address-card"></i></label>
         <select class="custom-select" [(ngModel)]="selectedOption" name="selectedOption">
-          <option value="">No Parent</option>
           <option *ngFor="let item of categories" [ngValue]="item">
               {{item.name}}
             </option>
         </select>
       </div>
   
-      <div class="product-manufacture">
+      <!-- <div class="product-manufacture">
         <label for="productManufacture" class="form-labels">Manufacture <i class="fas fa-address-card"></i></label>
-        <input [ngClass]="{'empty': emptyInput}" type="text" [(ngModel)]="product.manufacturer" name="name" class="form-control"
+        <input [ngClass]="{'empty': emptyInput}" type="text" [(ngModel)]="product.manufacturer" name="manufacturer" class="form-control"
           placeholder="Product Manufacture" />
-      </div>
+      </div> -->
   
       <div class="products-check">
           <label for="CategoryNameInput" class="form-labels">Available <i class="fas fa-address-card"></i></label>
@@ -74,7 +73,7 @@
         </textarea>
       </div>
       <div class="form-buttons">
-        <button type="button" (click)="postProducts()" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Add</button>
+        <button type="button" (click)="productChange()" class="btn btn-outline-primary" ><i class="fas fa-plus"></i> Save</button>
         <button type="button" [routerLink]="['/Products']" class="btn btn-outline-danger float-right"><i class="fas fa-angle-left"></i>
           Back
         </button>

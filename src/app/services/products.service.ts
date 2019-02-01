@@ -21,4 +21,10 @@ export class ProductsService {
   getProducts():Observable<any> {
     return this.http.get(this.productsApi);
   }
+
+  editProduct(newProduct,id):Observable<Object> {
+    return this.http.put(this.productsApi + '/' + id , newProduct)
+  }
+
+
 }
