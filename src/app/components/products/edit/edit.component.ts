@@ -28,6 +28,7 @@ export class EditComponent implements OnInit {
   downloadURL: Observable<string>;
   downloadLink: Object;
   imageId: string;
+  available: boolean;
   
 
   constructor(public activatedRout: ActivatedRoute,
@@ -100,8 +101,14 @@ getCategories() {
   )
 }
 
+availableProduct(e) {
+  console.log(e.target.checked)
+  this.available = e.target.checked
+}
+
 productChange() {
   this.product.imageUrl = this.downloadSrc;
+  this.product.isAvailable = this.available;
   this.productService.editProduct(this.product,this.product.id).subscribe (
     data => {
       this.router.navigate(['Products']);

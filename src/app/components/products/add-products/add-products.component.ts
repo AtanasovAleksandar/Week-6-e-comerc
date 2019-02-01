@@ -29,6 +29,7 @@ export class AddProductsComponent implements OnInit {
   products: Product = {} as Product;
   categories: Category[] = [];
   imageId: string;
+  available: boolean;
 
   constructor(public http: HttpClient,
     public productService: ProductsService,
@@ -67,7 +68,6 @@ export class AddProductsComponent implements OnInit {
 
   getUrl(s) {
     if (s != null) {
-      // this.downloadURL = this.ref.getDownloadURL();
       this.ref.getDownloadURL().subscribe(
         data => {
           this.downloadSrc = data;
@@ -87,9 +87,16 @@ export class AddProductsComponent implements OnInit {
     )
   }
 
+  availableProduct(e) {
+    console.log(e.target.checked)
+    this.available = e.target.checked
+  }
+
   postProducts() {
     this.products.imageUrl = this.downloadSrc;
     this.products.categoryId = this.selectedOption.id;
+    this.products.isAvailable = this.available;
+    console.log(this.available)
     this.productsService.addProducts(this.products).subscribe(
       data => {
         this.router.navigate(['Products']);
