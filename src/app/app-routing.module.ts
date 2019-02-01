@@ -13,6 +13,7 @@ const routes: Routes = [
   {path: 'Add-Category' , component: AddCategoryComponent },
   {path: 'Products' , component: ProductsCategoryComponent },
   {path: 'Products/Edit/:id' , component: EditComponent },
+  {path: 'Products/Edit/:id/:photoName' , component: EditComponent },
   {path: 'Add-Products' , component: AddProductsComponent },
   {path: '' , redirectTo: "Category" , pathMatch: 'full'},
   {path: '**' , redirectTo: "Category" , pathMatch:'full'}
