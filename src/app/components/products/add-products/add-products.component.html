@@ -41,6 +41,12 @@
       </select>
     </div>
 
+    <div class="product-price">
+      <label for="productManufacture" class="form-labels">Price <i class="fas fa-address-card"></i></label>
+      <input type="number" [(ngModel)]="products.price" name="Price" class="form-control"
+        placeholder="Product Price" />
+    </div>
+
     <div class="product-manufacture">
       <label for="productManufacture" class="form-labels">Manufacture <i class="fas fa-address-card"></i></label>
       <input type="text" [(ngModel)]="products.manufacturer" name="manufacturer" class="form-control"

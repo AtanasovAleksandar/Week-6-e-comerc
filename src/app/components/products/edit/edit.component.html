@@ -40,12 +40,18 @@
             </option>
         </select>
       </div>
+
+      <div class="product-price">
+        <label for="productManufacture" class="form-labels">Price <i class="fas fa-address-card"></i></label>
+        <input type="number" [(ngModel)]="product.price" name="Price" class="form-control"
+          placeholder="Product Price" />
+      </div>
   
-      <!-- <div class="product-manufacture">
+      <div class="product-manufacture">
         <label for="productManufacture" class="form-labels">Manufacture <i class="fas fa-address-card"></i></label>
         <input [ngClass]="{'empty': emptyInput}" type="text" [(ngModel)]="product.manufacturer" name="manufacturer" class="form-control"
           placeholder="Product Manufacture" />
-      </div> -->
+      </div>
   
       <div class="products-check">
         <label for="CategoryNameInput" class="form-labels">Available <i class="fas fa-address-card"></i></label>

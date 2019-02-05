@@ -96,6 +96,7 @@ export class AddProductsComponent implements OnInit {
     this.products.imageUrl = this.downloadSrc;
     this.products.categoryId = this.selectedOption.id;
     this.products.isAvailable = this.available;
+    this.products.imageName = this.imageId;
     console.log(this.available)
     this.productsService.addProducts(this.products).subscribe(
       data => {

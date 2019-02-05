@@ -11,15 +11,22 @@ export class NavBarComponent implements OnInit {
   countCategory: number;
   count: any;
   active: boolean = false;
+  countProducts: number;
 
   constructor(public categoriesService: CategoriesService,
-    public countService: CountService) {}
+    public countService: CountService) { }
 
   ngOnInit() {
     this.countService.cast.subscribe(
       count => {
         this.countCategory = count;
       })
+
+    this.countService.castProducts.subscribe(
+      countProducts => {
+        this.countProducts = countProducts
+      }
+    )
   }
 
 }

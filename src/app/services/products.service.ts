@@ -10,6 +10,7 @@ import { Product } from '../models/products.model';
 export class ProductsService {
 
   productsApi = 'http://127.0.0.1:3000/products'
+  productCount = 'http://127.0.0.1:3000/products/count'
 
   constructor(public http: HttpClient) {
   }
@@ -22,8 +23,16 @@ export class ProductsService {
     return this.http.get(this.productsApi);
   }
 
+  getProductsCount(): Observable<any> {
+    return this.http.get(this.productCount)
+  }
+
   editProduct(newProduct,id):Observable<Object> {
     return this.http.put(this.productsApi + '/' + id , newProduct)
+  }
+
+  deleteCategory(category) {
+    return this.http.delete(this.productsApi+'/'+ category)
   }
 
 
