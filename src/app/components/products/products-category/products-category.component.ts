@@ -19,6 +19,8 @@ export class ProductsCategoryComponent implements OnInit {
   activeDelete: boolean;
   currentId: number;
   imageName: string;
+  searchName: string;
+  activeSearch: boolean;
 
   constructor(public productService: ProductsService,
     private toastr: ToastrService,
@@ -34,6 +36,8 @@ export class ProductsCategoryComponent implements OnInit {
   }
 
 getProducts() {
+  this.activeSearch = false;
+  this.searchName = '';
   this.productService.getProducts().subscribe( 
     data => {
       this.products = data;
@@ -81,7 +85,21 @@ getProducts() {
     }
   }
 
+  searchCategory() {
+    if (this.searchName) {
+      this.productService.searchByName(this.searchName).subscribe(
+        data => {
+          this.products = data;
+          this.activeSearch = true;
+        })
 
+    } else if (this.searchName == '') {
+      this.getProducts();
+    }
+  }
 }
+
+
+
 
 

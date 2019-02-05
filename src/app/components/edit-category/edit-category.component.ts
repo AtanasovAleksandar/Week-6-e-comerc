@@ -34,6 +34,7 @@ export class EditCategoryComponent implements OnInit {
       this.customerId = parseInt(params.id);
       this.getCategory();
       this.countService.getCount();
+      this.countService.getProductCount();
     });
   }
 

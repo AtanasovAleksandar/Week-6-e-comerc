@@ -14,7 +14,7 @@
   </nav>
 </div>
 <div class="table col-md-9 col-sm-12 float-right container">
-  <button class="btn btn-outline-dark container-search" [hidden]="!activeSearch" (click)="getCategories()">Cancel
+  <button class="btn btn-outline-dark container-search" [hidden]="!activeSearch" (click)="getProducts()">Cancel
     Search</button>
   <table class="table table-striped">
     <thead>
@@ -27,7 +27,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products; let i = index">
+      <tr *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
         <td><img class="table-image" src="{{product.imageUrl}} "alt="images"></td>
         <td>{{product.name}}</td>
         <td>{{product.categoryId}}</td>
@@ -49,4 +49,5 @@
       </tr>
     </tbody>
   </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>

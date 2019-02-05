@@ -23,6 +23,7 @@ export class AddCategoryComponent {
     private toastr: ToastrService) {
     this.getCategories()
     this.countService.getCount();
+    this.countService.getProductCount();
   }
 
   showSuccess() {

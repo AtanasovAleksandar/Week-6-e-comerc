@@ -14,6 +14,7 @@ import { EditCategoryComponent } from './components/edit-category/edit-category.
 import { ProductsCategoryComponent } from './components/products/products-category/products-category.component';
 import { AddProductsComponent } from './components/products/add-products/add-products.component';
 import { AngularFireModule } from 'angularfire2';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { EditComponent } from './components/products/edit/edit.component';
@@ -36,6 +37,7 @@ import { EditComponent } from './components/products/edit/edit.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxPaginationModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp({
     apiKey: "AIzaSyBUPX_ojArU2BbY0OwNQ0NNSkqPk_hQ60M",

@@ -35,5 +35,9 @@ export class ProductsService {
     return this.http.delete(this.productsApi+'/'+ category)
   }
 
+  searchByName(name):Observable<any> {
+    return this.http.get(this.productsApi + '?filter[where][name]=' + name)
+  }
+
 
 }

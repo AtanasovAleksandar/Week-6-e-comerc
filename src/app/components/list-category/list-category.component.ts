@@ -35,7 +35,8 @@ export class ListCategoryComponent implements OnInit {
     });
 
     this.getCategories()
-    this.countService.getCount()
+    this.countService.getCount();
+    this.countService.getProductCount();
   }
 
   getCategories() {
