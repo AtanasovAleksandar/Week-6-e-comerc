@@ -6,6 +6,7 @@ import { AddCategoryComponent } from './components/add-category/add-category.com
 import { ProductsCategoryComponent } from './components/products/products-category/products-category.component';
 import { AddProductsComponent } from './components/products/add-products/add-products.component';
 import { EditComponent } from './components/products/edit/edit.component';
+import { PortalLayoutComponent } from './components/portal-layout/portal-layout.component';
 
 const routes: Routes = [
   {path: 'Category' , component: ListCategoryComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'Products/Edit/:id' , component: EditComponent },
   {path: 'Products/Edit/:id/:photoName' , component: EditComponent },
   {path: 'Add-Products' , component: AddProductsComponent },
+  {path: 'Portal' , component: PortalLayoutComponent },
   {path: '' , redirectTo: "Category" , pathMatch: 'full'},
   {path: '**' , redirectTo: "Category" , pathMatch:'full'}
 ];

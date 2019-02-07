@@ -8,6 +8,8 @@ import {
   AngularFireStorageReference, AngularFireUploadTask
 } from 'angularfire2/storage';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { Category } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-products-category',
@@ -21,18 +23,29 @@ export class ProductsCategoryComponent implements OnInit {
   imageName: string;
   searchName: string;
   activeSearch: boolean;
+  categories: Category[] = [];
 
   constructor(public productService: ProductsService,
     private toastr: ToastrService,
     public countService: CountService,
     private afStorage: AngularFireStorage,
     public activatedRout: ActivatedRoute,
-    public router: Router,) { }
+    public router: Router,
+    public categoryService: CategoriesService) { }
 
   ngOnInit() {
     this.getProducts()
     this.countService.getProductCount();
     this.countService.getCount();
+    this.getCategory();
+  }
+
+  getCategory() {
+    this.categoryService.getAllCategories().subscribe(
+    data => {
+      this.categories = data;
+    }
+    )
   }
 
 getProducts() {

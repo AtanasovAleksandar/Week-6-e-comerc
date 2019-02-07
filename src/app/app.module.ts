@@ -18,6 +18,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { EditComponent } from './components/products/edit/edit.component';
+import { PortalLayoutComponent } from './components/portal-layout/portal-layout.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EditComponent } from './components/products/edit/edit.component';
     NavBarComponent,
     EditCategoryComponent,
     AddProductsComponent,
-    EditComponent
+    EditComponent,
+    PortalLayoutComponent
   ],
   
   imports: [
