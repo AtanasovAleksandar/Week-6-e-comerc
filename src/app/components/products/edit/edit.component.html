@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Select a file for upload:</h5>
-          <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+          <input class="btn btn btn-outline-primary" type="file" (change)="upload($event)" accept=".png,.jpg" />
           <br><br>
           <div class="progress">
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'"
