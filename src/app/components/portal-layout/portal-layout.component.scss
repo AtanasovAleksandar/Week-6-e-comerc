@@ -6,6 +6,7 @@ $hover-color: #007bff59;
 
 .categories {
     pointer-events: none;
+    text-align: center;
 }
 
 .carousel-item {
@@ -103,5 +104,6 @@ $hover-color: #007bff59;
     &-shopping-cart {
         font-size: 46px;
         color: white;
+        cursor: pointer;
     }
 }
