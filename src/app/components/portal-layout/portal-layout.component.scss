@@ -9,6 +9,10 @@ $hover-color: #007bff59;
     text-align: center;
 }
 
+.fa-angle-right {
+    display: none;
+}
+
 .carousel-item {
     height: 286px;
 }
@@ -32,6 +36,7 @@ $hover-color: #007bff59;
         height: 75px;
     }
 }
+
 
 .col-md-12 {
     margin: 0px;
