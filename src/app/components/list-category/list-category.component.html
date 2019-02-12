@@ -1,6 +1,6 @@
 <div class="col-md-9 float-right menu">
   <nav class="navbar navbar-light navbar-list mobile">
-    <button class="btn btn-outline-primary float-right" [routerLink]="[ '/Add-Category']"> <i class="fas fa-folder-plus"></i>
+    <button class="btn btn-outline-primary float-right" [routerLink]="[ '/Category','Add']"> <i class="fas fa-folder-plus"></i>
       Add Category</button>
     <h2 class="navbar-title">Categories</h2>
     <div class="form-search">
@@ -29,7 +29,7 @@
         <td>{{category.name}}</td>
         <td>{{category.parentCategoryName}}</td>
         <td>
-          <button class="btn btn-outline-info table-button" [routerLink]="[ '/Category/Edit/', i ]">
+          <button class="btn btn-outline-info table-button" [routerLink]="[ '/Category' , 'Edit', i ]">
             <i class="fas fa-edit"></i> Edit</button>
           <button class="btn btn-outline-danger table-button" (click)="showDeleteModule(category.id)">
             <i class="far fa-trash-alt"></i> Delete</button>

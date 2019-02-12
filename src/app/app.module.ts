@@ -7,10 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddCategoryComponent } from './components/add-category/add-category.component';
 import { ListCategoryComponent } from './components/list-category/list-category.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+
 import { ProductsCategoryComponent } from './components/products/products-category/products-category.component';
 import { AddProductsComponent } from './components/products/add-products/add-products.component';
 import { AngularFireModule } from 'angularfire2';
@@ -19,16 +18,17 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { EditComponent } from './components/products/edit/edit.component';
 import { PortalLayoutComponent } from './components/portal-layout/portal-layout.component';
+import { AddEditCategoryComponent } from './components/add-edit/add-edit.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddCategoryComponent,
     ListCategoryComponent,
     ProductsCategoryComponent,
     NavBarComponent,
-    EditCategoryComponent,
+    AddEditCategoryComponent,
     AddProductsComponent,
     EditComponent,
     PortalLayoutComponent
