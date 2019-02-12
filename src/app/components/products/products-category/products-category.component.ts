@@ -64,10 +64,6 @@ getProducts() {
     this.currentId = id
   }
 
-  showSuccess() {
-    this.toastr.success('Category Deleted');
-  }
-
   delete(imgName) {
     var storage = this.afStorage.storage;
     var storageRef = storage.ref().child(imgName);
@@ -89,7 +85,7 @@ getProducts() {
           this.delete(imgName);
           this.getProducts();
           this.countService.getProductCount();
-          this.showSuccess();
+          this.toastr.success('Category Deleted');
         }
       )
       this.activeDelete = false;

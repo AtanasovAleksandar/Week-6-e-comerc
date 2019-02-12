@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListCategoryComponent } from './components/list-category/list-category.component';
 import { ProductsCategoryComponent } from './components/products/products-category/products-category.component';
-import { AddProductsComponent } from './components/products/add-products/add-products.component';
-import { EditComponent } from './components/products/edit/edit.component';
+
 import { PortalLayoutComponent } from './components/portal-layout/portal-layout.component';
 import { AddEditCategoryComponent } from './components/add-edit/add-edit.component';
+import { AddEditProductsComponent } from './components/products/add-edit-products/add-edit-products.component';
 
 const routes: Routes = [
   {path: 'Category'  , children: [
@@ -15,8 +15,8 @@ const routes: Routes = [
   ] },
   {path: 'Products' , children: [
     {path: '' , component: ProductsCategoryComponent },
-    {path: ':Edit/:id/:photoName' , component: EditComponent },
-    {path: ':Add' , component: AddProductsComponent },
+    {path: ':active/:id/:photoName' , component: AddEditProductsComponent },
+    {path: ':active' , component: AddEditProductsComponent },
   ] },
   {path: 'Portal' , component: PortalLayoutComponent },
   {path: '' , redirectTo: "Category" , pathMatch: 'full'},

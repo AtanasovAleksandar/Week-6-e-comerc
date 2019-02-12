@@ -11,14 +11,14 @@ import { ListCategoryComponent } from './components/list-category/list-category.
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 import { ProductsCategoryComponent } from './components/products/products-category/products-category.component';
-import { AddProductsComponent } from './components/products/add-products/add-products.component';
 import { AngularFireModule } from 'angularfire2';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { EditComponent } from './components/products/edit/edit.component';
+
 import { PortalLayoutComponent } from './components/portal-layout/portal-layout.component';
 import { AddEditCategoryComponent } from './components/add-edit/add-edit.component';
+import { AddEditProductsComponent } from './components/products/add-edit-products/add-edit-products.component';
 
 
 
@@ -29,8 +29,7 @@ import { AddEditCategoryComponent } from './components/add-edit/add-edit.compone
     ProductsCategoryComponent,
     NavBarComponent,
     AddEditCategoryComponent,
-    AddProductsComponent,
-    EditComponent,
+    AddEditProductsComponent,
     PortalLayoutComponent
   ],
   
@@ -55,8 +54,6 @@ import { AddEditCategoryComponent } from './components/add-edit/add-edit.compone
       positionClass: "toast-top-left",
       preventDuplicates: true,
       tapToDismiss: true,
-      progressBar: true,
-      progressAnimation: 'increasing'
     }),
   ],
   providers: [],

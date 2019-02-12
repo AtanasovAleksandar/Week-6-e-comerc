@@ -37,7 +37,7 @@
 
         <td>{{product.price}}</td>
         <td>
-          <button class="btn btn-outline-info table-button" [routerLink]="[ '/Products', 'Edit' , i, product.imageName]">
+          <button class="btn btn-outline-info table-button" [routerLink]="[ '/Products', 'Edit' , product.id, product.imageName]">
             <i class="fas fa-edit"></i> Edit</button>
           <button class="btn btn-outline-danger table-button" (click)="showDeleteModule(product.id)">
             <i class="far fa-trash-alt"></i> Delete</button>

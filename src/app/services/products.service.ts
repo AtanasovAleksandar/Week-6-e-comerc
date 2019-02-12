@@ -23,6 +23,10 @@ export class ProductsService {
     return this.http.get(this.productsApi);
   }
 
+  getProduct(id):Observable<any> {
+    return this.http.get(this.productsApi + '/' + id)
+  }
+
   getProductsCount(): Observable<any> {
     return this.http.get(this.productCount)
   }
