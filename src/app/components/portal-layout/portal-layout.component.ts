@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/products.model';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { Category } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-portal-layout',
@@ -11,11 +13,14 @@ import { Product } from 'src/app/models/products.model';
 
 export class PortalLayoutComponent implements OnInit {
   products: Product[] = [];
+  categories: Category[] = [];
 
-  constructor(public productService: ProductsService) { }
+  constructor(public productService: ProductsService,
+    public categoryService: CategoriesService) { }
 
   ngOnInit() {
     this.getProducts();
+    this.getCategory();
   }
 
   getProducts() {
@@ -23,6 +28,14 @@ export class PortalLayoutComponent implements OnInit {
       data => {
         this.products = data
         console.log(data)
+      }
+    )
+  }
+
+  getCategory() {
+    this.categoryService.getAllCategories().subscribe(
+      data => {
+        this.categories = data;
       }
     )
   }

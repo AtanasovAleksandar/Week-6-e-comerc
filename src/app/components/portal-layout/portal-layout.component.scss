@@ -1,6 +1,13 @@
 $primary-color: #2E3E50;
 $hover-color: #007bff59;
+$second-color: #f36f21;
+
+
 .products {
+    display: none;
+}
+
+.menu {
     display: none;
 }
 
@@ -27,14 +34,47 @@ $hover-color: #007bff59;
     justify-content: space-evenly;
 }
 
+.sell {
+    height: 50px;
+    text-align: center;
+    background-color: #757575;
+    border-bottom: 11px solid $second-color;
+    padding-top: 7px;
+    span {
+        color: $second-color;
+        font-weight: 700;
+    }
+}
+
+
 .navlist {
-    background-color: #485b72;
+    background-image: url("../../../assets/img/dark-wood.jpg");
+    position: relative;
     &-search {
         margin: 27px 26px;
     }
     img {
         height: 75px;
     }
+}
+.menu-color {
+        color: white!important;
+}
+
+.navbar {
+    background-color: black;
+}
+
+.dropdown-menu {
+    background-color: black!important;
+}
+
+.dropdown-item:hover {
+background-color: $second-color!important ;
+}
+
+.nav-item:hover {
+    background-color: $second-color!important ;
 }
 
 
@@ -44,7 +84,7 @@ $hover-color: #007bff59;
 }
 
 .split {
-    background-color: #4a5c72;
+    background-image: url("../../../assets/img/dark-wood.jpg");
     height: 71px;
     text-align: center;
     padding-top: 12px;
@@ -60,17 +100,25 @@ $hover-color: #007bff59;
 .imgList {
     padding: 8px;
 }
+
 .card {
-    height: 310px;
+    background-image: url('../../../assets/img/organic-tiles.png');
+    height: 165px;
     margin: 4px;
     &-img-top {
+        position: absolute;
         height: 150px;
+        left: 0;
+        width: 50%;
         object-fit: fill;
         padding: 20px;
     }
     &-body {
+        position: absolute;
+        right: 0;
         text-align: center;
-        height: 160px;
+        height: 129px;
+        width: 50%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -78,37 +126,50 @@ $hover-color: #007bff59;
     &-btn {
         margin-top: 5px;
     }
+    &-text {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 160px;
+        height: 1.2em;
+        white-space: nowrap;
+    }
 }
 
+a {
+    color: white;
+    &:hover {
+        color: blue;
+    }
+}
 .row {
     margin-right: 0px;
     margin-left: 0px
 }
 
 .shopping-cart {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    position: absolute;
+    right: 0;
+    top: 23px;
 }
 
-.badge-primary {
+.badge-warning {
+    background-color: white;
     position: absolute;
-    right: 18px;
-    top: 30px;
+    left: 71px;
+    top: 25px;
 }
 
 .cart-items-count {
     position: absolute;
     bottom: 7px;
-    left: 127px;
-    color: white;
+    left: 65px;
+    color: #f36f21;
 }
 
 .fa {
     &-shopping-cart {
         font-size: 46px;
-        color: white;
+        color: #f36f21;
         cursor: pointer;
     }
 }
