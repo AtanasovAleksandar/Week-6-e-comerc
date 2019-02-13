@@ -169,6 +169,10 @@ a {
     margin-bottom: 10px;
 }
 
+.shop-cart-img {
+    height: 30px;
+}
+
 .shopping-cart {
     position: absolute;
     right: 0;
@@ -182,6 +186,7 @@ a {
 .badge-warning {
     background-color: $second-color;
     color: white !important;
+    margin-left: 5px;
 }
 
 .cart-items-count {

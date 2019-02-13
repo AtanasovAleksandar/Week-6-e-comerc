@@ -31,6 +31,7 @@ export class PortalLayoutComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
     this.getCategory();
+    this.cartItems = localStorage.length;
   }
 
   getProducts() {
