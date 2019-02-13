@@ -21,7 +21,7 @@ $second-color: #f36f21;
 }
 
 .carousel-item {
-    height: 286px;
+    height: auto;
 }
 
 .badge-categories {
@@ -47,7 +47,7 @@ $second-color: #f36f21;
 }
 
 
-.navlist {
+.nav-list {
     // background-image: url("../../../assets/img/dark-wood.jpg");
     background-color: #353346;
     position: relative;
@@ -64,11 +64,11 @@ $second-color: #f36f21;
 }
 
 .navbar {
-    background-color: black;
+    background-color: #131313;
 }
 
 .dropdown-menu {
-    background-color: black!important;
+    background-color: #131313!important;
 }
 
 .dropdown-item:hover {
@@ -101,7 +101,8 @@ background-color: $second-color!important ;
 }
 
 .imgList {
-    padding: 8px;
+    display: flex;
+    justify-content: center;
 }
 
 .card {
@@ -149,10 +150,16 @@ a {
     margin-left: 0px
 }
 
+.search-off {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
 .shopping-cart {
     position: absolute;
     right: 0;
-    top: 23px;
+    top: 3px;
 }
 
 .badge-warning {
@@ -164,9 +171,9 @@ a {
 
 .cart-items-count {
     position: absolute;
-    bottom: 7px;
-    left: 65px;
-    color: $second-color;
+    bottom: 5px;
+    color: #f36f21;
+    left: 62px;
 }
 
 .fa {
@@ -174,7 +181,12 @@ a {
         font-size: 46px;
         color: white;
         cursor: pointer;
+        margin-left: 20px;
     }
+}
+
+.promo {
+    margin-top: 5px;
 }
 
 .btn-outline-danger {

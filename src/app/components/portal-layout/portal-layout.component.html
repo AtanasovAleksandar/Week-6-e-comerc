@@ -1,19 +1,22 @@
 <div class="col-md-12 float-right">
   <div class="onSell">
     <div class="sell">
-      <span>FREE</span> shipping on DO35 and DO45 Couplings <span>Australia Only</span> <a href="">Additional T&C's</a>
+      <div class="promo">
+        <span>FREE</span> shipping on DO35 and DO45 Couplings <span>Australia Only</span> <a href="">Additional
+          T&C's</a>
+          <div class="shopping-cart col-md-2 float-right">
+              <i class="fas fa-shopping-cart "></i>
+              <span class="badge badge-warning">0</span>
+              <p class="cart-items-count">Cart</p>
+            </div>
+      </div>
     </div>
   </div>
-  <div class="row navlist">
-    <div class="imgList col-md-4">
+  <div class="row nav-list">
+    <div class="imgList col-md-12">
       <img
         src="https://cdn11.bigcommerce.com/s-ailgvhd9/images/stencil/original/orange-white-compressed_1549503243__89104.original.png"
         alt="logo">
-    </div>
-    <div class="shopping-cart col-md-2 float-right">
-      <i class="fas fa-shopping-cart "></i>
-      <span class="badge badge-warning">0</span>
-      <p class="cart-items-count">Cart</p>
     </div>
   </div>
   <div class="ads">
@@ -56,21 +59,25 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link menu-color" (click)="getProducts()">Home <span class="sr-only">(current)</span></a>
+            </li>
         <li class="nav-item active" *ngFor="let item of mainMenu">
-          <a class="nav-link menu-color">{{item.name}} <span class="sr-only">(current)</span></a>
+          <a class="nav-link menu-color" (click)="checkCategory(item.id)">{{item.name}} <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown dropdown">
           <a class="nav-link dropdown-toggle menu-color dropdown" href="#" id="navbarDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           More
+            More
           </a>
-          <div class="dropdown-menu menu-color" aria-labelledby="navbarDropdown" >
-            <a  *ngFor="let item of categories" class="dropdown-item menu-color">{{item.name}}</a>
+          <div class="dropdown-menu menu-color" aria-labelledby="navbarDropdown">
+            <a *ngFor="let item of categories" class="dropdown-item menu-color" (click)="checkCategory(item.id)">{{item.name}}</a>
           </div>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchName" name="searchName" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchName" name="searchName"
+          placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-danger my-2 my-sm-0" (click)="searchProducts()" type="submit">Search</button>
       </form>
     </div>
@@ -80,9 +87,11 @@
     <h2 class="split-title">All categories</h2>
   </div>
   <div class="row list-products">
-      <button class="btn btn-danger" *ngIf="searchActive" (click)="getProducts()">Cancel Search</button>
+    <div class="search-off col-md-12" *ngIf="searchActive">
+        <button class="btn btn-danger" (click)="getProducts()">Cancel Search</button>
+    </div>
     <ng-template *ngIf="notFound">
-        <h2 class="error">Search field is empty or product does not exist!</h2>
+      <h2 class="error">Search field is empty or product does not exist!</h2>
     </ng-template>
     <div class="card col-md-3 float-left" *ngFor="let item of products">
       <img src="{{item.imageUrl}}" class="card-img-top" alt="{{item.name}}">

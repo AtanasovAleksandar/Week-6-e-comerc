@@ -57,7 +57,14 @@ export class PortalLayoutComponent implements OnInit {
         }
       }
     )
+  }
 
+  checkCategory(categoryName) {
+    this.productService.searchByCategoryId(categoryName).subscribe (
+      data => {
+        this.products = data;
+      }
+    )
   }
 
 }
