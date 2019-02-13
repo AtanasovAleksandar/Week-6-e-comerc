@@ -3,6 +3,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/products.model';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Category } from 'src/app/models/category.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-portal-layout',
@@ -19,9 +20,13 @@ export class PortalLayoutComponent implements OnInit {
   notFound: boolean = false;
   mainMenu: Product[] = [];
   activeCategory: string = 'Home';
+  empty: boolean = false;
+  cartItems: number = 0;
 
   constructor(public productService: ProductsService,
-    public categoryService: CategoriesService) { }
+    public categoryService: CategoriesService,
+    public activeRouter: ActivatedRoute,
+    public router: Router,) { }
 
   ngOnInit() {
     this.getProducts();
@@ -34,6 +39,7 @@ export class PortalLayoutComponent implements OnInit {
         this.products = data
         this.activeCategory = 'Home'
         this.searchName = '';
+        this.empty = false;
         this.searchActive = false;
         console.log(data)
       }
@@ -65,11 +71,23 @@ export class PortalLayoutComponent implements OnInit {
 
   checkCategory(categoryName,name) {
     this.productService.searchByCategoryId(categoryName).subscribe (
-      data => {
+      ( data:Product[] )=> {
         this.products = data;
+        this.empty = false;
+        if (data.length == 0) {
+          this.empty = true;
+        }
         this.activeCategory = name;
       }
     )
+  }
+
+  addToCart(item) {
+    let key = item.id;
+    let val = item.name
+    localStorage.setItem(key, val);
+    this.cartItems = localStorage.length
+    this.router.navigate(['Portal']);
   }
 
 }

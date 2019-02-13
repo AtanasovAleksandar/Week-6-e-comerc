@@ -99,6 +99,10 @@ $second-color: #f36f21;
     margin-left: 5px;
 }
 
+.btn-dark {
+    color: white!important;
+}
+
 .imgList {
     display: flex;
     justify-content: center;
@@ -143,6 +147,7 @@ $second-color: #f36f21;
         width: 160px;
         height: 1.2em;
         white-space: nowrap;
+        font-weight: 500;
     }
 }
 
@@ -217,4 +222,10 @@ a {
     &-icon {
         background-image: url('https://image.flaticon.com/icons/svg/149/149021.svg')
     }
+}
+
+.empty {
+    color: white;
+    font-weight: 700;
+    margin-top: 20px;
 }

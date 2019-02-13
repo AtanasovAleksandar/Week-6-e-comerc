@@ -6,7 +6,7 @@
           T&C's</a>
           <div class="shopping-cart col-md-2 float-right">
               <i class="fas fa-shopping-cart "></i>
-              <span class="badge badge-warning">0</span>
+              <span class="badge badge-warning">{{cartItems}}</span>
             </div>
       </div>
     </div>
@@ -70,7 +70,7 @@
             More
           </a>
           <div class="dropdown-menu menu-color" aria-labelledby="navbarDropdown">
-            <a *ngFor="let item of categories" class="dropdown-item menu-color" (click)="checkCategory(item.id)">{{item.name}}</a>
+            <a *ngFor="let item of categories" class="dropdown-item menu-color" (click)="checkCategory(item.id, item.name)">{{item.name}}</a>
           </div>
         </li>
       </ul>
@@ -98,8 +98,9 @@
         <h5 class="card-title col-sm-12 col-md-12">{{item.name}}</h5>
         <h5 class="card-price col-sm-12 col-sm-3 col-md-12">{{item.price}}$</h5>
         <p class="card-text col-sm-12 col-md-12">{{item.shortDescription}}</p>
-        <a href="#" class="btn btn-dark card-btn">Add to Card</a>
+        <a class="btn btn-dark card-btn" (click)="addToCart(item)">Add to Card</a>
       </div>
     </div>
+    <h2 class="empty" *ngIf="empty">No Products in this Category</h2>
   </div>
 </div>
