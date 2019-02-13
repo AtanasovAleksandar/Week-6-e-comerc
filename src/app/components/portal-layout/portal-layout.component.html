@@ -56,20 +56,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link menu-color" [routerLink]="[ 'Portal' ]">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link menu-color">Electronic <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link menu-color">Computers <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link menu-color">TV <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link menu-color">Clothes <span class="sr-only">(current)</span></a>
+        <li class="nav-item active" *ngFor="let item of mainMenu">
+          <a class="nav-link menu-color">{{item.name}} <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown dropdown">
           <a class="nav-link dropdown-toggle menu-color dropdown" href="#" id="navbarDropdown" role="button"

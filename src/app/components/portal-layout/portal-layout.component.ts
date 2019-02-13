@@ -17,6 +17,7 @@ export class PortalLayoutComponent implements OnInit {
   searchName:string;
   searchActive:boolean = false;
   notFound: boolean = false;
+  mainMenu: Product[] = [];
 
   constructor(public productService: ProductsService,
     public categoryService: CategoriesService) { }
@@ -40,6 +41,7 @@ export class PortalLayoutComponent implements OnInit {
     this.categoryService.getAllCategories().subscribe(
       data => {
         this.categories = data;
+        this.mainMenu = data.slice(0, 5);
       }
     )
   }
