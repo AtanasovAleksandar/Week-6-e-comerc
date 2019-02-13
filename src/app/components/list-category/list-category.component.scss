@@ -1,5 +1,5 @@
 $background-color: #2d3e4e;
-$secondary-color: #EFF5F9;
+$secondary-color: #f36f21;
 $button-color: #0d1824;
 $dialog-background: #2d3e4ee8;
 $font-bangers: 'Candal',
@@ -13,8 +13,6 @@ cursive;
 
 .container {
     height: 80vh;
-    background-color: $secondary-color;
-    cursor: url("../../../assets/img/potion.png"), auto;
     &-search {
         margin-bottom: 10px;
     }
@@ -23,7 +21,7 @@ cursive;
 .navbar {
     &-list {
         // background-color: $background-color;
-        background-image: url("../../../assets/img/cover.png");
+        background-image: url(../../../assets/img/dark-wood.jpg);
         height: 16vh;
     }
     &-title {
@@ -61,13 +59,20 @@ cursive;
 .btn-outline-primary {
     color: white;
     border-color: white;
+
+    &:hover {
+        background-color: $secondary-color;
+    }
 }
 
 .danger {
     font-size: 44px;
-    color: red;
+    color: $secondary-color;
 }
 
+.form-labels {
+    padding: 8px 6px;
+}
 
 
 

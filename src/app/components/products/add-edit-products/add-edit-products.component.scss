@@ -10,7 +10,7 @@ $font-labels: 'Bangers, cursive';
 
 .navbar {
     &-list {
-        background-image: url("../../../../assets/img/cover.png");
+        background-image: url("../../../../assets/img/dark-wood.jpg");
         height: 16vh;
     }
 
@@ -47,4 +47,8 @@ $font-labels: 'Bangers, cursive';
 
 .empty {
     border-color: red;
+}
+
+.form-labels {
+    padding: 8px 6px;
 }

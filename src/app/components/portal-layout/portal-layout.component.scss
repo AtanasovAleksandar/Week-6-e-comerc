@@ -38,7 +38,7 @@ $second-color: #f36f21;
     height: 50px;
     text-align: center;
     background-color: #757575;
-    border-bottom: 11px solid $second-color;
+    // border-bottom: 11px solid $second-color;
     padding-top: 7px;
     span {
         color: $second-color;
@@ -48,13 +48,15 @@ $second-color: #f36f21;
 
 
 .navlist {
-    background-image: url("../../../assets/img/dark-wood.jpg");
+    // background-image: url("../../../assets/img/dark-wood.jpg");
+    background-color: #353346;
     position: relative;
     &-search {
         margin: 27px 26px;
     }
     img {
-        height: 75px;
+        height: 65px;
+        margin-left: 66px;
     }
 }
 .menu-color {
@@ -84,7 +86,8 @@ background-color: $second-color!important ;
 }
 
 .split {
-    background-image: url("../../../assets/img/dark-wood.jpg");
+    // background-image: url("../../../assets/img/dark-wood.jpg");
+    background-color: #353346;
     height: 71px;
     text-align: center;
     padding-top: 12px;
@@ -163,13 +166,34 @@ a {
     position: absolute;
     bottom: 7px;
     left: 65px;
-    color: #f36f21;
+    color: $second-color;
 }
 
 .fa {
     &-shopping-cart {
         font-size: 46px;
-        color: #f36f21;
+        color: $second-color;
         cursor: pointer;
+    }
+}
+
+.btn-outline-danger {
+    border-color: $second-color;
+    color: white;
+
+    &:hover {
+        background-color: $second-color;
+    }
+}
+
+.btn-danger {
+    width: 155px;
+    height: 51px;
+}
+
+.navbar-toggler {
+    background-color: $second-color!important;
+    &-icon {
+        background-image: url('https://image.flaticon.com/icons/svg/149/149021.svg')
     }
 }

@@ -48,7 +48,7 @@
       </a>
     </div>
   </div>
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-lg">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -57,7 +57,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link menu-color">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link menu-color" [routerLink]="[ 'Portal' ]">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
           <a class="nav-link menu-color">Electronic <span class="sr-only">(current)</span></a>
@@ -82,16 +82,20 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchName" name="searchName" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-danger my-2 my-sm-0" (click)="searchProducts()" type="submit">Search</button>
       </form>
     </div>
   </nav>
 
   <div class="split col-md-12">
-    <h2 class="split-title">All CAtegorys</h2>
+    <h2 class="split-title">All categories</h2>
   </div>
   <div class="row list-products">
+      <button class="btn btn-danger" *ngIf="searchActive" (click)="getProducts()">Cancel Search</button>
+    <ng-template *ngIf="notFound">
+        <h2 class="error">Search field is empty or product does not exist!</h2>
+    </ng-template>
     <div class="card col-md-3 float-left" *ngFor="let item of products">
       <img src="{{item.imageUrl}}" class="card-img-top" alt="{{item.name}}">
       <div class="card-body">

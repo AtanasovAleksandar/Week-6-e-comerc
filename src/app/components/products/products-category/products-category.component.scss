@@ -1,5 +1,5 @@
 $background-color: #2d3e4e;
-$secondary-color: #EFF5F9;
+$secondary-color: #f36f21;
 $dialog-background: #2d3e4ee8;
 $button-color: #0d1824;
 $font-bangers: 'Candal',
@@ -8,13 +8,13 @@ cursive;
 @import '../../../responsive/mobile.scss';
 .container {
     height: 80vh;
-    background-color: $secondary-color;
+    
 }
 
 .navbar {
     &-list {
         // background-color: $background-color;
-        background-image: url("../../../../assets/img/cover.png");
+        background-image: url("../../../../assets/img/dark-wood.jpg");
         height: 16vh;
     }
     &-title {
@@ -55,6 +55,10 @@ cursive;
 .btn-outline-primary {
     color: white;
     border-color: white;
+
+    &:hover {
+        background-color: $secondary-color
+    }
 }
 
 .danger {

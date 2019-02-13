@@ -1,13 +1,13 @@
 $background-color: #2d3e4e;
-$secondary-color: #EFF5F9;
 $text-color: #37505C;
+$secondary-color: #f36f21;
 $font-bangers: 'Candal', cursive;
 $font-labels: 'Bangers, cursive';
 
 .navbar {
     &-list {
         // background-color: $background-color;
-        background-image: url("../../../assets/img/cover.png");
+        background-image: url("../../../assets/img/dark-wood.jpg");
         height: 16vh;
     }
 
@@ -41,4 +41,10 @@ $font-labels: 'Bangers, cursive';
 .empty {
     border-color: red;
 }
+
+
+.form-labels {
+    padding: 8px 6px;
+}
+
 

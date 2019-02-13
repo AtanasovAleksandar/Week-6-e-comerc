@@ -14,6 +14,9 @@ import { Category } from 'src/app/models/category.model';
 export class PortalLayoutComponent implements OnInit {
   products: Product[] = [];
   categories: Category[] = [];
+  searchName:string;
+  searchActive:boolean = false;
+  notFound: boolean = false;
 
   constructor(public productService: ProductsService,
     public categoryService: CategoriesService) { }
@@ -27,6 +30,7 @@ export class PortalLayoutComponent implements OnInit {
     this.productService.getProducts().subscribe(
       data => {
         this.products = data
+        this.searchActive = false;
         console.log(data)
       }
     )
@@ -38,6 +42,20 @@ export class PortalLayoutComponent implements OnInit {
         this.categories = data;
       }
     )
+  }
+
+  searchProducts() {
+    this.productService.searchByName(this.searchName).subscribe(
+      data => {
+        this.products = data;
+        this.searchActive = true;
+        this.notFound = false;
+        if (this.searchName == '') {
+          this.notFound = true;
+        }
+      }
+    )
+
   }
 
 }
