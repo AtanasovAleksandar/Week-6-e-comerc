@@ -7,7 +7,6 @@
           <div class="shopping-cart col-md-2 float-right">
               <i class="fas fa-shopping-cart "></i>
               <span class="badge badge-warning">0</span>
-              <p class="cart-items-count">Cart</p>
             </div>
       </div>
     </div>
@@ -63,7 +62,7 @@
               <a class="nav-link menu-color" (click)="getProducts()">Home <span class="sr-only">(current)</span></a>
             </li>
         <li class="nav-item active" *ngFor="let item of mainMenu">
-          <a class="nav-link menu-color" (click)="checkCategory(item.id)">{{item.name}} <span class="sr-only">(current)</span></a>
+          <a class="nav-link menu-color" (click)="checkCategory(item.id,item.name)">{{item.name}} <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown dropdown">
           <a class="nav-link dropdown-toggle menu-color dropdown" href="#" id="navbarDropdown" role="button"
@@ -76,15 +75,15 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchName" name="searchName"
+        <input class="form-control mr-sm-2" type="text" [(ngModel)]="searchName" name="searchName"
           placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-danger my-2 my-sm-0" (click)="searchProducts()" type="submit">Search</button>
       </form>
     </div>
   </nav>
 
-  <div class="split col-md-12">
-    <h2 class="split-title">All categories</h2>
+  <div class="split col-md-12 ">
+    <h2 class="split-title">{{activeCategory}}</h2>
   </div>
   <div class="row list-products">
     <div class="search-off col-md-12" *ngIf="searchActive">
@@ -93,13 +92,13 @@
     <ng-template *ngIf="notFound">
       <h2 class="error">Search field is empty or product does not exist!</h2>
     </ng-template>
-    <div class="card col-md-3 float-left" *ngFor="let item of products">
-      <img src="{{item.imageUrl}}" class="card-img-top" alt="{{item.name}}">
+    <div class="card col-md-3 col-sm-4 float-left" *ngFor="let item of products; let i = index ">
+      <img [routerLink]="[ '/Portal', 'Detail-View', i ]" src="{{item.imageUrl}}" class="card-img-top" alt="{{item.name}}">
       <div class="card-body">
-        <h5 class="card-title col-md-12">{{item.name}}</h5>
-        <h5 class="card-title col-md-12">{{item.price}}$</h5>
-        <p class="card-text col-md-12">{{item.shortDescription}}</p>
-        <a href="#" class="btn btn-primary card-btn">Add to Card</a>
+        <h5 class="card-title col-sm-12 col-md-12">{{item.name}}</h5>
+        <h5 class="card-price col-sm-12 col-sm-3 col-md-12">{{item.price}}$</h5>
+        <p class="card-text col-sm-12 col-md-12">{{item.shortDescription}}</p>
+        <a href="#" class="btn btn-dark card-btn">Add to Card</a>
       </div>
     </div>
   </div>

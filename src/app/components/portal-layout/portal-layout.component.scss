@@ -1,8 +1,6 @@
 $primary-color: #2E3E50;
 $hover-color: #007bff59;
 $second-color: #f36f21;
-
-
 .products {
     display: none;
 }
@@ -29,7 +27,7 @@ $second-color: #f36f21;
 }
 
 .list-products {
-    margin-top: 20px;
+    background-image: url('../../../assets/img/connectwork.png');
     display: flex;
     justify-content: space-evenly;
 }
@@ -37,15 +35,13 @@ $second-color: #f36f21;
 .sell {
     height: 50px;
     text-align: center;
-    background-color: #757575;
-    // border-bottom: 11px solid $second-color;
+    background-color: #757575; // border-bottom: 11px solid $second-color;
     padding-top: 7px;
     span {
         color: $second-color;
         font-weight: 700;
     }
 }
-
 
 .nav-list {
     // background-image: url("../../../assets/img/dark-wood.jpg");
@@ -59,8 +55,9 @@ $second-color: #f36f21;
         margin-left: 66px;
     }
 }
+
 .menu-color {
-        color: white!important;
+    color: white !important;
 }
 
 .navbar {
@@ -68,17 +65,16 @@ $second-color: #f36f21;
 }
 
 .dropdown-menu {
-    background-color: #131313!important;
+    background-color: #131313 !important;
 }
 
 .dropdown-item:hover {
-background-color: $second-color!important ;
+    background-color: $second-color !important;
 }
 
 .nav-item:hover {
-    background-color: $second-color!important ;
+    background-color: $second-color !important;
 }
-
 
 .col-md-12 {
     margin: 0px;
@@ -86,12 +82,15 @@ background-color: $second-color!important ;
 }
 
 .split {
-    // background-image: url("../../../assets/img/dark-wood.jpg");
-    background-color: #353346;
+    background-image: url('../../../assets/img/connectwork.png');
     height: 71px;
     text-align: center;
     padding-top: 12px;
     color: white;
+    &-title {
+        border-bottom: 5px solid $second-color;
+        padding-bottom: 13px;
+    }
 }
 
 .btn-outline-primary {
@@ -109,6 +108,7 @@ background-color: $second-color!important ;
     background-image: url('../../../assets/img/organic-tiles.png');
     height: 165px;
     margin: 4px;
+    margin-top: 20px;
     &-img-top {
         position: absolute;
         height: 150px;
@@ -126,6 +126,13 @@ background-color: $second-color!important ;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+    }
+    &-title {
+        font-weight: 700;
+    }
+    &-price {
+        color: $second-color;
+        font-weight: 700;
     }
     &-btn {
         margin-top: 5px;
@@ -145,6 +152,7 @@ a {
         color: blue;
     }
 }
+
 .row {
     margin-right: 0px;
     margin-left: 0px
@@ -160,13 +168,15 @@ a {
     position: absolute;
     right: 0;
     top: 3px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .badge-warning {
-    background-color: white;
-    position: absolute;
-    left: 71px;
-    top: 25px;
+    background-color: $second-color;
+    color: white !important;
 }
 
 .cart-items-count {
@@ -178,10 +188,10 @@ a {
 
 .fa {
     &-shopping-cart {
-        font-size: 46px;
+        font-size: 28px;
         color: white;
         cursor: pointer;
-        margin-left: 20px;
+        margin: 0 5px;
     }
 }
 
@@ -192,7 +202,6 @@ a {
 .btn-outline-danger {
     border-color: $second-color;
     color: white;
-
     &:hover {
         background-color: $second-color;
     }
@@ -204,7 +213,7 @@ a {
 }
 
 .navbar-toggler {
-    background-color: $second-color!important;
+    background-color: $second-color !important;
     &-icon {
         background-image: url('https://image.flaticon.com/icons/svg/149/149021.svg')
     }

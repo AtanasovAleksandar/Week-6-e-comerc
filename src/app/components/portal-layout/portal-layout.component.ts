@@ -18,6 +18,7 @@ export class PortalLayoutComponent implements OnInit {
   searchActive:boolean = false;
   notFound: boolean = false;
   mainMenu: Product[] = [];
+  activeCategory: string = 'Home';
 
   constructor(public productService: ProductsService,
     public categoryService: CategoriesService) { }
@@ -31,6 +32,8 @@ export class PortalLayoutComponent implements OnInit {
     this.productService.getProducts().subscribe(
       data => {
         this.products = data
+        this.activeCategory = 'Home'
+        this.searchName = '';
         this.searchActive = false;
         console.log(data)
       }
@@ -40,7 +43,7 @@ export class PortalLayoutComponent implements OnInit {
   getCategory() {
     this.categoryService.getAllCategories().subscribe(
       data => {
-        this.categories = data;
+        this.categories = data.slice(5);
         this.mainMenu = data.slice(0, 5);
       }
     )
@@ -50,6 +53,7 @@ export class PortalLayoutComponent implements OnInit {
     this.productService.searchByName(this.searchName).subscribe(
       data => {
         this.products = data;
+        this.activeCategory = "Results:"
         this.searchActive = true;
         this.notFound = false;
         if (this.searchName == '') {
@@ -59,10 +63,11 @@ export class PortalLayoutComponent implements OnInit {
     )
   }
 
-  checkCategory(categoryName) {
+  checkCategory(categoryName,name) {
     this.productService.searchByCategoryId(categoryName).subscribe (
       data => {
         this.products = data;
+        this.activeCategory = name;
       }
     )
   }

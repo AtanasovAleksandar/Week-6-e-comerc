@@ -19,6 +19,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { PortalLayoutComponent } from './components/portal-layout/portal-layout.component';
 import { AddEditCategoryComponent } from './components/add-edit/add-edit.component';
 import { AddEditProductsComponent } from './components/products/add-edit-products/add-edit-products.component';
+import { DetailViewComponent } from './components/portal-layout/detail-view/detail-view.component';
 
 
 
@@ -30,7 +31,8 @@ import { AddEditProductsComponent } from './components/products/add-edit-product
     NavBarComponent,
     AddEditCategoryComponent,
     AddEditProductsComponent,
-    PortalLayoutComponent
+    PortalLayoutComponent,
+    DetailViewComponent
   ],
   
   imports: [
