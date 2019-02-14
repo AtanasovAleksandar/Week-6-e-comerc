@@ -20,6 +20,7 @@ import { PortalLayoutComponent } from './components/portal-layout/portal-layout.
 import { AddEditCategoryComponent } from './components/add-edit/add-edit.component';
 import { AddEditProductsComponent } from './components/products/add-edit-products/add-edit-products.component';
 import { DetailViewComponent } from './components/portal-layout/detail-view/detail-view.component';
+import { ShoppingCartComponent } from './components/portal-layout/shopping-cart/shopping-cart.component';
 
 
 
@@ -32,7 +33,8 @@ import { DetailViewComponent } from './components/portal-layout/detail-view/deta
     AddEditCategoryComponent,
     AddEditProductsComponent,
     PortalLayoutComponent,
-    DetailViewComponent
+    DetailViewComponent,
+    ShoppingCartComponent
   ],
   
   imports: [

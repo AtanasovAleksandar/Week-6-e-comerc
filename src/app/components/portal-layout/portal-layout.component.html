@@ -5,7 +5,7 @@
         <span>FREE</span> shipping on DO35 and DO45 Couplings <span>Australia Only</span> <a href="">Additional
           T&C's</a>
           <div class="shopping-cart col-md-2 float-right">
-              <img class="shop-cart-img" src="../../../assets/img/shopping-cart.svg" alt="">
+              <img [routerLink]="[ 'Shopping-Cart' ]" class="shop-cart-img" src="../../../assets/img/shopping-cart.svg" alt="">
               <span class="badge badge-warning">{{cartItems}}</span>
             </div>
       </div>
@@ -92,13 +92,13 @@
     <ng-template *ngIf="notFound">
       <h2 class="error">Search field is empty or product does not exist!</h2>
     </ng-template>
-    <div class="card col-md-3 col-sm-4 float-left" *ngFor="let item of products; let i = index ">
+    <div class="card col-md-3 col-sm-4 col-xs-6 float-left" *ngFor="let item of products; let i = index ">
       <img [routerLink]="[ '/Portal', 'Detail-View', i ]" src="{{item.imageUrl}}" class="card-img-top" alt="{{item.name}}">
       <div class="card-body">
         <h5 class="card-title col-sm-12 col-md-12">{{item.name}}</h5>
         <h5 class="card-price col-sm-12 col-sm-3 col-md-12">{{item.price}}$</h5>
         <p class="card-text col-sm-12 col-md-12">{{item.shortDescription}}</p>
-        <a class="btn btn-dark card-btn" (click)="addToCart(item)">Add to Card</a>
+        <a class="btn btn-dark card-btn btn-sm" (click)="addToCart(item)">Add to Card</a>
       </div>
     </div>
     <h2 class="empty" *ngIf="empty">No Products in this Category</h2>

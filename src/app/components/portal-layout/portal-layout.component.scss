@@ -1,6 +1,10 @@
 $primary-color: #2E3E50;
 $hover-color: #007bff59;
 $second-color: #f36f21;
+
+@import '../../responsive/tablet.scss';
+@import '../../responsive/mobile.scss';
+
 .products {
     display: none;
 }
@@ -35,7 +39,7 @@ $second-color: #f36f21;
 .sell {
     height: 50px;
     text-align: center;
-    background-color: #757575; // border-bottom: 11px solid $second-color;
+    background-color: #757575; 
     padding-top: 7px;
     span {
         color: $second-color;
@@ -44,7 +48,6 @@ $second-color: #f36f21;
 }
 
 .nav-list {
-    // background-image: url("../../../assets/img/dark-wood.jpg");
     background-color: #353346;
     position: relative;
     &-search {
@@ -101,6 +104,7 @@ $second-color: #f36f21;
 
 .btn-dark {
     color: white!important;
+    font-size: 12px;
 }
 
 .imgList {
@@ -226,7 +230,7 @@ a {
 .navbar-toggler {
     background-color: $second-color !important;
     &-icon {
-        background-image: url('https://image.flaticon.com/icons/svg/149/149021.svg')
+        background-image: url('../../../assets/img/menu.png');
     }
 }
 
@@ -235,3 +239,4 @@ a {
     font-weight: 700;
     margin-top: 20px;
 }
+

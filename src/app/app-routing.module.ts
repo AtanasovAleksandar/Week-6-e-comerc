@@ -7,6 +7,7 @@ import { PortalLayoutComponent } from './components/portal-layout/portal-layout.
 import { AddEditCategoryComponent } from './components/add-edit/add-edit.component';
 import { AddEditProductsComponent } from './components/products/add-edit-products/add-edit-products.component';
 import { DetailViewComponent } from './components/portal-layout/detail-view/detail-view.component';
+import { ShoppingCartComponent } from './components/portal-layout/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {path: 'Category'  , children: [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'Portal' , children: [
     {path: '' , component: PortalLayoutComponent },
     {path: ':DetailView/:id' , component: DetailViewComponent },
+    {path: ':Shopping-Cart' , component: ShoppingCartComponent },
   ]  },
 
   {path: '' , redirectTo: "Category" , pathMatch: 'full'},

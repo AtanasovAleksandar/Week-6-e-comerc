@@ -24,4 +24,24 @@
     .table-confirm {
         left: 25%;
     }
+    .sell {
+        height: 65px;
+        font-size: 11px;
+        .promo {
+            width: 80%;
+            margin-top: 11px;
+        }
+    }
+    .imgList {
+        height: 60px;
+        img {
+            width: 230px;
+            height: auto;
+            padding: 10px;
+        }
+    }
+    .shopping-cart {
+        margin-top: 6px;
+        width: 60px;
+    }
 }
