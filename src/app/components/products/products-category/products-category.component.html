@@ -1,18 +1,4 @@
-<div class="col-md-9 float-right menu">
-  <nav class="navbar navbar-light navbar-list mobile">
-    <button class="btn btn-outline-primary float-right" [routerLink]="[ '/Products','Add']"> <i class="fas fa-folder-plus"></i>
-      Add Products</button>
-    <h2 class="navbar-title">Products</h2>
-    <div class="form-search">
-      <form class="form-inline category-form">
-        <input class="form-control" [(ngModel)]="searchName" name="search" type="search" placeholder="Search"
-          aria-label="Search">
-        <button class="btn btn-outline-primary" (click)="searchCategory()" type="submit"><i class="fas fa-search"></i>
-          Search</button>
-      </form>
-    </div>
-  </nav>
-</div>
+<app-nav-admin [categoryName]='routeName'></app-nav-admin>
 <div class="table col-md-9 col-sm-12 float-right container">
   <button class="btn btn-outline-dark container-search" [hidden]="!activeSearch" (click)="getProducts()">Cancel
     Search</button>

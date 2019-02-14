@@ -4,13 +4,14 @@ import { CountService } from 'src/app/services/count.service';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Category } from '../../models/category.model';
 import { ToastrService } from 'ngx-toastr';
-
+import { NavAdminComponent } from '../Shared/nav-admin/nav-admin.component'
+ 
 @Component({
   selector: 'app-list-category',
   templateUrl: './list-category.component.html',
   styleUrls: ['./list-category.component.scss']
 })
-export class ListCategoryComponent implements OnInit {
+export class ListCategoryComponent implements OnInit  {
 
   Category: Category[] = [];
   activeSearch: Boolean = false;
@@ -19,6 +20,8 @@ export class ListCategoryComponent implements OnInit {
   activePage: number;
   currentId: number;
   parentObj:Object = { 'parentName': '' }
+  activeRout: string;
+  routeName: string;
 
 
   constructor(public categoriesService: CategoriesService,
@@ -32,7 +35,16 @@ export class ListCategoryComponent implements OnInit {
     this.activeRouter.params.subscribe((params) => {
       console.log(params);
       this.activePage = params.activePage;
+      this.activeRout = params.activeR;
     });
+    
+    if(this.activeRout == 'ct') {
+      this.routeName = 'Category';
+    } else {
+      this.routeName = 'Products';
+    }
+
+
 
     this.getCategories()
     this.countService.getCount();

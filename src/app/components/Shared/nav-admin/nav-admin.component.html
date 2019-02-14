@@ -1,0 +1,15 @@
+<div class="col-md-9 float-right menu">
+  <nav class="navbar navbar-light navbar-list mobile">
+    <button class="btn btn-outline-primary float-right" (click)="navigate()"> <i class="fas fa-folder-plus"></i>
+      Add {{categoryName}}</button>
+    <h2 class="navbar-title">Categories</h2>
+    <div class="form-search">
+      <form class="form-inline category-form">
+        <input class="form-control" [(ngModel)]="searchName" name="search" type="search" placeholder="Search"
+          aria-label="Search">
+        <button class="btn btn-outline-primary" (click)="searchCategory()" type="submit"><i class="fas fa-search"></i>
+          Search</button>
+      </form>
+    </div>
+  </nav>
+</div>

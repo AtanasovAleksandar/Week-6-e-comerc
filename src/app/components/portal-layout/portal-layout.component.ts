@@ -92,3 +92,8 @@ export class PortalLayoutComponent implements OnInit {
   }
 
 }
+
+for ( let i = 0; i < localStorage.length; i++ ) {
+  const key = JSON.stringify(i)
+   const item = localStorage.getItem(key)
+}

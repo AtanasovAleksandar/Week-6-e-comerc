@@ -84,6 +84,20 @@ $second-color: #f36f21;
     padding: 0px;
 }
 
+.disable {
+    opacity: 0.65; 
+    cursor: not-allowed;
+}
+
+.out-of-stack {
+    position: absolute;
+    left: 18px;
+    font-weight: 500;
+    color: #f36f21;
+    bottom: -10px;
+    color: $second-color;
+}
+
 .split {
     background-image: url('../../../assets/img/connectwork.png');
     height: 71px;
@@ -220,6 +234,13 @@ a {
     &:hover {
         background-color: $second-color;
     }
+}
+
+.close {
+    position: absolute;
+    right: 70px;
+    width: 95px;
+    cursor: not-allowed;
 }
 
 .btn-danger {

@@ -11,12 +11,12 @@ import { ShoppingCartComponent } from './components/portal-layout/shopping-cart/
 
 const routes: Routes = [
   {path: 'Category'  , children: [
-    {path: '' , component: ListCategoryComponent },
+    {path: ':activeR' , component: ListCategoryComponent },
     {path: ':active/:id' , component: AddEditCategoryComponent},
     {path: ':active' , component: AddEditCategoryComponent },
   ] },
   {path: 'Products' , children: [
-    {path: '' , component: ProductsCategoryComponent },
+    {path: ':activeR' , component: ProductsCategoryComponent },
     {path: ':active/:id/:photoName' , component: AddEditProductsComponent },
     {path: ':active' , component: AddEditProductsComponent },
   ] },

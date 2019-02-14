@@ -5,7 +5,7 @@
     </div>
 
     <nav class="nav flex-column menu-nav">
-      <a class="nav-link float-left menu-link categories" [routerLink]="['Category']" routerLinkActive="active-selected">
+      <a class="nav-link float-left menu-link categories" [routerLink]="['Category','ct']" routerLinkActive="active-selected">
         <i class="fas fa-folder-open"></i> Category <span class="badge badge-danger badge-categories">{{countCategory}}</span>
         <i class="float-right fas fa-angle-right"></i>
       </a>
@@ -17,7 +17,8 @@
         </a>
       </div>
 
-      <a class="nav-link float-left menu-link products" [routerLink]="['Products']" routerLinkActive="active-selected">
+      <a class="nav-link float-left menu-link products" [routerLink]="['Products','pr']" 
+      routerLinkActive="active-selected">
         <i class="fas fa-align-justify"></i> Products
         <span class="badge badge-danger">{{countProducts}}</span>
         <i class="float-right fas fa-angle-right"></i>

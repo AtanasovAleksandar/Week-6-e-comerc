@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { CountService } from 'src/app/services/count.service';
-import { ActivatedRoute, Router } from '@angular/router';
+
 import { Category } from 'src/app/models/category.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -16,12 +17,13 @@ export class NavBarComponent implements OnInit {
   countProducts: number;
   url: string;
   categories: Category[] = [];
+  activeRout: string;
 
   constructor(public categoriesService: CategoriesService,
     public countService: CountService,
-    public activatedRout: ActivatedRoute,
-    public router: Router,
-    public categoryService: CategoriesService) {}
+    public categoryService: CategoriesService,
+    public activeRouter: ActivatedRoute,
+    public router: Router,) {}
 
   ngOnInit() {
     this.countService.cast.subscribe(
@@ -49,6 +51,8 @@ export class NavBarComponent implements OnInit {
      )
    }
   }
+
+  
 
 }
 

@@ -24,6 +24,8 @@ export class ProductsCategoryComponent implements OnInit {
   searchName: string;
   activeSearch: boolean;
   categories: Category[] = [];
+  activeRout: string;
+  routeName: string;
 
   constructor(public productService: ProductsService,
     private toastr: ToastrService,
@@ -38,6 +40,17 @@ export class ProductsCategoryComponent implements OnInit {
     this.countService.getProductCount();
     this.countService.getCount();
     this.getCategory();
+
+    this.activatedRout.params.subscribe((params) => {
+      console.log(params);
+      this.activeRout = params.activeR;
+    });
+
+    if(this.activeRout == 'ct') {
+      this.routeName = 'Category';
+    } else {
+      this.routeName = 'Products';
+    }
   }
 
   getCategory() {
