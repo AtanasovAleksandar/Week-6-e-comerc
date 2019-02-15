@@ -4,19 +4,21 @@ import { Product } from 'src/app/models/products.model';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Category } from 'src/app/models/category.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-portal-layout',
   templateUrl: './portal-layout.component.html',
   styleUrls: ['./portal-layout.component.scss'],
-  encapsulation: ViewEncapsulation.None 
+  encapsulation: ViewEncapsulation.None
 })
 
 export class PortalLayoutComponent implements OnInit {
   products: Product[] = [];
   categories: Category[] = [];
-  searchName:string;
-  searchActive:boolean = false;
+  searchName: string;
+  searchActive: boolean = false;
   notFound: boolean = false;
   mainMenu: Product[] = [];
   activeCategory: string = 'Home';
@@ -26,7 +28,8 @@ export class PortalLayoutComponent implements OnInit {
   constructor(public productService: ProductsService,
     public categoryService: CategoriesService,
     public activeRouter: ActivatedRoute,
-    public router: Router,) { }
+    public router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getProducts();
@@ -70,9 +73,9 @@ export class PortalLayoutComponent implements OnInit {
     )
   }
 
-  checkCategory(categoryIT,name) {
-    this.productService.searchByCategoryId(categoryIT).subscribe (
-      ( data:Product[] )=> {
+  checkCategory(categoryIT, name) {
+    this.productService.searchByCategoryId(categoryIT).subscribe(
+      (data: Product[]) => {
         this.products = data;
         this.empty = false;
         if (data.length == 0) {
@@ -86,14 +89,17 @@ export class PortalLayoutComponent implements OnInit {
   addToCart(item) {
     let key = item.id;
     let val = item.name
+    let keys = Object.keys(localStorage);
+    console.log(keys);
+    for (var i = 0; i < keys.length; i++) {
+      const keysCurrent = keys[i];
+      console.log(key);
+      if (key == parseInt(keysCurrent) ) {
+        this.toastr.info('You have this product in cart!');
+      }
+    }
     localStorage.setItem(key, val);
-    this.cartItems = localStorage.length
+    this.cartItems = localStorage.length;
     this.router.navigate(['Portal']);
   }
-
-}
-
-for ( let i = 0; i < localStorage.length; i++ ) {
-  const key = JSON.stringify(i)
-   const item = localStorage.getItem(key)
 }

@@ -67,3 +67,60 @@ cursive;
     font-size: 44px;
     color: red;
 }
+
+@keyframes lds-blocks {
+    0% {
+      background: #ff4b00;
+    }
+    12.5% {
+      background: #ff4b00;
+    }
+    12.625% {
+      background: #84c941;
+    }
+    100% {
+      background: #84c941;
+    }
+  }
+  @-webkit-keyframes lds-blocks {
+    0% {
+      background: #ff4b00;
+    }
+    12.5% {
+      background: #ff4b00;
+    }
+    12.625% {
+      background: #84c941;
+    }
+    100% {
+      background: #84c941;
+    }
+  }
+  .lds-blocks {
+    position: relative;
+  }
+  .lds-blocks div {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #84c941;
+    -webkit-animation: lds-blocks 0.4s linear infinite;
+    animation: lds-blocks 0.4s linear infinite;
+  }
+  .lds-blocks {
+    width: 200px !important;
+    height: 200px !important;
+    -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+    transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+  }
+
+  .loader {
+    display: flex;
+    justify-content: center;
+  }
+
+  .ng-scope {
+    z-index: 10;
+    position: absolute;
+    top: 60px;
+  }

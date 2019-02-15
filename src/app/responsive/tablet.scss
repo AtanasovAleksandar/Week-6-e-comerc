@@ -2,40 +2,46 @@
     .menu {
         position: relative;
         height: 15vh;
+        width: 100%;
         &-img-container {
             align-items: end;
+            img {
+                margin: 35px 14px;
+                width: 180px;
+            }
         }
         &-nav {
             width: 50%;
             position: absolute;
             right: 0;
             top: 0;
+            margin-top: 15px;
         }
     }
     .table {
+        padding: 0px !important;
         &-button {
             width: 91px;
-             margin-top: 5px;
+            margin-top: 5px;
+            margin-left: 0px !important;
         }
     }
-
+    .table th {
+        padding: 0px;
+    }
     .out-of-stack {
         font-size: 11px;
-        left: 15px!important;
+        left: 15px !important;
     }
-
     .close {
-        right: 45px!important;
+        right: 45px !important;
     }
-
     .navbar {
         display: block;
     }
-
     .form-search input {
         width: 70%;
     }
-
     .card {
         &-title {
             font-size: 14px;
@@ -60,5 +66,29 @@
     .shopping-cart {
         margin-top: 6px;
         width: 60px;
+    }
+}
+
+@media only screen and (width: 768px) and (height: 1024px) {
+    .menu-mobile-view {
+        height: 100vh;
+    }
+    .menu-nav {
+        width: 100%;
+        margin-top: 153px;
+        padding: 7px;
+    }
+    .navbar {
+        &-title {
+            padding: 5px 5px;
+            text-align: center;
+        }
+    }
+    .nav-tab {
+        margin: 5px 50px;
+    }
+    .form-search {
+        margin-top: 40px;
+        margin-left: 65px;
     }
 }

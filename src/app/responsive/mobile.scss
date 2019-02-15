@@ -2,12 +2,21 @@
     .menu {
         position: relative;
         height: 34vh;
+        width: 100%;
         &-mobile {
             height: 34vh;
+            &-view {
+                height: 44vh;
+                width: 66vh;
+            }
+        }
+        &-img-container {
+            width: 100%;
         }
     }
     .navbar-list {
         height: 34vh !important;
+        width: 66vh;
     }
     .form-search {
         & button {
@@ -46,5 +55,13 @@
     }
     .out-of-stack {
         left: 185px;
+    }
+    .table th {
+        padding: 0px;
+    }
+
+    .table {
+        padding: 0px!important;
+        font-size: 11px;
     }
 }

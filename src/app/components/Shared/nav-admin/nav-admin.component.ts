@@ -10,7 +10,8 @@ export class NavAdminComponent implements OnInit {
 
   activePage: string;
   searchName: string;
-  param: any;
+  param: string;
+  navTitle: string;
 
   constructor(public activeRouter: ActivatedRoute,
     public router: Router, ) { }
@@ -20,6 +21,11 @@ export class NavAdminComponent implements OnInit {
       console.log(params);
       this.param = params.activeR
     });
+    if (this.param == 'ct') {
+      this.navTitle = 'Category';
+    } else {
+      this.navTitle = 'Products'
+    }
   }
 
   @Input() categoryName: string;

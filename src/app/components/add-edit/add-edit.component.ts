@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AddEditCategoryComponent implements OnInit {
   activeCategory: number;
   name: string;
-  selectedOption: any;
+  selectedOption: Category = {} as Category;
   Category: Category[];
   newName: string;
   newParent: Category = {} as Category

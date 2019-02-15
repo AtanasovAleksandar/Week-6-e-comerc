@@ -22,6 +22,7 @@ export class ListCategoryComponent implements OnInit  {
   parentObj:Object = { 'parentName': '' }
   activeRout: string;
   routeName: string;
+  loading = false;
 
 
   constructor(public categoriesService: CategoriesService,
@@ -44,18 +45,18 @@ export class ListCategoryComponent implements OnInit  {
       this.routeName = 'Products';
     }
 
-
-
     this.getCategories()
     this.countService.getCount();
     this.countService.getProductCount();
   }
 
   getCategories() {
+    this.loading = true;
     this.categoriesService.getAllCategories().subscribe(
       data => {
         console.log(data)
         this.Category = data;
+        this.loading = false;
         this.activeSearch = false;
       }
     )
@@ -66,10 +67,6 @@ export class ListCategoryComponent implements OnInit  {
     this.currentId = id
   }
 
-  showSuccess() {
-    this.toastr.success('Category Deleted');
-  }
-
   deleteCategory(confirm) {
     this.activeDelete = true;
     if (confirm == 'YES') {
@@ -77,7 +74,7 @@ export class ListCategoryComponent implements OnInit  {
         data => {
           this.getCategories();
           this.countService.getCount()
-          this.showSuccess();
+          this.toastr.success('Category Deleted');
         }
       )
       this.activeDelete = false;

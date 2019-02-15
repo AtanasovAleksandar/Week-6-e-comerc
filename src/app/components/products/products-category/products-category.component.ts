@@ -26,6 +26,7 @@ export class ProductsCategoryComponent implements OnInit {
   categories: Category[] = [];
   activeRout: string;
   routeName: string;
+  loading: boolean = false;
 
   constructor(public productService: ProductsService,
     private toastr: ToastrService,
@@ -62,10 +63,12 @@ export class ProductsCategoryComponent implements OnInit {
   }
 
 getProducts() {
+  this.loading = true;
   this.activeSearch = false;
   this.searchName = '';
   this.productService.getProducts().subscribe( 
     data => {
+      this.loading = false;
       this.products = data;
       console.log(this.products)
     });
