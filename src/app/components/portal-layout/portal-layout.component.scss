@@ -5,6 +5,10 @@ $second-color: #f36f21;
 @import '../../responsive/tablet.scss';
 @import '../../responsive/mobile.scss';
 
+
+body {
+    background-image: url(../../../assets/img/connectwork.png);
+}
 .products {
     display: none;
 }
@@ -319,6 +323,6 @@ a {
   .ng-scope {
     z-index: 10;
     position: absolute;
-    top: 60px;
+    top: -110px;
   }
 

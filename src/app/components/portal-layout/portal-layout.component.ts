@@ -64,8 +64,10 @@ export class PortalLayoutComponent implements OnInit {
   }
 
   searchProducts() {
+    this.loading = true;
     this.productService.searchByName(this.searchName).subscribe(
       data => {
+        this.loading = false;
         this.products = data;
         this.activeCategory = "Results:"
         this.searchActive = true;
@@ -78,8 +80,10 @@ export class PortalLayoutComponent implements OnInit {
   }
 
   checkCategory(categoryIT, name) {
+    this.loading = true;
     this.productService.searchByCategoryId(categoryIT).subscribe(
       (data: Product[]) => {
+        this.loading = false;
         this.products = data;
         this.empty = false;
         if (data.length == 0) {
@@ -99,16 +103,16 @@ export class PortalLayoutComponent implements OnInit {
     for (var i = 0; i < keys.length; i++) {
       const keysCurrent = keys[i];
       console.log(key);
-      if (key == parseInt(keysCurrent) ) {
+      if (key == parseInt(keysCurrent)) {
         this.toastr.info('You have this product in cart!');
         itemFounded = false;
-      } 
+      }
     }
 
     localStorage.setItem(key, val);
     this.cartItems = localStorage.length;
     this.router.navigate(['Portal']);
-    if (itemFounded){
+    if (itemFounded) {
       this.toastr.success('You add item to cart');
     }
   }
