@@ -25,6 +25,7 @@ export class PortalLayoutComponent implements OnInit {
   empty: boolean = false;
   cartItems: number = 0;
   itemfounded: boolean = true;
+  loading: boolean;
 
   constructor(public productService: ProductsService,
     public categoryService: CategoriesService,
@@ -39,8 +40,10 @@ export class PortalLayoutComponent implements OnInit {
   }
 
   getProducts() {
+    this.loading = true;
     this.productService.getProducts().subscribe(
       data => {
+        this.loading = false;
         this.products = data
         this.activeCategory = 'Home'
         this.searchName = '';

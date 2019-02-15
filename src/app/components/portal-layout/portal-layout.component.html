@@ -92,6 +92,20 @@
     <ng-template *ngIf="notFound">
       <h2 class="error">Search field is empty or product does not exist!</h2>
     </ng-template>
+    <div class="loader" *ngIf="loading">
+      <div class="lds-css ng-scope">
+        <div class="lds-blocks" style="width:100%;height:100%">
+          <div style="left:38px;top:38px;animation-delay:0s"></div>
+          <div style="left:80px;top:38px;animation-delay:0.05s"></div>
+          <div style="left:122px;top:38px;animation-delay:0.1s"></div>
+          <div style="left:38px;top:80px;animation-delay:0.35000000000000003s"></div>
+          <div style="left:122px;top:80px;animation-delay:0.15000000000000002s"></div>
+          <div style="left:38px;top:122px;animation-delay:0.30000000000000004s"></div>
+          <div style="left:80px;top:122px;animation-delay:0.25s"></div>
+          <div style="left:122px;top:122px;animation-delay:0.2s"></div>
+        </div>
+      </div>
+    </div>
     <div class="card col-md-3 col-sm-4 col-xs-6 float-left" *ngFor="let item of products; let i = index ">
       <img [routerLink]="[ '/Portal', 'Detail-View', i ]" src="{{item.imageUrl}}" class="card-img-top" alt="{{item.name}}">
      <img class="close" *ngIf="!item.isAvailable" src="../../../assets/img/Ecommerce_Close_Label-512.png" alt="not available">
