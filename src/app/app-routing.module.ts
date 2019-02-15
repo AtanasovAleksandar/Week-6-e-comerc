@@ -13,21 +13,21 @@ const routes: Routes = [
   {path: 'Category'  , children: [
     {path: ':activeR' , component: ListCategoryComponent },
     {path: ':active/:id' , component: AddEditCategoryComponent},
-    {path: ':active' , component: AddEditCategoryComponent },
+    {path: 'Add/:active' , component: AddEditCategoryComponent },
   ] },
   {path: 'Products' , children: [
     {path: ':activeR' , component: ProductsCategoryComponent },
     {path: ':active/:id/:photoName' , component: AddEditProductsComponent },
-    {path: ':active' , component: AddEditProductsComponent },
+    {path: 'Add/:active' , component: AddEditProductsComponent },
   ] },
   {path: 'Portal' , children: [
     {path: '' , component: PortalLayoutComponent },
     {path: ':DetailView/:id' , component: DetailViewComponent },
-    {path: ':Shopping-Cart' , component: ShoppingCartComponent },
+    {path: 'Add/:Shopping-Cart' , component: ShoppingCartComponent },
   ]  },
 
-  {path: '' , redirectTo: "Category" , pathMatch: 'full'},
-  {path: '**' , redirectTo: "Category" , pathMatch:'full'}
+  {path: '' , redirectTo: "Portal", pathMatch: 'full'},
+  {path: '**' , redirectTo: "Portal" , pathMatch:'full'}
 ];
 
 @NgModule({

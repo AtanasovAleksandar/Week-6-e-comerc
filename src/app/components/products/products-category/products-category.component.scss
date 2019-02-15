@@ -9,6 +9,9 @@ cursive;
 .container {
     height: 80vh;
     
+    &-search {
+        margin-bottom: 10px;
+    }
 }
 
 .navbar {

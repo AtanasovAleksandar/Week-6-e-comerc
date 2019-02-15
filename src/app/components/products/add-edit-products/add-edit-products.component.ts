@@ -51,7 +51,7 @@ export class AddEditProductsComponent implements OnInit {
       this.imageId = params.photoName;
       this.activePage = params.active
     });
-    if (this.activePage == 'Add') {
+    if (this.activePage == 'Add-products') {
       this.title = ' Add';
       const id = Math.random().toString(36).substring(2);
       this.newImageId = id;
@@ -66,7 +66,7 @@ export class AddEditProductsComponent implements OnInit {
   }
 
   upload(event) {
-    if (this.activePage == 'Add') {
+    if (this.activePage == 'Add-products') {
       const id = Math.random().toString(36).substring(2);
       this.newImageId = id;
       this.ref = this.afStorage.ref(this.newImageId);
@@ -138,7 +138,7 @@ export class AddEditProductsComponent implements OnInit {
 
 
   checkActivePage() {
-    if (this.activePage == 'Add') {
+    if (this.activePage == 'Add-products') {
       this.addNewProduct();
       console.log('Add')
     } else {
@@ -155,7 +155,7 @@ export class AddEditProductsComponent implements OnInit {
     console.log(this.available)
     this.productService.addProducts(this.product).subscribe(
       data => {
-        this.router.navigate(['Products']);
+        this.router.navigate(['Products', 'pr']);
         this.toastr.success('New product added');
       }
     )
@@ -167,7 +167,7 @@ export class AddEditProductsComponent implements OnInit {
     this.product.categoryId = this.selectedOption.id;
     this.productService.editProduct(this.product, this.product.id).subscribe(
       data => {
-        this.router.navigate(['Products']);
+        this.router.navigate(['Products', 'pr']);
         this.toastr.success(' Product changed');
       }
     )

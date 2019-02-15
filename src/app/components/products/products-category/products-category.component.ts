@@ -107,7 +107,12 @@ getProducts() {
     }
   }
 
-  searchCategory() {
+  receiveSearchName($event) {
+    this.searchName = $event
+    this.searchProducts();
+  }
+
+  searchProducts() {
     if (this.searchName) {
       this.productService.searchByName(this.searchName).subscribe(
         data => {

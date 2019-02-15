@@ -87,7 +87,7 @@
     <div class="form-buttons">
       <button type="button" (click)="checkActivePage()" class="btn btn-outline-primary"><i [className]=" !activePageAction  ? 'fas fa-save' : 'fas fa-plus-square'" class="fas"></i>
         {{title}}</button>
-      <button type="button" [routerLink]="['/Products']" class="btn btn-outline-danger float-right"><i
+      <button type="button" [routerLink]="['/Products', 'pr']" class="btn btn-outline-danger float-right"><i
           class="fas fa-angle-left"></i>
         Back
       </button>

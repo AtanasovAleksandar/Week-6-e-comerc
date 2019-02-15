@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
@@ -8,28 +8,36 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class NavAdminComponent implements OnInit {
 
-  activePage:string;
-  searchName:string;
+  activePage: string;
+  searchName: string;
+  param: any;
 
   constructor(public activeRouter: ActivatedRoute,
-    public router: Router,) {}
+    public router: Router, ) { }
 
   ngOnInit() {
     this.activeRouter.params.subscribe((params) => {
       console.log(params);
-      this.param = param.active
+      this.param = params.activeR
     });
-
   }
 
-  @Input() categoryName:string;
-
+  @Input() categoryName: string;
+  
 
   navigate() {
     if (this.param == 'pr') {
-      this.router.navigate(['Products']);
+      this.router.navigate(['Products/Add', 'Add-products']);
     } else {
-      this.router.navigate(['Category']);
+      this.router.navigate(['Category/Add', 'Add-products']);
     }
   }
+
+  @Output() searchEvent = new EventEmitter<string>();
+
+  sentSearchName() {
+    this.searchEvent.emit(this.searchName);
+    this.searchName = '';
+  }
+
 }

@@ -86,6 +86,11 @@ export class ListCategoryComponent implements OnInit  {
     }
   }
 
+  receiveSearchName($event) {
+    this.searchName = $event
+    this.searchCategory();
+  }
+
   searchCategory() {
     if (this.searchName) {
       this.categoriesService.searchByName(this.searchName).subscribe(

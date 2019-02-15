@@ -86,7 +86,7 @@ export class AddEditCategoryComponent implements OnInit {
         (data: Category[]) => {
           console.log(data);
           this.sentCount()
-          this.router.navigate(['Category']);
+          this.router.navigate(['Category','ct']);
           this.toastr.success('Category Added');
         }
       )
@@ -117,7 +117,7 @@ export class AddEditCategoryComponent implements OnInit {
   editCategory() {
     this.categoryService.editCategory(this.categoryObj.id, this.category).subscribe(
       data => {
-        this.router.navigate(['Category']);
+        this.router.navigate(['Category','ct']);
         this.toastr.success('Category Changed');
       }
     )
