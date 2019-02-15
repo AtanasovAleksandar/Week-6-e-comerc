@@ -87,6 +87,7 @@ $second-color: #f36f21;
 .disable {
     opacity: 0.65; 
     cursor: not-allowed!important;
+    pointer-events: none;
 }
 
 .out-of-stack {

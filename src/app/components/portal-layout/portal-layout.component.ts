@@ -24,6 +24,7 @@ export class PortalLayoutComponent implements OnInit {
   activeCategory: string = 'Home';
   empty: boolean = false;
   cartItems: number = 0;
+  itemfounded: boolean = true;
 
   constructor(public productService: ProductsService,
     public categoryService: CategoriesService,
@@ -87,6 +88,7 @@ export class PortalLayoutComponent implements OnInit {
   }
 
   addToCart(item) {
+    let itemFounded = true;
     let key = item.id;
     let val = item.name
     let keys = Object.keys(localStorage);
@@ -96,10 +98,15 @@ export class PortalLayoutComponent implements OnInit {
       console.log(key);
       if (key == parseInt(keysCurrent) ) {
         this.toastr.info('You have this product in cart!');
-      }
+        itemFounded = false;
+      } 
     }
+
     localStorage.setItem(key, val);
     this.cartItems = localStorage.length;
     this.router.navigate(['Portal']);
+    if (itemFounded){
+      this.toastr.success('You add item to cart');
+    }
   }
 }
