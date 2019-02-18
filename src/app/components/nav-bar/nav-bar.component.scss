@@ -1,5 +1,6 @@
 $primary-color: #2E3E50;
 $hover-color: #ffffff59;
+$white:white;
 .menu {
     background-image: url('../../../assets/img/connectwork.png');
     height: 100vh;
@@ -8,11 +9,11 @@ $hover-color: #ffffff59;
         display: none;
     }
     &-nav {
-        color: white;
+        color: $white;
         margin-top: -46px;
     }
     &-link {
-        color: white;
+        color: $white;
     }
     .categories-prod {
         text-align: center;

@@ -1,6 +1,8 @@
 $background-color: #2d3e4e;
 $secondary-color: #f36f21;
 $dialog-background: #2d3e4ee8;
+$error: red;
+$white: white;
 $button-color: #0d1824;
 $font-bangers: 'Candal',
 cursive;
@@ -16,11 +18,11 @@ cursive;
 
 .navbar {
     &-list {
-        background-color: #161616;
+        background-color: $background-color;
         height: 16vh;
     }
     &-title {
-        color: white;
+        color: $white;
         font-family: $font-bangers;
     }
 }
@@ -47,7 +49,7 @@ cursive;
         padding: 5px;
     }
     & p {
-        color: white;
+        color: $white;
     }
     &-buttons button {
         margin-left: 10px;
@@ -55,8 +57,8 @@ cursive;
 }
 
 .btn-outline-primary {
-    color: white;
-    border-color: white;
+    color: $white;
+    border-color: $white;
 
     &:hover {
         background-color: $secondary-color
@@ -65,7 +67,7 @@ cursive;
 
 .danger {
     font-size: 44px;
-    color: red;
+    color: $error;
 }
 
 //spinner

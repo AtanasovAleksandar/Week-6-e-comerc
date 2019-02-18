@@ -1,6 +1,8 @@
-$primary-color: #2E3E50;
+$primary-color: #1f252b;
 $hover-color: #007bff59;
 $second-color: #f36f21;
+$menu-color: #131313;
+$white: white;
 
 @import '../../responsive/tablet.scss';
 @import '../../responsive/mobile.scss';
@@ -44,7 +46,7 @@ body {
 
 
 .nav-list {
-    background-color: #353346;
+    background-color: $primary-color;
     position: relative;
     &-search {
         margin: 27px 26px;
@@ -56,15 +58,15 @@ body {
 }
 
 .menu-color {
-    color: white !important;
+    color: $white !important;
 }
 
 .navbar {
-    background-color: #131313;
+    background-color: $menu-color;
 }
 
 .dropdown-menu {
-    background-color: #131313 !important;
+    background-color: $menu-color !important;
 }
 
 .dropdown-item:hover {
@@ -90,7 +92,7 @@ body {
     position: absolute;
     left: 18px;
     font-weight: 500;
-    color: #f36f21;
+    color: $second-color;
     bottom: -10px;
     color: $second-color;
 }
@@ -100,7 +102,7 @@ body {
     height: 71px;
     text-align: center;
     padding-top: 12px;
-    color: white;
+    color: $white;
     &-title {
         border-bottom: 5px solid $second-color;
         padding-bottom: 13px;
@@ -108,13 +110,13 @@ body {
 }
 
 .btn-outline-primary {
-    border-color: white;
-    color: white;
+    border-color: $white;
+    color: $white;
     margin-left: 5px;
 }
 
 .btn-dark {
-    color: white!important;
+    color: $white !important;
     font-size: 12px;
 }
 
@@ -169,7 +171,7 @@ body {
 a {
     color: white;
     &:hover {
-        color: blue;
+        color: lighten( $primary-color , 4);
     }
 }
 
@@ -186,7 +188,7 @@ a {
 
 .shop-cart-img {
     height: 30px;
-    fill: white!important;
+    fill: $white;
 }
 
 .shopping-cart {
@@ -203,14 +205,14 @@ a {
 .cart-items-count {
     position: absolute;
     bottom: 5px;
-    color: #f36f21;
+    color: $second-color;
     left: 62px;
 }
 
 .fa {
     &-shopping-cart {
         font-size: 28px;
-        color: white;
+        color: $white;
         cursor: pointer;
         margin: 0 5px;
     }
@@ -222,7 +224,7 @@ a {
 
 .btn-outline-danger {
     border-color: $second-color;
-    color: white;
+    color: $white;
     &:hover {
         background-color: $second-color;
     }
@@ -249,7 +251,7 @@ a {
 }
 
 .empty {
-    color: white;
+    color: $white;
     font-weight: 700;
     margin-top: 20px;
 }

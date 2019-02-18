@@ -1,6 +1,8 @@
 $background-color: #2d3e4e;
 $secondary-color: #EFF5F9;
 $text-color: #37505C;
+$white: white;
+$error-color: red;
 $font-bangers: 'Candal', cursive;
 $font-labels: 'Bangers, cursive';
 
@@ -10,12 +12,12 @@ $font-labels: 'Bangers, cursive';
 
 .navbar {
     &-list {
-        background-color: #161616;
+        background-color: $background-color;
         height: 16vh;
     }
 
     &-title {
-        color: white;
+        color: $white;
         font-family: $font-bangers;
     }
 }
@@ -46,7 +48,7 @@ $font-labels: 'Bangers, cursive';
 }
 
 .empty {
-    border-color: red;
+    border-color: $error-color;
 }
 
 .form-labels {

@@ -1,6 +1,7 @@
 $background-color: #2d3e4e;
 $secondary-color: #f36f21;
 $button-color: #0d1824;
+$white: white;
 $dialog-background: #2d3e4ee8;
 $font-bangers: 'Candal',
 cursive;
@@ -13,18 +14,18 @@ cursive;
 
 .navbar {
     &-list {
-        background-color: #161616;
+        background-color: $background-color;
         height: 16vh;
     }
     &-title {
-        color: white;
+        color: $white;
         font-family: $font-bangers;
     }
 }
 
 .btn-outline-primary {
-    color: white;
-    border-color: white;
+    color: $white;
+    border-color: $white;
 
     &:hover {
         background-color: $secondary-color;

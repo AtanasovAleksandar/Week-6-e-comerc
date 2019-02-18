@@ -1,6 +1,8 @@
 $primary-color: #2E3E50;
 $hover-color: #007bff59;
 $second-color: #f36f21;
+$background: #757575;
+$white: white;
 
 
 @import '../../../responsive/tablet.scss';
@@ -9,7 +11,7 @@ $second-color: #f36f21;
 .sell {
     height: 50px;
     text-align: center;
-    background-color: #757575;
+    background-color: $background;
     padding-top: 7px;
     span {
         color: $second-color;
@@ -31,13 +33,13 @@ $second-color: #f36f21;
     align-items: center;
 }
 
-.shop-cart-img {
+.img-cart {
     height: 30px;
-    fill: white !important;
+    fill: $white !important;
 }
 
-.badge-warning {
+.count-items {
     background-color: $second-color;
-    color: white !important;
+    color: $white !important;
     margin-left: 5px;
 }
