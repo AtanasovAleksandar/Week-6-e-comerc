@@ -5,6 +5,7 @@ import { CategoriesService } from 'src/app/services/categories.service';
 import { Category } from 'src/app/models/category.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CountService } from 'src/app/services/count.service';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class PortalLayoutComponent implements OnInit {
     public categoryService: CategoriesService,
     public activeRouter: ActivatedRoute,
     public router: Router,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    public countService: CountService) { }
 
   ngOnInit() {
     this.getProducts();
@@ -111,7 +113,7 @@ export class PortalLayoutComponent implements OnInit {
 
     localStorage.setItem(key, val);
     this.cartItems = localStorage.length;
-    this.router.navigate(['Portal']);
+    this.countService.getShoppingCartLength();
     if (itemFounded) {
       this.toastr.success('You add item to cart');
     }

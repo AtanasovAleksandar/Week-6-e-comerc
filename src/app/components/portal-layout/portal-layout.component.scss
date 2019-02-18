@@ -41,16 +41,7 @@ body {
     justify-content: space-evenly;
 }
 
-.sell {
-    height: 50px;
-    text-align: center;
-    background-color: #757575; 
-    padding-top: 7px;
-    span {
-        color: $second-color;
-        font-weight: 700;
-    }
-}
+
 
 .nav-list {
     background-color: #353346;
@@ -208,11 +199,6 @@ a {
     align-items: center;
 }
 
-.badge-warning {
-    background-color: $second-color;
-    color: white !important;
-    margin-left: 5px;
-}
 
 .cart-items-count {
     position: absolute;

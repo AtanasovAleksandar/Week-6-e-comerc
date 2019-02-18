@@ -21,7 +21,8 @@ import { AddEditCategoryComponent } from './components/add-edit/add-edit.compone
 import { AddEditProductsComponent } from './components/products/add-edit-products/add-edit-products.component';
 import { DetailViewComponent } from './components/portal-layout/detail-view/detail-view.component';
 import { ShoppingCartComponent } from './components/portal-layout/shopping-cart/shopping-cart.component';
-import { NavAdminComponent } from './components/shared/nav-admin/nav-admin.component';
+import { NavAdminComponent } from './components/Shared/nav-admin/nav-admin.component';
+import { PromoShoppingCartComponent } from './components/portal-layout/promo-shopping-cart/promo-shopping-cart.component';
 
 
 
@@ -38,6 +39,7 @@ import { NavAdminComponent } from './components/shared/nav-admin/nav-admin.compo
     DetailViewComponent,
     ShoppingCartComponent,
     NavAdminComponent,
+    PromoShoppingCartComponent,
   ],
   
   imports: [

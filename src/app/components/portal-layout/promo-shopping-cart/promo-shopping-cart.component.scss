@@ -1,0 +1,43 @@
+$primary-color: #2E3E50;
+$hover-color: #007bff59;
+$second-color: #f36f21;
+
+
+@import '../../../responsive/tablet.scss';
+@import '../../../responsive/mobile.scss';
+
+.sell {
+    height: 50px;
+    text-align: center;
+    background-color: #757575;
+    padding-top: 7px;
+    span {
+        color: $second-color;
+        font-weight: 700;
+    }
+}
+
+.promo {
+    margin-top: 5px;
+}
+
+.shopping-cart {
+    position: absolute;
+    right: 0;
+    top: 3px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shop-cart-img {
+    height: 30px;
+    fill: white !important;
+}
+
+.badge-warning {
+    background-color: $second-color;
+    color: white !important;
+    margin-left: 5px;
+}
