@@ -27,6 +27,9 @@ export class PortalLayoutComponent implements OnInit {
   cartItems: number = 0;
   itemfounded: boolean = true;
   loading: boolean;
+  categoryId: any;
+  categoryName: any;
+  detail = false;
 
   constructor(public productService: ProductsService,
     public categoryService: CategoriesService,
@@ -71,10 +74,16 @@ export class PortalLayoutComponent implements OnInit {
     )
   }
 
+  receiveSearchName($event) {
+    this.searchName = $event
+    this.searchProducts();
+  }
+
   searchProducts() {
     this.loading = true;
     this.productService.searchByName(this.searchName).subscribe(
       data => {
+        this.detail = false;
         this.loading = false;
         this.products = data;
         this.activeCategory = "Results:"
@@ -82,14 +91,30 @@ export class PortalLayoutComponent implements OnInit {
         this.notFound = false;
         if (this.searchName == '') {
           this.notFound = true;
+          this.getProducts();
         }
       }
     )
   }
 
-  checkCategory(categoryIT, name) {
+  categoryClickId($event) {
+    this.categoryId = $event
+  }
+
+  categoryClickName($event) {
+    this.detail = false;
+    this.categoryName = $event
+    this.checkCategory();
+  }
+
+  getAll($event) {
+    this.detail = false;
+    this.getProducts();
+  }
+
+  checkCategory() {
     this.loading = true;
-    this.productService.searchByCategoryId(categoryIT).subscribe(
+    this.productService.searchByCategoryId(this.categoryId).subscribe(
       (data: Product[]) => {
         this.loading = false;
         this.products = data;
@@ -97,7 +122,7 @@ export class PortalLayoutComponent implements OnInit {
         if (data.length == 0) {
           this.empty = true;
         }
-        this.activeCategory = name;
+        this.activeCategory = this.categoryName;
       }
     )
   }
@@ -105,7 +130,7 @@ export class PortalLayoutComponent implements OnInit {
   addToCart(item) {
     let itemFounded = true;
     let key = item.id;
-    let val = item.name
+    let val = JSON.stringify(item);
     let keys = Object.keys(localStorage);
     console.log(keys);
     for (var i = 0; i < keys.length; i++) {
@@ -123,5 +148,15 @@ export class PortalLayoutComponent implements OnInit {
     if (itemFounded) {
       this.toastr.success('You add item to cart');
     }
+  }
+
+  changeView($event) {
+    this.detail = $event;
+  }
+
+  checkProductActive(itemID) {
+    this.detail = true;
+    this.activeCategory = 'Detail View';
+    this.router.navigate(['Portal', itemID]);
   }
 }

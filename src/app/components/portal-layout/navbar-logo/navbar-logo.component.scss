@@ -1,0 +1,23 @@
+$primary-color: #1f252b;
+
+.nav-list {
+    background-color: $primary-color;
+    position: relative;
+    &-search {
+        margin: 27px 26px;
+    }
+    img {
+        height: 65px;
+        margin-left: 66px;
+    }
+}
+
+@mixin center {
+        display: flex;
+        justify-content: center;
+    
+}
+
+.imgList {
+   @include center;
+}

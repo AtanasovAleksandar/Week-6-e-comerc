@@ -1,0 +1,23 @@
+$white: white;
+$menu-color: #131313;
+$second-color: #f36f21;
+
+.menu-color {
+    color: $white !important;
+}
+
+.navbar {
+    background-color: $menu-color;
+}
+
+.dropdown-menu {
+    background-color: $menu-color !important;
+}
+
+.dropdown-item:hover {
+    background-color: $second-color !important;
+}
+
+.nav-item:hover {
+    background-color: $second-color !important;
+}

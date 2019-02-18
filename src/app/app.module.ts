@@ -23,6 +23,9 @@ import { DetailViewComponent } from './components/portal-layout/detail-view/deta
 import { ShoppingCartComponent } from './components/portal-layout/shopping-cart/shopping-cart.component';
 import { NavAdminComponent } from './components/Shared/nav-admin/nav-admin.component';
 import { PromoShoppingCartComponent } from './components/portal-layout/promo-shopping-cart/promo-shopping-cart.component';
+import { NavbarLogoComponent } from './components/portal-layout/navbar-logo/navbar-logo.component';
+import { CarouselComponent } from './components/portal-layout/carousel/carousel.component';
+import { NavPortalComponent } from './components/Shared/nav-portal/nav-portal.component';
 
 
 
@@ -40,6 +43,9 @@ import { PromoShoppingCartComponent } from './components/portal-layout/promo-sho
     ShoppingCartComponent,
     NavAdminComponent,
     PromoShoppingCartComponent,
+    NavbarLogoComponent,
+    CarouselComponent,
+    NavPortalComponent,
   ],
   
   imports: [

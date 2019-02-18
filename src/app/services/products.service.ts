@@ -47,5 +47,9 @@ export class ProductsService {
     return this.http.get(this.productsApi + '?filter[where][categoryId]=' + id)
   }
 
+  getDetailProduct(id):Observable<any> {
+    return this.http.get(this.productsApi + '/' + id);
+  }
+
 
 }

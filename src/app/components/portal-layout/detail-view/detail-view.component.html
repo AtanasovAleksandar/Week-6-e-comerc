@@ -1,3 +1,20 @@
-<p>
-  detail-view works!
-</p>
+<div class="row">
+  <div class="detail col-md-12">
+    <img src="{{product.imageUrl}}" alt="img" class="detail-img">
+    <div class="detail-content">
+      <h2>{{product.name}}</h2>
+      <h3 class="detail-description">Short Description: <span>{{product.shortDescription}}</span></h3>
+      <h3>Manufacturer: <span>{{product.manufacturer}}</span></h3>
+      <h3 *ngIf="product.isAvailable; else outOF"> Availability: 
+        <span> In Stock</span> </h3>
+        <ng-template #outOF><h3>Availability: <span>Out of Stock</span></h3></ng-template>
+        <span class="quant">Quantity</span>
+      <div class="row detail-input">
+        <input type="number" class="form-control">
+        <button class="btn btn-primary" [ngClass]="{'outOfStock': !product.isAvailable}">Add to cart</button>
+      </div>
+      <h3 class="detail-description">Description: <span>{{product.fullDescription}}</span> </h3>
+    </div>
+  </div>
+  <button class="btn btn-primary" [routerLink]="[ 'Portal' ]" (click)="goBack()">Go Back</button>
+</div>

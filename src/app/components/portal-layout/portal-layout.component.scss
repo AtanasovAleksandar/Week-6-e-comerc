@@ -28,9 +28,7 @@ body {
     display: none;
 }
 
-.carousel-item {
-    height: auto;
-}
+
 
 .badge-categories {
     display: none;
@@ -57,25 +55,6 @@ body {
     }
 }
 
-.menu-color {
-    color: $white !important;
-}
-
-.navbar {
-    background-color: $menu-color;
-}
-
-.dropdown-menu {
-    background-color: $menu-color !important;
-}
-
-.dropdown-item:hover {
-    background-color: $second-color !important;
-}
-
-.nav-item:hover {
-    background-color: $second-color !important;
-}
 
 .col-md-12 {
     margin: 0px;
@@ -128,8 +107,9 @@ body {
 .card {
     background-image: url('../../../assets/img/organic-tiles.png');
     height: 165px;
-    margin: 4px;
+    margin: 56px;
     margin-top: 20px;
+    margin-bottom: 11px;
     &-img-top {
         position: absolute;
         height: 150px;
