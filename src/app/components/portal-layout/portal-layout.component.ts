@@ -56,6 +56,12 @@ export class PortalLayoutComponent implements OnInit {
     )
   }
 
+  checkInput() {
+    if (this.searchName == '') {
+      this.getProducts();
+    }
+  }
+
   getCategory() {
     this.categoryService.getAllCategories().subscribe(
       data => {

@@ -82,6 +82,7 @@ export class ListCategoryComponent implements OnInit  {
       this.activeDelete = false;
     }
   }
+  
 
   receiveSearchName($event) {
     this.searchName = $event

@@ -31,6 +31,13 @@ export class NavAdminComponent implements OnInit {
   @Input() categoryName: string;
   
 
+  checkInput() {
+    if (this.searchName == '') {
+      this.searchName = '';
+      this.sentSearchName();
+    }
+  }
+
   navigate() {
     if (this.param == 'pr') {
       this.router.navigate(['Products/Add', 'Add-products']);
@@ -43,7 +50,7 @@ export class NavAdminComponent implements OnInit {
 
   sentSearchName() {
     this.searchEvent.emit(this.searchName);
-    this.searchName = '';
+    // this.searchName = '';
   }
 
 }

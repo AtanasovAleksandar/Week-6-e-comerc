@@ -66,7 +66,7 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" [(ngModel)]="searchName" name="searchName" placeholder="Search"
+        <input class="form-control mr-sm-2" type="search" (input)="checkInput()" [(ngModel)]="searchName" name="searchName" placeholder="Search"
           aria-label="Search">
         <button class="btn btn-outline-danger my-2 my-sm-0" (click)="searchProducts()" type="submit">Search</button>
       </form>
@@ -77,9 +77,6 @@
     <h2 class="split-title">{{activeCategory}}</h2>
   </div>
   <div class="row list-products">
-    <div class="search-off col-md-12" *ngIf="searchActive">
-      <button class="btn btn-danger" (click)="getProducts()">Cancel Search</button>
-    </div>
     <ng-template *ngIf="notFound">
       <h2 class="error">Search field is empty or product does not exist!</h2>
     </ng-template>
