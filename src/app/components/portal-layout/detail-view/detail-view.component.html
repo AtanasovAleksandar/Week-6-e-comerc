@@ -10,8 +10,8 @@
         <ng-template #outOF><h3>Availability: <span>Out of Stock</span></h3></ng-template>
         <span class="quant">Quantity</span>
       <div class="row detail-input">
-        <input type="number" class="form-control">
-        <button class="btn btn-primary" [ngClass]="{'outOfStock': !product.isAvailable}">Add to cart</button>
+        <input type="number" class="form-control" [(ngModel)]="quantity" name="quantity">
+        <button class="btn btn-primary" (click)="addToCart(product)" [ngClass]="{'outOfStock': !product.isAvailable}">Add to cart</button>
       </div>
       <h3 class="detail-description">Description: <span>{{product.fullDescription}}</span> </h3>
     </div>

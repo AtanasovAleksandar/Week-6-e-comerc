@@ -25,6 +25,7 @@
       </div>
     </div>
     <app-detail-view (changeActive)='changeView($event)' class="col-md-12" *ngIf="detail"></app-detail-view>
+    <app-shopping-cart *ngIf="shopList"></app-shopping-cart>
     <div class="list-carts col-md-12" *ngIf="!detail">
       <div class="card col-md-3 col-sm-4 col-xs-6 float-left" *ngFor="let item of products; let i = index ">
         <img (click)="checkProductActive(item.id)" src="{{item.imageUrl}}" class="card-img-top" alt="{{item.name}}">
@@ -35,7 +36,7 @@
           <h5 class="card-title col-sm-12 col-md-12">{{item.name}}</h5>
           <h5 class="card-price col-sm-12 col-sm-3 col-md-12">{{item.price}}$</h5>
           <p class="card-text col-sm-12 col-md-12">{{item.shortDescription}}</p>
-          <a class="btn btn-dark card-btn btn-sm" (click)="addToCart(item)"
+          <a class="btn btn-dark card-btn btn-sm" (click)="checkIfExist(item)"
             [ngClass]="{'disable':!item.isAvailable}">Add to Card</a>
         </div>
       </div>

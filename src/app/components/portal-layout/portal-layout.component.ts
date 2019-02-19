@@ -27,9 +27,11 @@ export class PortalLayoutComponent implements OnInit {
   cartItems: number = 0;
   itemfounded: boolean = true;
   loading: boolean;
-  categoryId: any;
-  categoryName: any;
+  categoryId: number;
+  categoryName: string;
   detail = false;
+  quantity:number = 1;
+  Exists: boolean = false;;
 
   constructor(public productService: ProductsService,
     public categoryService: CategoriesService,
@@ -127,17 +129,38 @@ export class PortalLayoutComponent implements OnInit {
     )
   }
 
+  checkIfExist(product) {
+    let keys = Object.keys(localStorage);
+    let key = product.id
+    this.Exists = false;
+    for (var i = 0; i <= keys.length; i++) {  //check if already exists
+      const keysCurrent = keys[i];
+      console.log(key);
+      if (key == parseInt(keysCurrent)) {
+        this.Exists = true;
+      } 
+    }
+    if ( !this.Exists ) {
+      this.addToCart(product);
+    } else {
+      this.toastr.info('You have this product in cart!');
+    }
+  }
+
   addToCart(item) {
     let itemFounded = true;
     let key = item.id;
-    let val = JSON.stringify(item);
+    let prodClick = item
+    let itemsAdded = []
+    itemsAdded.push(prodClick,this.quantity);
+    let val = JSON.stringify(itemsAdded);
     let keys = Object.keys(localStorage);
     console.log(keys);
     for (var i = 0; i < keys.length; i++) {
       const keysCurrent = keys[i];
       console.log(key);
       if (key == parseInt(keysCurrent)) {
-        this.toastr.info('You have this product in cart!');
+        // this.toastr.info('You have this product in cart!');
         itemFounded = false;
       }
     }
