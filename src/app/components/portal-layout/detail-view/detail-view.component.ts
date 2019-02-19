@@ -29,7 +29,6 @@ export class DetailViewComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRout.params.subscribe(params => {
-      console.log(params)
       this.prodID = parseInt(params.id);
     });
     this.getProduct();
@@ -65,10 +64,12 @@ export class DetailViewComponent implements OnInit {
     itemsAdded.push(prodClick, this.quantity);
     let val = JSON.stringify(itemsAdded); // to string
     let keys = Object.keys(localStorage);
+    
     console.log(keys);
 
     if (this.itemInCart) {
       this.value = JSON.parse(localStorage.getItem(key)); //to json and get 
+      console.log(this.value)
     }
     this.itemInCart = false;
     for (var i = 0; i < keys.length; i++) {  //check if already exists
