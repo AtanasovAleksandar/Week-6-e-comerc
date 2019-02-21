@@ -107,7 +107,7 @@ body {
 .card {
     background-image: url('../../../assets/img/organic-tiles.png');
     height: 165px;
-    margin: 56px;
+    margin: 4%;
     margin-top: 20px;
     margin-bottom: 11px;
     &-img-top {
@@ -115,7 +115,7 @@ body {
         height: 150px;
         left: 0;
         width: 50%;
-        object-fit: fill;
+        object-fit: scale-down;
         padding: 20px;
     }
     &-body {

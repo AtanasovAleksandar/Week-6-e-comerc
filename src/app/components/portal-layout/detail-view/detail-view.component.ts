@@ -15,11 +15,12 @@ export class DetailViewComponent implements OnInit {
   prodID: number;
   detail: boolean = false;
   isAvailable: string = ''
-  quantity: number;
+  quantity: number = 1;
   cartItems: number;
   value: Object = {};
   itemInCart: boolean;
   quant: number;
+  error: boolean = false;
 
   constructor(public productService: ProductsService,
     public activatedRout: ActivatedRoute,
@@ -56,6 +57,14 @@ export class DetailViewComponent implements OnInit {
     this.changeActive.emit(this.detail)
   }
 
+    checkInput(item) {
+      if (this.quantity <= 0 || this.quantity == null) {
+        this.error = true;
+      }  else {
+        this.error = false;
+      }
+    }
+
 
   addToCart(item) {
     let key = item.id;
@@ -81,7 +90,13 @@ export class DetailViewComponent implements OnInit {
       }
     }
 
-    let changedQuantity = false;
+    
+    if (this.quantity <= 0 || this.quantity == null) {
+      this.error = true;
+    } else {
+      this.error = false;
+      this.detail = false;
+      let changedQuantity = false;
 
     if (this.quantity != this.quant && this.itemInCart) {
       changedQuantity = true;
@@ -93,12 +108,11 @@ export class DetailViewComponent implements OnInit {
     } else if (!this.itemInCart && this.quantity > 1) {
       this.toastr.success('You add new item to Cart');
     }
-
-    localStorage.setItem(key, val);
+      localStorage.setItem(key, val);
+      this.goBack();
+    }
     this.cartItems = localStorage.length;
     this.countService.getShoppingCartLength();
-    this.detail = false;
-    this.goBack();
   }
 }
 

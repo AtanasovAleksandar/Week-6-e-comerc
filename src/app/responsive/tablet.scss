@@ -47,6 +47,9 @@
             font-size: 14px;
         }
     }
+    .list-carts {
+        padding: 30px !important;
+    }
     .sell {
         height: 65px;
         font-size: 11px;
@@ -66,6 +69,20 @@
     .shopping-cart {
         margin-top: 6px;
         width: 60px;
+    }
+    .btn-back {
+        position: relative!important;
+    }
+    .detail-view {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .list-carts {
+        margin-left: -30px !important;
     }
 }
 
@@ -90,5 +107,8 @@
     .form-search {
         margin-top: 40px;
         margin-left: 65px;
+    }
+    .list-carts {
+        padding: 0px !important;
     }
 }

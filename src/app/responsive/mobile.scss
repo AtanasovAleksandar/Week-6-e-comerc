@@ -59,9 +59,46 @@
     .table th {
         padding: 0px;
     }
-
     .table {
-        padding: 0px!important;
+        padding: 0px !important;
         font-size: 11px;
+    }
+    .list-carts {
+        padding: 15px !important;
+    }
+    .btn-back {
+        position: relative !important;
+    }
+    .detail {
+        &-view {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        &-img {
+            margin: 24px 25px !important;
+            position: relative;
+            float: left;
+            width:  100px;
+            height: 100px;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: auto!important;
+            &-mob {
+                width: 100%;
+                height: 150px;
+                position: absolute;
+                top: 0;
+                margin-left: 23%;
+            }
+        }
+        &-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 5px;
+            margin-top: 35% !important;
+        }
     }
 }

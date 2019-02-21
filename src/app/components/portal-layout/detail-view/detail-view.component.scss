@@ -1,5 +1,9 @@
 $white: white;
 $secondary-color: #f36f21;
+
+@import '../../../responsive/tablet.scss';
+@import '../../../responsive/mobile.scss';
+
 h2 {
     color: $secondary-color;
     font-weight: 600;
@@ -40,6 +44,7 @@ h3 {
             color: $secondary-color;
         }
     }
+}
     .quant {
         color: $white;
     }
@@ -48,4 +53,21 @@ h3 {
         cursor: not-allowed !important;
         pointer-events: none;
     }
-}
+    .btn-add {
+        background-color: $secondary-color;
+        color: white;
+        width: 120px;
+        height: 38px;
+        &:hover {
+            background-color: darken($secondary-color, 5);
+        }
+    }
+    .btn-back {
+        background-color: $secondary-color;
+        position: absolute;
+        top: 50%;
+        left: 2%;
+        &:hover {
+            background-color: darken($secondary-color, 5);
+        }
+    }

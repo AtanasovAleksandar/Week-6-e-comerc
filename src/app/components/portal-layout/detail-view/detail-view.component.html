@@ -1,20 +1,26 @@
-<div class="row">
+<div class="row detail-view">
   <div class="detail col-md-12">
-    <img src="{{product.imageUrl}}" alt="img" class="detail-img">
+    <div class="detail-img-mob">
+      <img src="{{product.imageUrl}}" alt="img" class="detail-img">
+    </div>
+
     <div class="detail-content">
       <h2>{{product.name}}</h2>
       <h3 class="detail-description">Short Description: <span>{{product.shortDescription}}</span></h3>
       <h3>Manufacturer: <span>{{product.manufacturer}}</span></h3>
-      <h3 *ngIf="product.isAvailable; else outOF"> Availability: 
+      <h3 *ngIf="product.isAvailable; else outOF"> Availability:
         <span> In Stock</span> </h3>
-        <ng-template #outOF><h3>Availability: <span>Out of Stock</span></h3></ng-template>
-        <span class="quant">Quantity</span>
+      <ng-template #outOF>
+        <h3>Availability: <span>Out of Stock</span></h3>
+      </ng-template>
+      <span class="quant">Quantity</span>
       <div class="row detail-input">
-        <input type="number" class="form-control" [(ngModel)]="quantity" name="quantity">
-        <button class="btn btn-primary" (click)="addToCart(product)" [ngClass]="{'outOfStock': !product.isAvailable}">Add to cart</button>
+        <input type="number" class="form-control" (input)="checkInput(product)" [(ngModel)]="quantity" name="quantity">
+        <button class="btn btn-danger btn-add" (click)="addToCart(product)"
+          [ngClass]="{'outOfStock': !product.isAvailable}" *ngIf="!error" >Add to cart</button>
       </div>
       <h3 class="detail-description">Description: <span>{{product.fullDescription}}</span> </h3>
     </div>
   </div>
-  <button class="btn btn-primary" [routerLink]="[ 'Portal' ]" (click)="goBack()">Go Back</button>
+  <button class="btn btn-danger btn-back" [routerLink]="[ 'Portal', 'List' ]" (click)="goBack()">Go Back</button>
 </div>
