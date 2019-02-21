@@ -15,7 +15,7 @@
       </ng-template>
       <span class="quant">Quantity</span>
       <div class="row detail-input">
-        <input type="number" class="form-control" (input)="checkInput(product)" [(ngModel)]="quantity" name="quantity">
+        <input type="number" class="form-control" (input)="checkInput(product)" [(ngModel)]="quantity" min="1" name="quantity">
         <button class="btn btn-danger btn-add" (click)="addToCart(product)"
           [ngClass]="{'outOfStock': !product.isAvailable}" *ngIf="!error" >Add to cart</button>
       </div>

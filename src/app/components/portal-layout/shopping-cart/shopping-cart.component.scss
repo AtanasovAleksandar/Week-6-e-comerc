@@ -1,0 +1,45 @@
+$secondary-color: #f36f21;
+
+.cart-img {
+    height: 50px;
+    object-fit: scale-down;
+}
+
+tr {
+    text-align: center;
+}
+
+td {
+    color: white;
+    position: relative;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.btn-remove {
+    position: absolute;
+}
+
+.total {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 13px;
+    &-price {
+        font-size: 30px;
+        color: $secondary-color;
+    }
+}
+
+.input {
+    width: 25%;
+    &-quantity {
+        width: 50%;
+    }
+}
+
+.pay {
+    margin-right: 3.2%;
+    margin-top: 15px;
+}

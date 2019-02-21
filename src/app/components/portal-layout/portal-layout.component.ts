@@ -182,4 +182,6 @@ export class PortalLayoutComponent implements OnInit {
     this.activeCategory = 'Detail View';
     this.router.navigate(['Portal', itemID]);
   }
+
+  
 }
