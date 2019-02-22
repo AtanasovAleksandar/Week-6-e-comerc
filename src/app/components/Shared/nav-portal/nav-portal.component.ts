@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Category } from 'src/app/models/category.model';
 import { Product } from 'src/app/models/products.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EmmitService } from 'src/app/services/emmit.service';
 
 @Component({
   selector: 'app-nav-portal',
@@ -14,7 +16,10 @@ export class NavPortalComponent implements OnInit {
   searchName: string;
   mainMenu: Product[] = [];
 
-  constructor(public categoryService: CategoriesService) { }
+  constructor(public categoryService: CategoriesService,
+    public activatedRout: ActivatedRoute,
+    public router: Router,
+    public emiteService: EmmitService) { }
 
   ngOnInit() {
     this.getCategory();
@@ -32,7 +37,7 @@ export class NavPortalComponent implements OnInit {
   checkInput() {
     if (this.searchName == '') {
       this.searchName = '';
-      this.sentSearchName();
+      this.sentSearchName();s
     }
   }
 
@@ -42,15 +47,23 @@ export class NavPortalComponent implements OnInit {
   @Output() GetAllCategories = new EventEmitter<String>();
 
   sentSearchName() {
-    this.searchEvent.emit(this.searchName);
+    this.router.navigate(['/Portal', name]);
+   this.emiteService.searchWord(this.searchName);
   }
 
   checkCategory(id, name) {
-    this.FilterEventId.emit(id);
-    this.FilterEventName.emit(name);
+    this.router.navigate(['/Portal', name]);
+    this.emiteService.categoryNameActive(name);
+    this.emiteService.getActiveParentCategory(id)
+    id = 0;
+    name = 'Home';
   }
 
+
+
   getAll(name) {
+    this.router.navigate(['/Portal','list']);
+    this.emiteService.getAllHome(name)
     this.GetAllCategories.emit(name);
   }
 

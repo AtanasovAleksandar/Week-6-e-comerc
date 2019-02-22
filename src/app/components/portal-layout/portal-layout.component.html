@@ -2,8 +2,7 @@
   <app-promo-shopping-cart></app-promo-shopping-cart>
   <app-navbar-logo></app-navbar-logo>
   <app-carousel *ngIf="!detail"></app-carousel>
-  <app-nav-portal (searchEvent)="receiveSearchName($event)" (FilterEventId)='categoryClickId($event)'
-    (FilterEventName)='categoryClickName($event)' (GetAllCategories)='getAll($event)'>
+  <app-nav-portal (searchEvent)="receiveSearchName($event)">
   </app-nav-portal>
   <div class="split col-md-12 ">
     <h2 class="split-title">{{activeCategory}}</h2>

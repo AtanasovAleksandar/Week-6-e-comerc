@@ -6,6 +6,7 @@ import { Category } from 'src/app/models/category.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CountService } from 'src/app/services/count.service';
+import { EmmitService } from 'src/app/services/emmit.service';
 
 
 @Component({
@@ -30,19 +31,23 @@ export class PortalLayoutComponent implements OnInit {
   categoryId: number;
   categoryName: string;
   detail = false;
-  quantity:number = 1;
-  Exists: boolean = false;;
+  quantity: number = 1;
+  Exists: boolean = false;
+  sName:string;
 
   constructor(public productService: ProductsService,
     public categoryService: CategoriesService,
     public activeRouter: ActivatedRoute,
     public router: Router,
     private toastr: ToastrService,
-    public countService: CountService) { }
+    public countService: CountService,
+    public emmitService: EmmitService) { }
 
   ngOnInit() {
     this.getProducts();
     this.getCategory();
+    this.getActiveProducts();
+    this.searchByName();
     this.cartItems = localStorage.length;
   }
 
@@ -51,12 +56,67 @@ export class PortalLayoutComponent implements OnInit {
     this.productService.getProducts().subscribe(
       data => {
         this.loading = false;
-        this.products = data
-        this.activeCategory = 'Home'
-        this.searchName = '';
+        this.products = data;
         this.empty = false;
         this.searchActive = false;
+        this.detail = false;
         console.log(data)
+      }
+    )
+    this.emmitService.cName.subscribe(
+      name => {
+        this.activeCategory = name;
+      }
+    )
+  }
+
+  getActiveProducts() {
+    this.emmitService.activeCategoryFilter.subscribe(
+      data => {
+        if (this.activeCategory == 'Home') {
+          this.getProducts();
+        } else {
+          this.categoryId = data;
+          this.searchProducts();
+        }
+      }
+    )
+  }
+
+  searchProducts() {
+    this.loading = true;
+    this.productService.searchByCategoryId(this.categoryId).subscribe(
+      data => {
+        this.loading = false;
+        this.products = data;
+        this.empty = false;
+        if (this.products.length == 0) {
+          this.empty = true;
+        }
+      }
+    )
+  }
+
+  searchByName() {
+    this.sName
+    this.emmitService.search.subscribe(
+      res => {
+        this.sName = res
+        if (this.sName == '') {
+          this.getProducts();
+        } else {
+          this.searchFilter();
+        }
+      }
+    )
+  }
+
+  searchFilter() {
+    this.loading = true;
+    this.productService.searchByName(this.sName).subscribe(
+      data => {
+        this.loading = false;
+        this.products = data;
       }
     )
   }
@@ -78,56 +138,8 @@ export class PortalLayoutComponent implements OnInit {
 
   receiveSearchName($event) {
     this.searchName = $event
-    this.searchProducts();
   }
 
-  searchProducts() {
-    this.loading = true;
-    this.productService.searchByName(this.searchName).subscribe(
-      data => {
-        this.detail = false;
-        this.loading = false;
-        this.products = data;
-        this.activeCategory = "Results:"
-        this.searchActive = true;
-        this.notFound = false;
-        if (this.searchName == '') {
-          this.notFound = true;
-          this.getProducts();
-        }
-      }
-    )
-  }
-
-  categoryClickId($event) {
-    this.categoryId = $event
-  }
-
-  categoryClickName($event) {
-    this.detail = false;
-    this.categoryName = $event
-    this.checkCategory();
-  }
-
-  getAll($event) {
-    this.detail = false;
-    this.getProducts();
-  }
-
-  checkCategory() {
-    this.loading = true;
-    this.productService.searchByCategoryId(this.categoryId).subscribe(
-      (data: Product[]) => {
-        this.loading = false;
-        this.products = data;
-        this.empty = false;
-        if (data.length == 0) {
-          this.empty = true;
-        }
-        this.activeCategory = this.categoryName;
-      }
-    )
-  }
 
   checkIfExist(product) {
     let keys = Object.keys(localStorage);
@@ -138,9 +150,9 @@ export class PortalLayoutComponent implements OnInit {
       console.log(key);
       if (key == parseInt(keysCurrent)) {
         this.Exists = true;
-      } 
+      }
     }
-    if ( !this.Exists ) {
+    if (!this.Exists) {
       this.addToCart(product);
     } else {
       this.toastr.info('You have this product in cart!');
@@ -152,7 +164,7 @@ export class PortalLayoutComponent implements OnInit {
     let key = item.id;
     let prodClick = item
     let itemsAdded = []
-    itemsAdded.push(prodClick,this.quantity);
+    itemsAdded.push(prodClick, this.quantity);
     let val = JSON.stringify(itemsAdded);
     let keys = Object.keys(localStorage);
     console.log(keys);
@@ -160,7 +172,6 @@ export class PortalLayoutComponent implements OnInit {
       const keysCurrent = keys[i];
       console.log(key);
       if (key == parseInt(keysCurrent)) {
-        // this.toastr.info('You have this product in cart!');
         itemFounded = false;
       }
     }
@@ -183,5 +194,5 @@ export class PortalLayoutComponent implements OnInit {
     this.router.navigate(['Portal', itemID]);
   }
 
-  
+
 }

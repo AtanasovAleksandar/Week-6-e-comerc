@@ -1,7 +1,7 @@
 <app-navbar-logo></app-navbar-logo>
 <app-nav-portal></app-nav-portal>
 
-<table class="table col-md-12">
+<table *ngIf="productInCart.length != 0" class="table col-md-12">
     <thead class="thead-dark">
         <tr>
             <th scope="col">Picture</th>
@@ -20,11 +20,15 @@
             <td class="input"> <input type="number" min="1" class="input-form input-quantity" [(ngModel)]="item[1]"
                     name="item[1]" (input)='calculate()'></td>
             <td> {{item[1] * item[0].price}} $</td>
-            <td><button class="btn btn-danger btn-sm btn-block btn-remove" (click)="delete(item[0].id)">Remove</button></td>
+            <td><button class="btn btn-danger btn-sm btn-block btn-remove" (click)="delete(item[0].id)">Remove</button>
+            </td>
         </tr>
     </tbody>
 </table>
-<div class="checkOut">
+<div class="checkOut" *ngIf="productInCart.length != 0">
     <h2 class="total col-md-6">Total price to pay: <span class="total-price">{{total}}$</span></h2>
     <button class="pay btn-danger btn-sm btn-block float-right" (click)="checkOut()">Checkout</button>
+</div>
+<div *ngIf="productInCart.length == 0 ">
+    <h2 class="empty">Yud dont have products in you cart!</h2>
 </div>

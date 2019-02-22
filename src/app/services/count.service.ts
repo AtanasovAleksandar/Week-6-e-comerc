@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { CategoriesService } from './categories.service';
 import { ProductsService } from './products.service';
-import { Product } from '../models/products.model';
 
 
 @Injectable({

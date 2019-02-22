@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link menu-color" (click)="getAll('Home')">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link menu-color" (click)="checkCategory(0,'Home')">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active" *ngFor="let item of mainMenu">
           <a class="nav-link menu-color" (click)="checkCategory(item.id,item.name)">{{item.name}} <span

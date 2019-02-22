@@ -28,8 +28,6 @@ import { CarouselComponent } from './components/portal-layout/carousel/carousel.
 import { NavPortalComponent } from './components/Shared/nav-portal/nav-portal.component';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
