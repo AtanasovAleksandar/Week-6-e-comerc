@@ -64,9 +64,8 @@ h3 {
     }
     .btn-back {
         background-color: $secondary-color;
-        position: absolute;
-        top: 50%;
-        left: 2%;
+        margin-left: 50px;
+        margin-bottom: 15px;
         &:hover {
             background-color: darken($secondary-color, 5);
         }

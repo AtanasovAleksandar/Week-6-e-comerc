@@ -108,10 +108,16 @@ export class AddEditCategoryComponent implements OnInit {
   }
 
   editedValues() {
-    this.category.parentCategoryId = this.selectedOption.id
-    this.category.parentCategoryName = this.selectedOption.name
-    console.log(this.newCategory);
-    this.editCategory();
+    if (!this.selectedOption) {
+      this.editCategory();
+    } else {
+      this.category.parentCategoryId = this.selectedOption.id
+      this.category.parentCategoryName = this.selectedOption.name
+      console.log(this.newCategory);
+      this.editCategory();
+    }
+   
+  
   }
 
   editCategory() {
