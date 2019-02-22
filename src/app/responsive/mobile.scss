@@ -94,11 +94,12 @@
             }
         }
         &-content {
+            width: 100%!important;
             position: absolute;
             top: 53%;
             padding: 46px;
             margin: 0px!important;
-            margin-top: 100px!important;
+            margin-top: 230px !important;
         }
     }
     .tablet {

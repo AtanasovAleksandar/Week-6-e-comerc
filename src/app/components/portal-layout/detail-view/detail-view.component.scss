@@ -24,11 +24,14 @@ h3 {
     justify-content: center;
     align-items: center;
     &-img {
-        width: 170px;
-        margin: 25px 65px;
+        width: 50%;
+        &-size {
+            width: 90%;
+        }
     }
     &-content {
         margin: 35px;
+        width: 50%;
     }
     &-input {
         input {
@@ -66,7 +69,16 @@ h3 {
         background-color: $secondary-color;
         margin-left: 50px;
         margin-bottom: 15px;
+        
         &:hover {
             background-color: darken($secondary-color, 5);
         }
+    }
+
+    .btn-warning {
+        float: right;
+        background-color: white;
+        border-color: white;
+        color: black;
+        font-weight: 600;
     }
