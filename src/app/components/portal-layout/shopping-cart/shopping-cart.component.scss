@@ -16,8 +16,14 @@ td {
     font-weight: 700;
 }
 
+.td {
+    display: flex;
+    justify-content: center;
+}
+
 .btn-remove {
     position: absolute;
+    width: 100px;
 }
 
 .total {

@@ -71,12 +71,31 @@
         width: 60px;
     }
     .btn-back {
-        position: relative!important;
+        position: relative !important;
+        margin-left: 0px!important;
+        margin-top: 25px;
     }
     .detail-view {
         display: flex;
         flex-direction: row;
         justify-content: center;
+    }
+    .tablet {
+        &-td {
+            font-size: 14px !important;
+            .btn-remove {
+                position: absolute;
+                width: 100px;
+            }
+            .input-quantity {
+                width: 100%;
+            }
+        }
+    }
+    .detail-content {
+        position: absolute;
+        top: 90%;
+        left: 0%;
     }
 }
 

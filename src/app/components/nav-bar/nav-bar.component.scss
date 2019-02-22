@@ -1,6 +1,10 @@
 $primary-color: #2E3E50;
 $hover-color: #ffffff59;
 $white:white;
+
+@import '../../responsive/tablet.scss';
+@import '../../responsive/mobile.scss';
+
 .menu {
     background-image: url('../../../assets/img/connectwork.png');
     height: 100vh;
@@ -20,14 +24,14 @@ $white:white;
         margin: 5px;
     }
     &-img {
-        width: 204px;
-        height: 45px;
+        width: 100%;
+        height: auto;
         margin: 31px;
         &-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 150px; 
+            height: 150px;
         }
     }
 }

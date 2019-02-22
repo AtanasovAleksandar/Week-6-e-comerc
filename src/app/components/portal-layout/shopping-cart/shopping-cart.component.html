@@ -1,30 +1,31 @@
 <app-navbar-logo></app-navbar-logo>
 <app-nav-portal></app-nav-portal>
-
-<table *ngIf="productInCart.length != 0" class="table col-md-12">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">Picture</th>
-            <th scope="col">Products(s)</th>
-            <th scope="col">Price</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Total</th>
-            <th scope="col">Remove</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of productInCart; let i= index">
-            <td><img class="cart-img" src="{{item[0].imageUrl}}" alt="img"></td>
-            <td>{{item[0].name}}</td>
-            <td>{{item[0].price}}</td>
-            <td class="input"> <input type="number" min="1" class="input-form input-quantity" [(ngModel)]="item[1]"
-                    name="item[1]" (input)='calculate()'></td>
-            <td> {{item[1] * item[0].price}} $</td>
-            <td><button class="btn btn-danger btn-sm btn-block btn-remove" (click)="delete(item[0].id)">Remove</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-responsive-md">
+    <table *ngIf="productInCart.length != 0" class="table col-md-12 col-xs-12 col-sm-12">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Picture</th>
+                <th scope="col">Products(s)</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of productInCart; let i= index">
+                <td class="tablet-td"><img class="cart-img" src="{{item[0].imageUrl}}" alt="img"></td>
+                <td class="tablet-td">{{item[0].name}}</td>
+                <td class="tablet-td">{{item[0].price}}</td>
+                <td class="input"> <input type="number" min="1" class="input-form input-quantity" [(ngModel)]="item[1]"
+                        name="item[1]" (input)='calculate()'></td>
+                <td class="tablet-td"> {{item[1] * item[0].price}} $</td>
+                <td class="tablet-td"><button class="btn btn-danger btn-sm btn-block btn-remove" (click)="delete(item[0].id)">Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <div class="checkOut" *ngIf="productInCart.length != 0">
     <h2 class="total col-md-6">Total price to pay: <span class="total-price">{{total}}$</span></h2>
     <button class="pay btn-danger btn-sm btn-block float-right" (click)="checkOut()">Checkout</button>

@@ -79,12 +79,12 @@
             margin: 24px 25px !important;
             position: relative;
             float: left;
-            width:  100px;
+            width: 100px;
             height: 100px;
             background-position: 50% 50%;
             background-repeat: no-repeat;
             background-size: cover;
-            width: auto!important;
+            width: auto !important;
             &-mob {
                 width: 100%;
                 height: 150px;
@@ -94,11 +94,29 @@
             }
         }
         &-content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 5px;
-            margin-top: 35% !important;
+            position: absolute;
+            top: 53%;
+            padding: 46px;
+            margin: 0px!important;
+            margin-top: 100px!important;
         }
+    }
+    .tablet {
+        &-td {
+            font-size: 9px !important;
+            padding: 5px;
+            width: 19px;
+            .btn-remove {
+                position: absolute;
+                position: absolute;
+                width: 100%;
+                font-size: 8px;
+                padding: 5px;
+                margin: -5px;
+            }
+        }
+    }
+    .input-quantity {
+        width: 100% !important;
     }
 }
