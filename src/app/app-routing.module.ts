@@ -30,7 +30,7 @@ const routes: Routes = [
     ]
   },
   { path: 'Shopping-cart', component: ShoppingCartComponent },
-  { path: '', redirectTo: "Portal", pathMatch: 'full' },
+  { path: '', redirectTo: "Portal/list", pathMatch: 'full' },
   { path: '**', redirectTo: "Portal/list", pathMatch: 'full' }
 ];
 

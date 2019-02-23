@@ -1,12 +1,15 @@
 $primary-color: #2E3E50;
 $hover-color: #ffffff59;
+$gradient-second: #800080;
+$gradient-first: #006400;
 $white:white;
+$main-nav-color: #1b3335;
 
 @import '../../responsive/tablet.scss';
 @import '../../responsive/mobile.scss';
 
 .menu {
-    background-image: url('../../../assets/img/connectwork.png');
+    background-image: linear-gradient(to top, $primary-color , $gradient-first);
     height: 100vh;
     position: fixed;
     &-hamburger {

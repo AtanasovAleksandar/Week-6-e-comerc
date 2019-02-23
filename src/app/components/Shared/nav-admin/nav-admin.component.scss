@@ -1,7 +1,11 @@
 $background-color: #2d3e4e;
+$primary-color: #2E3E50;
 $secondary-color: #f36f21;
 $button-color: #0d1824;
 $white: white;
+$gradient-second: #800080;
+$gradient-first: #006400;
+$main-nav-color: #1b3335;
 $dialog-background: #2d3e4ee8;
 $font-bangers: 'Candal',
 cursive;
@@ -14,7 +18,7 @@ cursive;
 
 .navbar {
     &-list {
-        background-color: $background-color;
+        background-image: linear-gradient(to top, $gradient-first , $primary-color);
         height: 16vh;
     }
     &-title {

@@ -37,7 +37,7 @@ export class NavPortalComponent implements OnInit {
   checkInput() {
     if (this.searchName == '') {
       this.searchName = '';
-      this.sentSearchName();s
+      this.sentSearchName();
     }
   }
 
