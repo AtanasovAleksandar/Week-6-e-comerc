@@ -4,7 +4,7 @@ $secondary-color: #f36f21;
 $button-color: #0d1824;
 $white: white;
 $gradient-second: #800080;
-$gradient-first: #006400;
+$gradient-first: #242583;
 $main-nav-color: #1b3335;
 $dialog-background: #2d3e4ee8;
 $font-bangers: 'Candal',
@@ -12,19 +12,44 @@ cursive;
 
 //responsive 
 
-@import '../../../responsive/tablet.scss';
-
-@import '../../../responsive/mobile.scss';
+@import '../../../responsive/admin-panel-nav.scss';
 
 .navbar {
     &-list {
-        background-image: linear-gradient(to top, $gradient-first , $primary-color);
+        background-image: linear-gradient(to left, #05386b , $gradient-second);
         height: 16vh;
     }
     &-title {
         color: $white;
         font-family: $font-bangers;
     }
+}
+
+.nav-tab {
+    height: 47px;
+}
+
+.form-search {
+    width: 100%;
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        input {
+            width: 59%;
+        }
+        button {
+            width: 200px;
+        }
+    }
+}
+
+.name-category {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 14%;
 }
 
 .btn-outline-primary {

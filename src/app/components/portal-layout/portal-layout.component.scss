@@ -17,7 +17,12 @@ body {
 
 .menu {
     display: none;
+    &-view {
+        display: none;
+    }
 }
+
+
 
 .categories {
     pointer-events: none;

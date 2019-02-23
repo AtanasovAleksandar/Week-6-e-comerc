@@ -1,23 +1,27 @@
 $primary-color: #2E3E50;
 $hover-color: #ffffff59;
 $gradient-second: #800080;
-$gradient-first: #006400;
+$gradient-first: #242583;
 $white:white;
 $main-nav-color: #1b3335;
 
-@import '../../responsive/tablet.scss';
-@import '../../responsive/mobile.scss';
 
-.menu {
-    background-image: linear-gradient(to top, $primary-color , $gradient-first);
+
+.menu-view {
+    // background-image: linear-gradient(to top, $gradient-first , $gradient-second);
+    background-color: #05386b;
     height: 100vh;
     position: fixed;
-    &-hamburger {
-        display: none;
+    &-img {
+        width: 100%;
+        margin: 65px 35px;
+        &-logo {
+            width:75%;
+        }   
     }
     &-nav {
         color: $white;
-        margin-top: -46px;
+        margin-top: 4px;
     }
     &-link {
         color: $white;
@@ -27,9 +31,6 @@ $main-nav-color: #1b3335;
         margin: 5px;
     }
     &-img {
-        width: 100%;
-        height: auto;
-        margin: 31px;
         &-container {
             display: flex;
             flex-direction: column;
@@ -43,7 +44,4 @@ $main-nav-color: #1b3335;
     background-color: $hover-color;
 }
 
-//max 770px min 400px
-@import '../../responsive/tablet.scss';
-//max 400px 
-@import '../../responsive/mobile.scss';
+@import '../../responsive/admin-panel-nav.scss';

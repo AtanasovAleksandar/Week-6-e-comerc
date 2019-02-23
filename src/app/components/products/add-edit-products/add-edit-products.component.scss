@@ -12,7 +12,8 @@ $font-labels: 'Bangers, cursive';
 
 .navbar {
     &-list {
-        background-color: $background-color;
+        // background-color: $background-color;
+        background-image: linear-gradient(to left, #05386b, #800080);
         height: 16vh;
     }
 

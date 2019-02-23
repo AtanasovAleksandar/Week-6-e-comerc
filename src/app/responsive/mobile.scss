@@ -5,6 +5,8 @@
         width: 100%;
         &-mobile {
             height: 34vh;
+            padding: 45px;
+            margin-top: -3px;
             &-view {
                 height: 44vh;
                 width: 66vh;
@@ -15,7 +17,7 @@
         }
     }
     .navbar-list {
-        height: 34vh !important;
+        height: 34vh;
         width: 66vh;
     }
     .form-search {

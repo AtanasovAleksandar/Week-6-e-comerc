@@ -1,23 +1,23 @@
-<nav class="col-md-2 col-sm-12 menu menu-mobile-view float-left">
+<nav class="col-lg-2 col-md-12 col-sm-12 menu-view float-left">
   <div class="col-md-12 nav-pills menu-container">
-    <div class="menu-img-container">
-      <img class="menu-img" [routerLink]="[ 'Portal', 'list' ]" src="https://cdn11.bigcommerce.com/s-ailgvhd9/images/stencil/original/orange-white-compressed_1549503243__89104.original.png" alt="Logo">
+    <div class="menu-view-img">
+      <img class="menu-view-img-logo" [routerLink]="[ 'Portal', 'list' ]" src="https://cdn11.bigcommerce.com/s-ailgvhd9/images/stencil/original/orange-white-compressed_1549503243__89104.original.png" alt="Logo">
     </div>
 
-    <nav class="nav flex-column menu-nav">
-      <a class="nav-link float-left menu-link categories" [routerLink]="['Category','ct']" routerLinkActive="active-selected">
+    <nav class="nav flex-column menu-view-nav">
+      <a class="nav-link float-left menu-view-link categories" [routerLink]="['Category','ct']" routerLinkActive="active-selected">
         <i class="fas fa-folder-open"></i> Category <span class="badge badge-danger badge-categories">{{countCategory}}</span>
         <i class="float-right fas fa-angle-right"></i>
       </a>
 
       <div class="categoriesNav" *ngFor="let category of categories">
-        <a class="nav-link float-left menu-link col-md-12 categories-prod" 
+        <a class="nav-link float-left menu-view-link col-md-12 categories-prod" 
         [routerLink]="['Portal']">
           {{category.name}}
         </a>
       </div>
 
-      <a class="nav-link float-left menu-link products" [routerLink]="['Products','pr']" 
+      <a class="nav-link float-left menu-view-link products" [routerLink]="['Products','pr']" 
       routerLinkActive="active-selected">
         <i class="fas fa-align-justify"></i> Products
         <span class="badge badge-danger">{{countProducts}}</span>
