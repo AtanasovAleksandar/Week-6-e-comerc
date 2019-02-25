@@ -119,6 +119,7 @@ export class PortalLayoutComponent implements OnInit {
     this.loading = true;
     this.productService.searchByName(this.sName).subscribe(
       data => {
+        this.activeCategory = 'search results:';
         this.loading = false;
         this.products = data;
       }
