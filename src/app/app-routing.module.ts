@@ -7,6 +7,7 @@ import { PortalLayoutComponent } from './components/portal-layout/portal-layout.
 import { AddEditCategoryComponent } from './components/add-edit/add-edit.component';
 import { AddEditProductsComponent } from './components/products/add-edit-products/add-edit-products.component';
 import { ShoppingCartComponent } from './components/portal-layout/shopping-cart/shopping-cart.component';
+import { DetailViewComponent } from './components/portal-layout/detail-view/detail-view.component';
 
 const routes: Routes = [
   {
@@ -27,11 +28,13 @@ const routes: Routes = [
     path: 'Portal', children: [
       { path: ':id', component: PortalLayoutComponent },
       { path: 'list', component: PortalLayoutComponent },
+      { path: 'Detail/:id', component: DetailViewComponent },
     ]
   },
+  
   { path: 'Shopping-cart', component: ShoppingCartComponent },
-  { path: '', redirectTo: "Portal/list", pathMatch: 'full' },
-  { path: '**', redirectTo: "Portal/list", pathMatch: 'full' }
+  { path: '', redirectTo: "Portal/Home", pathMatch: 'full' },
+  { path: '**', redirectTo: "Portal/Home", pathMatch: 'full' }
 ];
 
 @NgModule({

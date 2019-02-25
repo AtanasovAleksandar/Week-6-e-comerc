@@ -47,11 +47,12 @@ export class NavPortalComponent implements OnInit {
   @Output() GetAllCategories = new EventEmitter<String>();
 
   sentSearchName() {
-    this.router.navigate(['/Portal', name]);
+    this.router.navigate(['/Portal', 'Home']);
    this.emiteService.searchWord(this.searchName);
   }
 
   checkCategory(id, name) {
+    this.emiteService.searchWord('');
     this.router.navigate(['/Portal', name]);
     this.emiteService.categoryNameActive(name);
     this.emiteService.getActiveParentCategory(id)
@@ -62,7 +63,8 @@ export class NavPortalComponent implements OnInit {
 
 
   getAll(name) {
-    this.router.navigate(['/Portal','list']);
+    this.emiteService.searchWord('');
+    this.router.navigate(['/Portal', name]);
     this.emiteService.getAllHome(name)
     this.GetAllCategories.emit(name);
   }

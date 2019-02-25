@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/products.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountService } from 'src/app/services/count.service';
 import { ToastrService } from 'ngx-toastr';
+import { EmmitService } from 'src/app/services/emmit.service';
 
 @Component({
   selector: 'app-detail-view',
@@ -26,7 +27,8 @@ export class DetailViewComponent implements OnInit {
     public activatedRout: ActivatedRoute,
     public router: Router,
     public countService: CountService,
-    public toastr: ToastrService) { }
+    public toastr: ToastrService,
+    public emmitService: EmmitService) { }
 
   ngOnInit() {
     this.activatedRout.params.subscribe(params => {
@@ -67,6 +69,7 @@ export class DetailViewComponent implements OnInit {
 
 
   addToCart(item) {
+    this.emmitService.categoryNameActive('Home');
     let key = item.id;
     let prodClick = item
     let itemsAdded = []

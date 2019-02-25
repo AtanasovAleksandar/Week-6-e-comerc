@@ -44,11 +44,15 @@ export class PortalLayoutComponent implements OnInit {
     public emmitService: EmmitService) { }
 
   ngOnInit() {
+    // this.emmitService.searchWord('');
     this.getProducts();
     this.getCategory();
     this.getActiveProducts();
     this.searchByName();
     this.cartItems = localStorage.length;
+    this.activeRouter.params.subscribe((params) => {
+      this.activeCategory = params.id;
+    });
   }
 
   getProducts() {

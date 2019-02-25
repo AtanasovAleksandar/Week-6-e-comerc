@@ -1,3 +1,6 @@
+<app-promo-shopping-cart></app-promo-shopping-cart>
+<app-navbar-logo></app-navbar-logo>
+<app-nav-portal> </app-nav-portal>
 <div class="row detail-view">
   <div class="detail col-md-12">
     <div class=" detail-img detail-img-mob">
@@ -17,10 +20,10 @@
       <div class="row detail-input">
         <input type="number" class="form-control" (input)="checkInput(product)" [(ngModel)]="quantity" min="1" name="quantity">
         <button class="btn btn-danger btn-add" (click)="addToCart(product)"
-          [ngClass]="{'outOfStock': !product.isAvailable}" *ngIf="!error" >Add to cart</button>
+          [ngClass]="{'outOfStock': !product.isAvailable}" [routerLink]="[ '/Portal/Home']" *ngIf="!error" >Add to cart</button>
       </div>
       <h3 class="detail-description">Description: <span>{{product.fullDescription}}</span> </h3>
-      <button class="btn btn-warning " [routerLink]="[ 'Portal', 'List' ]" (click)="goBack()">Go Back</button>
+      <button class="btn btn-warning " [routerLink]="[ 'Portal', 'Home' ]" (click)="goBack()">Go Back</button>
     </div>
     
   </div>
