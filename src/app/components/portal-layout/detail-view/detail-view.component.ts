@@ -53,11 +53,6 @@ export class DetailViewComponent implements OnInit {
     )
   }
 
-  @Output() changeActive = new EventEmitter<boolean>();
-
-  goBack() {
-    this.changeActive.emit(this.detail)
-  }
 
     checkInput(item) {
       if (this.quantity <= 0 || this.quantity == null) {
@@ -112,7 +107,6 @@ export class DetailViewComponent implements OnInit {
       this.toastr.success('You add new item to Cart');
     }
       localStorage.setItem(key, val);
-      this.goBack();
     }
     this.cartItems = localStorage.length;
     this.countService.getShoppingCartLength();

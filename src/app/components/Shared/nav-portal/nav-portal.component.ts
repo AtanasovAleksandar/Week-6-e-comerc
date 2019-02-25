@@ -34,6 +34,10 @@ export class NavPortalComponent implements OnInit {
     )
   }
 
+  @Output() navigation = new EventEmitter<string>();
+
+
+
   checkInput() {
     if (this.searchName == '') {
       this.searchName = '';
@@ -41,10 +45,6 @@ export class NavPortalComponent implements OnInit {
     }
   }
 
-  @Output() searchEvent = new EventEmitter<string>();
-  @Output() FilterEventId = new EventEmitter<number>();
-  @Output() FilterEventName = new EventEmitter<String>();
-  @Output() GetAllCategories = new EventEmitter<String>();
 
   sentSearchName() {
     this.router.navigate(['/Portal', 'Home']);
@@ -56,8 +56,10 @@ export class NavPortalComponent implements OnInit {
     this.router.navigate(['/Portal', name]);
     this.emiteService.categoryNameActive(name);
     this.emiteService.getActiveParentCategory(id)
+    this.navigation.emit(id);
     id = 0;
     name = 'Home';
+    
   }
 
 
@@ -66,7 +68,6 @@ export class NavPortalComponent implements OnInit {
     this.emiteService.searchWord('');
     this.router.navigate(['/Portal', name]);
     this.emiteService.getAllHome(name)
-    this.GetAllCategories.emit(name);
   }
 
 

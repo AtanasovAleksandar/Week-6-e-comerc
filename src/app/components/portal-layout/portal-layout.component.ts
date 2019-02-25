@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CountService } from 'src/app/services/count.service';
 import { EmmitService } from 'src/app/services/emmit.service';
+import { from } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 
 @Component({
@@ -33,7 +35,8 @@ export class PortalLayoutComponent implements OnInit {
   detail = false;
   quantity: number = 1;
   Exists: boolean = false;
-  sName:string;
+  sName: string;
+  productFilter: Product[] = [];
 
   constructor(public productService: ProductsService,
     public categoryService: CategoriesService,
@@ -48,7 +51,9 @@ export class PortalLayoutComponent implements OnInit {
     this.getProducts();
     this.getCategory();
     this.getActiveProducts();
-    this.searchByName();
+    if(this.searchName == '') {
+      this.search();
+    }
     this.cartItems = localStorage.length;
     this.activeRouter.params.subscribe((params) => {
       this.activeCategory = params.id;
@@ -61,9 +66,10 @@ export class PortalLayoutComponent implements OnInit {
       data => {
         this.loading = false;
         this.products = data;
+        // this.productFilter = data;
         this.empty = false;
         this.searchActive = false;
-        this.detail = false;
+        this.filterByName('as');
         console.log(data)
       }
     )
@@ -78,10 +84,8 @@ export class PortalLayoutComponent implements OnInit {
     this.emmitService.activeCategoryFilter.subscribe(
       data => {
         if (this.activeCategory == 'Home') {
-          this.getProducts();
         } else {
           this.categoryId = data;
-          this.searchProducts();
         }
       }
     )
@@ -93,6 +97,7 @@ export class PortalLayoutComponent implements OnInit {
       data => {
         this.loading = false;
         this.products = data;
+        this.productFilter = data;
         this.empty = false;
         if (this.products.length == 0) {
           this.empty = true;
@@ -101,27 +106,76 @@ export class PortalLayoutComponent implements OnInit {
     )
   }
 
-  searchByName() {
-    this.sName
-    this.emmitService.search.subscribe(
-      res => {
-        this.sName = res
-        if (this.sName == '') {
-          this.getProducts();
-        } else {
-          this.searchFilter();
-        }
+  getAll() {
+    this.productService.getProducts().subscribe(
+      data => {
+        this.productFilter = data;
+        this.loading = false;
       }
     )
   }
 
+
+  filterByName($event) {
+    this.emmitService.activeCategoryFilter.subscribe(
+      id => {
+        this.categoryId = id
+        this.loading = true;
+      })
+
+    if (this.categoryId == 0) {
+      this.loading = true;
+      this.getAll();
+    } else {
+      this.productFilter = [];
+      const source = from(this.products);
+      this.loading = true;
+      const newFilterProducts = source.pipe(
+        filter(
+          data => data.manufacturer == this.activeCategory
+        )
+      )
+      newFilterProducts.subscribe(
+        (data) => {
+          this.productFilter.push(data);
+          this.empty = false;
+          console.log(this.productFilter)
+        }
+      )
+      this.loading = false;
+      if (this.productFilter.length == 0) {
+        this.empty = true;
+      }
+    }
+  }
+
+  search() {
+    this.emmitService.search.subscribe(
+      word => {
+        this.productFilter = [];
+      const source = from(this.products);
+      this.loading = true;
+      const newFilterProducts = source.pipe(
+        filter(
+          data => data.name == word
+        )
+      )
+      newFilterProducts.subscribe(
+        (data) => {
+          this.productFilter.push(data);
+          this.empty = false;
+          console.log(this.productFilter)
+        }
+      )
+  })
+}
   searchFilter() {
     this.loading = true;
     this.productService.searchByName(this.sName).subscribe(
       data => {
         this.activeCategory = 'search results:';
         this.loading = false;
-        this.products = data;
+        this.productFilter = data;
       }
     )
   }

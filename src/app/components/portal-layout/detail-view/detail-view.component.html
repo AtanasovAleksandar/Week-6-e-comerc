@@ -23,7 +23,7 @@
           [ngClass]="{'outOfStock': !product.isAvailable}" [routerLink]="[ '/Portal/Home']" *ngIf="!error" >Add to cart</button>
       </div>
       <h3 class="detail-description">Description: <span>{{product.fullDescription}}</span> </h3>
-      <button class="btn btn-warning " [routerLink]="[ 'Portal', 'Home' ]" (click)="goBack()">Go Back</button>
+      <button class="btn btn-warning " [routerLink]="[ 'Portal', 'Home' ]" >Go Back</button>
     </div>
     
   </div>

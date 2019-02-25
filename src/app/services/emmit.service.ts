@@ -18,7 +18,6 @@ export class EmmitService {
   cName = this.categoryName.asObservable();
   search = this.searchTerms.asObservable();
   
-
   getActiveParentCategory(id) {
     this.activeCategory.next(id);
   }
@@ -35,3 +34,6 @@ export class EmmitService {
     this.searchTerms.next(word)
   }
 }
+
+//da napravam tuka filtiranje i posle da go pustam na next rezultatot
+
