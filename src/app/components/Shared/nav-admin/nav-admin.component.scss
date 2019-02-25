@@ -17,7 +17,7 @@ cursive;
 .navbar {
     &-list {
         background-image: linear-gradient(to left, #05386b , $gradient-second);
-        height: 16vh;
+        height: 23vh;
     }
     &-title {
         color: $white;
@@ -36,7 +36,7 @@ cursive;
         justify-content: center;
         align-items: center;
         input {
-            width: 59%;
+            width: 54%;
         }
         button {
             width: 200px;
@@ -46,6 +46,7 @@ cursive;
 
 .name-category {
     width: 100%;
+    margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;

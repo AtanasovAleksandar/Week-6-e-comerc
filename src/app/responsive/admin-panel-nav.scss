@@ -1,16 +1,12 @@
 $nav-menu-color: #4d187863;
-
-
 @media only screen and (max-width: 990px) and (min-width: 500px) {
-
-
     .menu {
         display: inline-block;
         &-link {
             float: left;
         }
         &-view {
-            height: 15vh;
+            height: 20vh;
             position: relative;
             &-link {
                 float: left;
@@ -24,61 +20,52 @@ $nav-menu-color: #4d187863;
                 display: inline-block;
                 width: 100%;
                 height: 50px;
-            } 
+            }
             &-img {
-            width: 50%;
-            margin: 0px;
-            &-logo {
-                width: 100%;
-                margin-left: 50%;
-                padding-top: 20px;
+                width: 50%;
+                margin: 0px;
+                &-logo {
+                    width: 100%;
+                    margin-left: 50%;
+                    padding-top: 20px;
+                }
             }
         }
-      }
     }
-
     nav {
         display: block;
     }
-
     .navbar {
         &-list {
             padding: 35px;
         }
     }
-
     .name-category {
         margin-bottom: 15px;
     }
-
     .category-form {
         input {
-            width: 56%!important;
+            width: 48% !important
+        }
+        button {
+            width: 130px!important;
         }
     }
-
-
-
-   .fa-angle-right {
-       display: none;
-   }
-
-.menu-img {
-    width: 95%;
-    &-container {
-        width: 50%;
+    .fa-angle-right {
+        display: none;
+    }
+    .menu-img {
+        width: 95%;
+        &-container {
+            width: 50%;
+        }
+    }
+    .form {
+        padding: 10px;
     }
 }
 
-.form {
-    padding: 10px;
-}
-
-}
-
-
 @media only screen and (max-width: 500px) and (min-width: 320px) {
-
     .menu {
         display: inline-block;
         &-link {
@@ -99,48 +86,40 @@ $nav-menu-color: #4d187863;
                 display: inline-block;
                 width: 100%;
                 height: 35px
-            } 
+            }
             &-img {
-            width: 50%;
-            margin: 0px;
-            &-logo {
-                width: 100%;
-                margin-left: 50%;
-                padding-top: 20px;
+                width: 50%;
+                margin: 0px;
+                &-logo {
+                    width: 100%;
+                    margin-left: 50%;
+                    padding-top: 20px;
+                }
             }
         }
-      }
     }
-
     .navbar-list {
-        height: 18vh!important;
+        height: 18vh !important;
     }
-
     .category-form {
         input {
-            width: 55%!important;
+            width: 55% !important;
         }
     }
-
     .btn-search {
-        width: 100px!important;
+        width: 100px !important;
     }
-
     .nav-tab {
         font-size: 12px;
         height: 34px
     }
-
     .navbar-title {
         font-size: 16px;
     }
-
     .form {
         padding: 10px;
     }
-
     .table {
-        font-size: 16px!important;
+        font-size: 16px !important;
     }
-
 }
