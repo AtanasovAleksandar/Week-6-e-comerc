@@ -26,6 +26,7 @@ import { PromoShoppingCartComponent } from './components/portal-layout/promo-sho
 import { NavbarLogoComponent } from './components/portal-layout/navbar-logo/navbar-logo.component';
 import { CarouselComponent } from './components/portal-layout/carousel/carousel.component';
 import { NavPortalComponent } from './components/Shared/nav-portal/nav-portal.component';
+import { PreviousRouteService } from './services/previous-route.service';
 
 
 @NgModule({
@@ -69,7 +70,9 @@ import { NavPortalComponent } from './components/Shared/nav-portal/nav-portal.co
       tapToDismiss: true,
     }),
   ],
-  providers: [],
+  providers: [
+    PreviousRouteService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

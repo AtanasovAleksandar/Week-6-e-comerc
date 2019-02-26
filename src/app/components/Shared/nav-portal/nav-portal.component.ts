@@ -4,6 +4,8 @@ import { Category } from 'src/app/models/category.model';
 import { Product } from 'src/app/models/products.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmmitService } from 'src/app/services/emmit.service';
+import { ProductsService } from 'src/app/services/products.service';
+import { PreviousRouteService } from 'src/app/services/previous-route.service';
 
 @Component({
   selector: 'app-nav-portal',
@@ -15,11 +17,15 @@ export class NavPortalComponent implements OnInit {
   categories: Category[] = [];
   searchName: string;
   mainMenu: Product[] = [];
+  
 
   constructor(public categoryService: CategoriesService,
     public activatedRout: ActivatedRoute,
     public router: Router,
-    public emiteService: EmmitService) { }
+    public emiteService: EmmitService,
+    public productService: ProductsService,
+    private previousRouteService: PreviousRouteService,
+    ) { }
 
   ngOnInit() {
     this.getCategory();
@@ -45,10 +51,15 @@ export class NavPortalComponent implements OnInit {
     }
   }
 
-
+@Output() serName = new EventEmitter<string>();
   sentSearchName() {
     this.router.navigate(['/Portal', 'Home']);
-   this.emiteService.searchWord(this.searchName);
+    this.productService.searchByName(this.searchName).subscribe(
+      data => {
+        this.emiteService.getSearch(data)
+        this.serName.emit(this.searchName);
+      }
+    )
   }
 
   checkCategory(id, name) {
@@ -59,9 +70,19 @@ export class NavPortalComponent implements OnInit {
     this.navigation.emit(id);
     id = 0;
     name = 'Home';
+   
     
   }
 
+  @Output() productsList = new EventEmitter<Object>();
+
+ getProducts() {
+  this.productService.getProducts().subscribe(
+    data => {
+      this.productsList.emit(data);
+    }
+  )
+  };
 
 
   getAll(name) {

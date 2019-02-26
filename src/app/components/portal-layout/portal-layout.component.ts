@@ -9,6 +9,7 @@ import { CountService } from 'src/app/services/count.service';
 import { EmmitService } from 'src/app/services/emmit.service';
 import { from } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { PreviousRouteService } from 'src/app/services/previous-route.service';
 
 
 @Component({
@@ -44,20 +45,27 @@ export class PortalLayoutComponent implements OnInit {
     public router: Router,
     private toastr: ToastrService,
     public countService: CountService,
-    public emmitService: EmmitService) { }
+    public emmitService: EmmitService,
+    private previousRouteService: PreviousRouteService) { }
 
   ngOnInit() {
-    // this.emmitService.searchWord('');
-    this.getProducts();
     this.getCategory();
     this.getActiveProducts();
-    if(this.searchName == '') {
-      this.search();
-    }
+    this.getAll();
+    console.log(this.previousRouteService.getPreviousUrl());
     this.cartItems = localStorage.length;
     this.activeRouter.params.subscribe((params) => {
       this.activeCategory = params.id;
+      if (this.activeCategory != 'Home') {
+        this.filterByName(this.activeCategory);
+      }
+      console.log(params)
     });
+    this.emmitService.cName.subscribe(
+      name => {
+        this.activeCategory = name;
+      }
+    )
   }
 
   getProducts() {
@@ -66,16 +74,9 @@ export class PortalLayoutComponent implements OnInit {
       data => {
         this.loading = false;
         this.products = data;
-        // this.productFilter = data;
         this.empty = false;
         this.searchActive = false;
-        this.filterByName('as');
         console.log(data)
-      }
-    )
-    this.emmitService.cName.subscribe(
-      name => {
-        this.activeCategory = name;
       }
     )
   }
@@ -93,48 +94,95 @@ export class PortalLayoutComponent implements OnInit {
 
   searchProducts() {
     this.loading = true;
-    this.productService.searchByCategoryId(this.categoryId).subscribe(
-      data => {
-        this.loading = false;
-        this.products = data;
-        this.productFilter = data;
-        this.empty = false;
-        if (this.products.length == 0) {
-          this.empty = true;
+    this.emmitService.inputSearch.subscribe(
+      (data: Product[]) => {
+        if (data.length != 0) {
+          this.empty = false;
+          this.loading = false;
+          this.productFilter = data;
+        } else {
+          this.getAll();
         }
       }
     )
   }
 
   getAll() {
-    this.productService.getProducts().subscribe(
-      data => {
-        this.productFilter = data;
-        this.loading = false;
-      }
-    )
+    if (this.activeCategory == 'Home') {
+      this.productService.getProducts().subscribe(
+        data => {
+          this.productFilter = data;
+          this.products = data;
+          this.loading = false;
+          this.empty = false;
+          //ako vikam pak filter nema da napravi push vo subsribot
+          // if (this.previousRouteService.getPreviousUrl() == '/Shopping-cart') {
+          //  this.filterByName(this.activeCategory);
+          // } 
+        }
+      )
+    } else {
+      // this.filterByName(this.activeCategory);
+    }
   }
 
-
   filterByName($event) {
+    this.loading = false;
     this.emmitService.activeCategoryFilter.subscribe(
       id => {
         this.categoryId = id
-        this.loading = true;
+        this.loading = false;
       })
 
-    if (this.categoryId == 0) {
-      this.loading = true;
+    if (this.categoryId == 0 && typeof $event == 'number') {
+      this.loading = false;
+      this.getAll();
+    } else if (typeof $event == 'string' && $event != '') {
+     
+      const source = from(this.products);
+      this.loading = false;
+      const newFilterProducts = source.pipe(
+        filter(
+          data => data.name == $event
+        )
+      )
+      if (this.products.length != 0 ) {
+        newFilterProducts.subscribe(
+          (data) => {
+            this.productFilter = []
+            this.activeCategory = 'Search results:'
+            this.productFilter.push(data);
+            this.empty = false;
+            console.log(this.productFilter)
+          }
+        )
+      }
+      this.loading = false;
+      if (this.productFilter.length == 0) {
+        this.empty = true;
+      }
+    } else if (typeof $event == 'string' && $event == '') {
+      this.activeCategory = 'Home';
       this.getAll();
     } else {
       this.productFilter = [];
       const source = from(this.products);
-      this.loading = true;
+      this.loading = false;
       const newFilterProducts = source.pipe(
         filter(
-          data => data.manufacturer == this.activeCategory
+          data => data.categoryId == this.categoryId
         )
       )
+      /* 
+      ne go pravi subsribot na vreme koga prviot pat po vrakanjeto na rutata
+      pred da se napravi zemanjeto na produktite pravi filtriranje a this.produkt 
+      e prazen zatoa pravam getAll ama posle zemanjeto na produktite pa subsribot ne 
+      gi dava za da gi stavam vo nizata i da se prikazat vo newFilterProducts
+
+      resenija da ne se pravi destory na komonentata koga ke odam u cart 
+
+      da ja cuvam nizata vo storage so produktite i sekogas nizata da ima produkti
+      */
       newFilterProducts.subscribe(
         (data) => {
           this.productFilter.push(data);
@@ -153,22 +201,22 @@ export class PortalLayoutComponent implements OnInit {
     this.emmitService.search.subscribe(
       word => {
         this.productFilter = [];
-      const source = from(this.products);
-      this.loading = true;
-      const newFilterProducts = source.pipe(
-        filter(
-          data => data.name == word
+        const source = from(this.products);
+        this.loading = false;
+        const newFilterProducts = source.pipe(
+          filter(
+            data => data.name == word
+          )
         )
-      )
-      newFilterProducts.subscribe(
-        (data) => {
-          this.productFilter.push(data);
-          this.empty = false;
-          console.log(this.productFilter)
-        }
-      )
-  })
-}
+        newFilterProducts.subscribe(
+          (data) => {
+            this.productFilter.push(data);
+            this.empty = false;
+            console.log(this.productFilter)
+          }
+        )
+      })
+  }
   searchFilter() {
     this.loading = true;
     this.productService.searchByName(this.sName).subscribe(

@@ -2,7 +2,10 @@
   <app-promo-shopping-cart></app-promo-shopping-cart>
   <app-navbar-logo></app-navbar-logo>
   <app-carousel *ngIf="!detail"></app-carousel>
-  <app-nav-portal (navigation)='filterByName($event)'></app-nav-portal>
+  <app-nav-portal (navigation)='filterByName($event)' 
+  (serName)='filterByName($event)'
+  (productsList)='filterByName($event)'
+  ></app-nav-portal>
   <div class="split col-md-12 ">
     <h2 class="split-title">{{activeCategory}}</h2>
   </div>
