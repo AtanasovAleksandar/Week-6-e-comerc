@@ -43,7 +43,6 @@ export class AddEditCategoryComponent implements OnInit {
       this.getCategory();
       this.countService.getCount();
       this.countService.getProductCount();
-
     });
   }
 
