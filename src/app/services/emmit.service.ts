@@ -9,7 +9,7 @@ import { Product } from '../models/products.model';
 export class EmmitService {
   products: Product[] = [];
 
-  constructor(public productService : ProductsService) { }
+  constructor(public productService: ProductsService) { }
 
   private activeCategory = new BehaviorSubject<number>(null);
   private home = new BehaviorSubject<string>('');
@@ -24,7 +24,7 @@ export class EmmitService {
   search = this.searchTerms.asObservable();
   inputSearch = this.searchword.asObservable();
   allProd = this.allProducts.asObservable();
-  
+
   getActiveParentCategory(id) {
     this.activeCategory.next(id);
   }
@@ -37,8 +37,6 @@ export class EmmitService {
     this.categoryName.next(name);
   }
 
-
-  //search input
   searchWord(word) {
     this.searchTerms.next(word)
   }
@@ -51,15 +49,24 @@ export class EmmitService {
     this.allProducts.next(this.products)
   }
 
+ ////////////////////////////
 
-//da napravam tuka filtiranje i posle da go pustam na next rezultatot
+  filterProducts(id) {
+    this.productService.searchByCategoryId(id).subscribe(
+      data => {
+        this.products = data;
+        this.getProducts()
+      }
+    )
+  }
 
-filterProducts(name) {
-  this.productService.getProducts().subscribe(
-    data => {
-      this.products = data;
-    }
-  )
-}
+  filterProductsName(name) {
+    this.productService.searchByName(name).subscribe(
+      data => {
+       this.products = data;
+       this.getProducts()
+      }
+    )
+  }
 
 }

@@ -53,11 +53,13 @@ export class NavPortalComponent implements OnInit {
 
 @Output() serName = new EventEmitter<string>();
   sentSearchName() {
-    this.router.navigate(['/Portal', 'Home']);
+    this.router.navigate(['/Portal', 'Search']);
     this.productService.searchByName(this.searchName).subscribe(
       data => {
         this.emiteService.getSearch(data)
         this.serName.emit(this.searchName);
+        this.emiteService.categoryNameActive('Search Results')
+        this.emiteService.filterProductsName(this.searchName)
       }
     )
   }
@@ -67,6 +69,7 @@ export class NavPortalComponent implements OnInit {
     this.router.navigate(['/Portal', name]);
     this.emiteService.categoryNameActive(name);
     this.emiteService.getActiveParentCategory(id)
+    this.emiteService.filterProducts(id);
     this.navigation.emit(id);
     id = 0;
     name = 'Home';

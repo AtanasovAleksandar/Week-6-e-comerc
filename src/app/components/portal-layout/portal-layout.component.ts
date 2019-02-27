@@ -30,7 +30,7 @@ export class PortalLayoutComponent implements OnInit {
   empty: boolean = false;
   cartItems: number = 0;
   itemfounded: boolean = true;
-  loading: boolean;
+  loading: boolean = true;
   categoryId: number;
   categoryName: string;
   detail = false;
@@ -51,7 +51,9 @@ export class PortalLayoutComponent implements OnInit {
   ngOnInit() {
     this.getCategory();
     this.getActiveProducts();
-    this.getAll();
+    if (this.previousRouteService.getPreviousUrl() != '/Shopping-cart') {
+      this.getAll();
+    }
     console.log(this.previousRouteService.getPreviousUrl());
     this.cartItems = localStorage.length;
     this.activeRouter.params.subscribe((params) => {
@@ -109,92 +111,117 @@ export class PortalLayoutComponent implements OnInit {
 
   getAll() {
     if (this.activeCategory == 'Home') {
+      this.loading = true;
       this.productService.getProducts().subscribe(
         data => {
           this.productFilter = data;
           this.products = data;
           this.loading = false;
           this.empty = false;
-          //ako vikam pak filter nema da napravi push vo subsribot
-          // if (this.previousRouteService.getPreviousUrl() == '/Shopping-cart') {
-          //  this.filterByName(this.activeCategory);
-          // } 
         }
       )
-    } else {
-      // this.filterByName(this.activeCategory);
     }
   }
 
   filterByName($event) {
-    this.loading = false;
-    this.emmitService.activeCategoryFilter.subscribe(
-      id => {
-        this.categoryId = id
-        this.loading = false;
-      })
 
-    if (this.categoryId == 0 && typeof $event == 'number') {
-      this.loading = false;
-      this.getAll();
-    } else if (typeof $event == 'string' && $event != '') {
-     
-      const source = from(this.products);
-      this.loading = false;
-      const newFilterProducts = source.pipe(
-        filter(
-          data => data.name == $event
-        )
-      )
-      if (this.products.length != 0 ) {
-        newFilterProducts.subscribe(
-          (data) => {
-            this.productFilter = []
-            this.activeCategory = 'Search results:'
-            this.productFilter.push(data);
-            this.empty = false;
-            console.log(this.productFilter)
-          }
-        )
-      }
-      this.loading = false;
-      if (this.productFilter.length == 0) {
-        this.empty = true;
-      }
-    } else if (typeof $event == 'string' && $event == '') {
+    if (this.activeCategory == 'Search Results' && $event == '') {
+      this.router.navigate(['/Portal', 'Home']);
       this.activeCategory = 'Home';
-      this.getAll();
-    } else {
-      this.productFilter = [];
-      const source = from(this.products);
-      this.loading = false;
-      const newFilterProducts = source.pipe(
-        filter(
-          data => data.categoryId == this.categoryId
-        )
-      )
-      /* 
-      ne go pravi subsribot na vreme koga prviot pat po vrakanjeto na rutata
-      pred da se napravi zemanjeto na produktite pravi filtriranje a this.produkt 
-      e prazen zatoa pravam getAll ama posle zemanjeto na produktite pa subsribot ne 
-      gi dava za da gi stavam vo nizata i da se prikazat vo newFilterProducts
-
-      resenija da ne se pravi destory na komonentata koga ke odam u cart 
-
-      da ja cuvam nizata vo storage so produktite i sekogas nizata da ima produkti
-      */
-      newFilterProducts.subscribe(
-        (data) => {
-          this.productFilter.push(data);
-          this.empty = false;
-          console.log(this.productFilter)
-        }
-      )
-      this.loading = false;
-      if (this.productFilter.length == 0) {
-        this.empty = true;
-      }
     }
+
+    this.loading = true;
+    this.emmitService.allProd.subscribe(
+      (data: Product[]) => {
+        this.loading = false;
+        this.productFilter = data;
+        this.empty = false;
+        if (data.length == 0) {
+          this.empty = true;
+          this.loading = false;
+        }
+        if (this.activeCategory == 'Home' && $event == '') {
+          this.getAll();
+        }
+        if (this.activeCategory == 'Search' && $event != '') {
+          this.activeCategory = 'Search';
+        }
+      }
+    )
+
+    //vtor nacin bes if funkcijata
+    if (this.activeCategory) {
+//vtor nacin bes povici kon api
+    // this.loading = false;
+    // this.emmitService.activeCategoryFilter.subscribe(
+    //   id => {
+    //     this.categoryId = id
+    //     this.loading = false;
+    //   })
+
+    // if (this.categoryId == 0 && typeof $event == 'number') {
+    //   this.loading = false;
+    //   this.getAll();
+    // } else if (typeof $event == 'string' && $event != '') {
+
+    //   const source = from(this.products);
+    //   this.loading = false;
+    //   const newFilterProducts = source.pipe(
+    //     filter(
+    //       data => data.name == $event
+    //     )
+    //   )
+    //   if (this.products.length != 0 ) {
+    //     newFilterProducts.subscribe(
+    //       (data) => {
+    //         this.productFilter = []
+    //         this.activeCategory = 'Search results:'
+    //         this.productFilter.push(data);
+    //         this.empty = false;
+    //         console.log(this.productFilter)
+    //       }
+    //     )
+    //   }
+    //   this.loading = false;
+    //   if (this.productFilter.length == 0) {
+    //     this.empty = true;
+    //   }
+    // } else if (typeof $event == 'string' && $event == '') {
+    //   this.activeCategory = 'Home';
+    //   this.getAll();
+    // } else {
+    //   this.productFilter = [];
+    //   const source = from(this.products);
+    //   this.loading = false;
+    //   const newFilterProducts = source.pipe(
+    //     filter(
+    //       data => data.categoryId == this.categoryId
+    //     )
+    //   )
+    /* 
+    ne go pravi subsribot na vreme koga prviot pat po vrakanjeto na rutata
+    pred da se napravi zemanjeto na produktite pravi filtriranje a this.produkt 
+    e prazen zatoa pravam getAll ama posle zemanjeto na produktite pa subsribot ne 
+    gi dava za da gi stavam vo nizata i da se prikazat vo newFilterProducts
+
+    resenija da ne se pravi destory na komonentata koga ke odam u cart 
+
+    da ja cuvam nizata vo storage so produktite i sekogas nizata da ima produkti
+    */
+    //   newFilterProducts.subscribe(
+    //     (data) => {
+    //       this.productFilter.push(data);
+    //       this.empty = false;
+    //       console.log(this.productFilter)
+    //     }
+    //   )
+    //   this.loading = false;
+    //   if (this.productFilter.length == 0) {
+    //     this.empty = true;
+    //   }
+    // }
+    }
+    
   }
 
   search() {
