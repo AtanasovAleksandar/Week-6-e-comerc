@@ -41,7 +41,10 @@ export class DetailViewComponent implements OnInit {
   getQuantity() {
     let key = JSON.stringify(this.prodID)
     this.value = JSON.parse(localStorage.getItem(key));
-    this.quantity = this.value[1];
+    if ( this.value != null) {
+      this.quantity = this.value[1];
+    }
+   
   }
 
   getProduct() {

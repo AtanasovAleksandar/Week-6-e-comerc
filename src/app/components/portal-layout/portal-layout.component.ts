@@ -30,7 +30,7 @@ export class PortalLayoutComponent implements OnInit {
   empty: boolean = false;
   cartItems: number = 0;
   itemfounded: boolean = true;
-  loading: boolean = true;
+  loading: boolean ;
   categoryId: number;
   categoryName: string;
   detail = false;
@@ -49,13 +49,6 @@ export class PortalLayoutComponent implements OnInit {
     private previousRouteService: PreviousRouteService) { }
 
   ngOnInit() {
-    this.getCategory();
-    this.getActiveProducts();
-    if (this.previousRouteService.getPreviousUrl() != '/Shopping-cart') {
-      this.getAll();
-    }
-    console.log(this.previousRouteService.getPreviousUrl());
-    this.cartItems = localStorage.length;
     this.activeRouter.params.subscribe((params) => {
       this.activeCategory = params.id;
       if (this.activeCategory != 'Home') {
@@ -63,6 +56,15 @@ export class PortalLayoutComponent implements OnInit {
       }
       console.log(params)
     });
+    this.getCategory();
+    this.getActiveProducts();
+    if (this.previousRouteService.getPreviousUrl() != '/Shopping-cart' 
+    || this.previousRouteService.getPreviousUrl() == '/Shopping-cart' && this.activeCategory == 'Home') {
+      this.getAll();
+    }
+    console.log(this.previousRouteService.getPreviousUrl());
+    this.cartItems = localStorage.length;
+    
     this.emmitService.cName.subscribe(
       name => {
         this.activeCategory = name;
