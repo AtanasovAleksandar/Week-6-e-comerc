@@ -5,10 +5,23 @@ $menu-color: #131313;
 $white: white;
 @import '../../responsive/tablet.scss';
 @import '../../responsive/mobile.scss';
+
+
+@media only screen and (max-width: 1000px) and (min-width: 768px) {
+    .card-title {
+            font-size: 15px!important;
+        }
+        .cart-price {
+            font-size: 15px!important;
+        }
+    }
+
 body {
     background-image: url(../../../assets/img/connectwork.png);
 }
-
+.menu-view {
+    display: none!important;
+}
 .products {
     display: none;
 }
@@ -346,3 +359,4 @@ a {
     position: absolute;
     top: -110px;
 }
+

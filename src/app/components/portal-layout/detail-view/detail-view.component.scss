@@ -4,6 +4,10 @@ $secondary-color: #f36f21;
 @import '../../../responsive/tablet.scss';
 @import '../../../responsive/mobile.scss';
 
+.menu-view {
+    display: none!important;
+}
+
 h2 {
     color: $secondary-color;
     font-weight: 600;
@@ -82,3 +86,5 @@ h3 {
         color: black;
         font-weight: 600;
     }
+    
+    
