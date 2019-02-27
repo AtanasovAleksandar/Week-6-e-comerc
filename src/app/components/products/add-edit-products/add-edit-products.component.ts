@@ -36,6 +36,7 @@ export class AddEditProductsComponent implements OnInit {
   selectedOption: Category = {} as Category;
   newImageId: string;
   parent: number;
+  emptyInput: boolean = false;
 
   constructor(public activatedRout: ActivatedRoute,
     public router: Router,
@@ -148,30 +149,42 @@ export class AddEditProductsComponent implements OnInit {
   }
 
   addNewProduct() {
-    this.product.imageUrl = this.downloadSrc;
-    this.product.categoryId = this.selectedOption.id;
-    this.product.isAvailable = this.available;
-    this.product.imageName = this.newImageId;
-    console.log(this.available)
-    this.productService.addProducts(this.product).subscribe(
-      data => {
-        this.router.navigate(['Products', 'pr']);
-        this.toastr.success('New product added');
-      }
-    )
+    if (this.downloadSrc == undefined || this.product.name == ''
+    || this.product.manufacturer == '' || !this.selectedOption.id) {
+      this.emptyInput = true;
+    } else {
+      this.emptyInput = false;
+      this.product.imageUrl = this.downloadSrc;
+      this.product.categoryId = this.selectedOption.id;
+      this.product.isAvailable = this.available;
+      this.product.imageName = this.newImageId;
+      console.log(this.available)
+      this.productService.addProducts(this.product).subscribe(
+        data => {
+          this.router.navigate(['Products', 'pr']);
+          this.toastr.success('New product added');
+        }
+      )
+    } 
   }
 
   productChange() {
-    this.product.imageUrl = this.downloadSrc;
-    this.product.isAvailable = this.available;
-    this.product.categoryId = this.selectedOption.id;
-    this.productService.editProduct(this.product, this.product.id).subscribe(
-      data => {
-        this.router.navigate(['Products', 'pr']);
-        this.toastr.success(' Product changed');
-      }
-    )
+    if (this.downloadSrc == undefined ||  this.product.name == ''
+    || this.product.manufacturer == '' || !this.selectedOption.id) {
+      this.emptyInput = true;
+    } else {
+      this.product.imageUrl = this.downloadSrc;
+      this.product.isAvailable = this.available;
+      this.product.categoryId = this.selectedOption.id;
+      this.productService.editProduct(this.product, this.product.id).subscribe(
+        data => {
+          this.router.navigate(['Products', 'pr']);
+          this.toastr.success(' Product changed');
+        }
+      )
+    }
   }
+
 }
 
 

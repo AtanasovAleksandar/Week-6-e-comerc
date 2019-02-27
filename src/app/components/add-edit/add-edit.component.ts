@@ -43,7 +43,7 @@ export class AddEditCategoryComponent implements OnInit {
       this.getCategory();
       this.countService.getCount();
       this.countService.getProductCount();
-     
+
     });
   }
 
@@ -86,7 +86,7 @@ export class AddEditCategoryComponent implements OnInit {
         (data: Category[]) => {
           console.log(data);
           this.sentCount()
-          this.router.navigate(['Category','ct']);
+          this.router.navigate(['Category', 'ct']);
           this.toastr.success('Category Added');
         }
       )
@@ -100,30 +100,33 @@ export class AddEditCategoryComponent implements OnInit {
     this.category.name = this.categoryObj.name;
     this.category.description = this.categoryObj.description
     for (let i = 0; i < this.Category.length; i++) {
-        if (this.categoryObj.parentCategoryName == this.Category[i].name) {
-          this.parent = i;
-        }
+      if (this.categoryObj.parentCategoryName == this.Category[i].name) {
+        this.parent = i;
+      }
     }
     this.selectedOption = this.Category[this.parent]
   }
 
   editedValues() {
-    if (!this.selectedOption) {
-      this.editCategory();
+    if (this.category.name == '') {
+      this.emptyInput = true;
+      this.toastr.error('required field');
     } else {
-      this.category.parentCategoryId = this.selectedOption.id
-      this.category.parentCategoryName = this.selectedOption.name
-      console.log(this.newCategory);
-      this.editCategory();
+      if (!this.selectedOption) {
+        this.editCategory();
+      } else {
+        this.category.parentCategoryId = this.selectedOption.id
+        this.category.parentCategoryName = this.selectedOption.name
+        console.log(this.newCategory);
+        this.editCategory();
+      }
     }
-   
-  
   }
 
   editCategory() {
     this.categoryService.editCategory(this.categoryObj.id, this.category).subscribe(
       data => {
-        this.router.navigate(['Category','ct']);
+        this.router.navigate(['Category', 'ct']);
         this.toastr.success('Category Changed');
       }
     )

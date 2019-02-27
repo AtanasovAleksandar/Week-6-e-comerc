@@ -4,7 +4,7 @@
   </nav>
   <form class="col-md-10 container form form-edit">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body" [ngClass]="{'empty': emptyInput}">
         <h5 class="card-title">Select a file for upload:</h5>
         <input class="btn btn btn-outline-primary" type="file" (change)="upload($event)" accept=".png,.jpg" />
         <br><br>
@@ -39,7 +39,7 @@
     <div class="select">
       <label for="CategoryParentNameInput" class="form-labels">Parent Category Name <i
           class="fas fa-address-card"></i></label>
-      <select class="custom-select" [(ngModel)]="selectedOption" name="selectedOption">
+      <select class="custom-select" [ngClass]="{'empty': emptyInput}" [(ngModel)]="selectedOption" name="selectedOption">
         <option *ngFor="let item of categories" [ngValue]="item">
           {{item.name}}
         </option>
@@ -48,7 +48,7 @@
 
     <div class="product-price">
       <label for="productManufacture" class="form-labels">Price <i class="fas fa-address-card"></i></label>
-      <input type="number" [(ngModel)]="product.price" name="Price" class="form-control" placeholder="Product Price" />
+      <input type="number" [ngClass]="{'empty': emptyInput}" [(ngModel)]="product.price" name="Price" class="form-control" placeholder="Product Price" />
     </div>
 
     <div class="product-manufacture">
@@ -60,7 +60,7 @@
     <div class="products-check">
       <label for="CategoryNameInput" class="form-labels">Available <i class="fas fa-address-card"></i></label>
       <div class="custom-control custom-checkbox">
-        <input type="checkbox" [(ngModel)]="available" name="available" data-md-icheck
+        <input type="checkbox" [ngClass]="{'empty': emptyInput}" [(ngModel)]="available" name="available" data-md-icheck
           (change)="availableProduct($event)" /> Available
       </div>
     </div>

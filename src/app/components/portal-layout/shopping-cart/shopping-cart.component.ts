@@ -54,7 +54,7 @@ export class ShoppingCartComponent implements OnInit {
 
   checkOut() {
     localStorage.clear();
-    this.router.navigate(['/Portal/list']);
+    this.router.navigate(['/Portal/Home']);
     this.toastr.success('You successfully pay for you products ! Wait for delivery');
   }
 
